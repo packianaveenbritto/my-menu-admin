@@ -3,7 +3,7 @@ import { componentsMenu, dashboardMenu, demoPages, layoutMenu } from '../menu';
 import Login from '../pages/presentation/auth/Login';
 
 const LANDING = {
-	DASHBOARD: lazy(() => import('../pages/dashboard/DashboardPage')),
+	DASHBOARD: lazy(() => import('../pages/dashboard/CustomDashboard')),
 	DASHBOARD_BOOKING: lazy(() => import('../pages/dashboard/DashboardBookingPage')),
 	SUMMARY: lazy(() => import('../pages/SummaryPage')),
 };
