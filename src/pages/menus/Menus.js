@@ -19,6 +19,10 @@ import Page from '../../layout/Page/Page';
 import Button, { ButtonGroup } from '../../components/bootstrap/Button';
 import tableData from '../../common/data/dummyProductData';
 import CommonGridMenus from '../common/CommonGridMenus';
+import PaginationButtons, {
+	dataPagination,
+	PER_COUNT,
+} from '../../components/PaginationButtons';
 // eslint-disable-next-line no-unused-vars
 import Card, {
 	// CardActions,
@@ -70,7 +74,7 @@ import CommonAvatarTeam from '../../components/common/CommonAvatarTeam';
 // import PaginationButtons, { dataPagination, PER_COUNT } from '../../components/PaginationButtons';
 // import useSortableData from '../../hooks/useSortableData';
 import useDarkMode from '../../hooks/useDarkMode';
-import Pagination, { PaginationItem } from '../../components/bootstrap/Pagination';
+// import Pagination, { PaginationItem } from '../../components/bootstrap/Pagination';
 // import Timeline, { TimelineItem } from '../../components/extras/Timeline';
 // import CommonTodo from '../common/CommonTodo';
 
@@ -119,6 +123,8 @@ const Menus = () => {
 	// eslint-disable-next-line no-unused-vars
 	const [editPanel, setEditPanel] = useState(false);
 
+	const [currentPage, setCurrentPage] = useState(1);
+	const [perPage, setPerPage] = useState(PER_COUNT['10']);
 	function handleRemove(id) {
 		const newData = data.filter((item) => item.id !== id);
 		setData(newData);
@@ -247,7 +253,7 @@ const Menus = () => {
 				</div>
 
 				<div className='row'>
-					{data.map((item) => (
+					{dataPagination(data, currentPage, perPage).map((item) => (
 						<div key={item.id} className='col-xxl-3 col-xl-4 col-md-6'>
 							<CommonGridMenus
 								id={item.id}
@@ -266,18 +272,14 @@ const Menus = () => {
 						</div>
 					))}
 				</div>
-				<div className='d-flex justify-content-between'>
-					<div>Showing 1 to 10 of 4 items</div>
-					<div>
-						<Pagination ariaLabel='pagination'>
-							<PaginationItem isPrev />
-							<PaginationItem isActive>1</PaginationItem>
-							<PaginationItem>2</PaginationItem>
-							<PaginationItem>3</PaginationItem>
-							<PaginationItem isNext />
-						</Pagination>
-					</div>
-				</div>
+				<PaginationButtons
+					data={data}
+					label='orders'
+					setCurrentPage={setCurrentPage}
+					currentPage={currentPage}
+					perPage={perPage}
+					setPerPage={setPerPage}
+				/>
 			</Page>
 		</PageWrapper>
 	);
