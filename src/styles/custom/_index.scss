@@ -40,7 +40,14 @@
 	.chart-container {
 		margin-left: 3rem;
 	}
-	.card-with-number{
+	.card-with-number {
 		margin-left: 26px;
 	}
+}
+
+.custom-card-with-shaddow {
+	/* UI Properties */
+	background: transparent linear-gradient(180deg, #d6caa8 0%, #e6decb 100%) 0% 0% no-repeat
+		padding-box;
+	opacity: 1;
 }
