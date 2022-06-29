@@ -56,6 +56,7 @@ import useSortableData from '../../hooks/useSortableData';
 import useDarkMode from '../../hooks/useDarkMode';
 import Timeline, { TimelineItem } from '../../components/extras/Timeline';
 import CommonTodo from '../common/CommonTodo';
+import Progress from '../../components/bootstrap/Progress';
 
 // eslint-disable-next-line react/prop-types
 const TableRow = ({ id, image, name, category, series, color, stock, price, store }) => {
@@ -790,7 +791,7 @@ const CustomDashboard = () => {
 					<span className='h5 mb-0 fw-normal'>Preview</span>
 					<div className='col-auto'>
 						<Popovers trigger='hover' desc='QR Menu Preview' flip='bottom'>
-							<img src={icEcommerceQr} width='100%' alt='' />
+							<Icon icon='CustomQrEcommerce' />
 						</Popovers>
 					</div>
 					<div className='col-auto'>
@@ -845,30 +846,76 @@ const CustomDashboard = () => {
 						</Alert>
 					</div>
 
-					<div className='col-12'>
-						{/* <UserContact
-							name={`${USERS.SAM.name} ${USERS.SAM.surname}`}
-							position='Team Lead'
-							mail={`${USERS.SAM.username}@site.com`}
-							phone='1234567'
-							onChat={() =>
-								navigate(`../${demoPages.chat.subMenu.withListChat.path}`)
-							}
-							src={USERS.SAM.src}
-							srcSet={USERS.SAM.srcSet}
-							color={USERS.SAM.color}
-						/> */}
-						<Card>
-							<CardLabel>
-								<CardTitle tag='h4' className='h5'>
-									Marketing Team
-								</CardTitle>
-								<CardSubTitle tag='h5' className='h6 text-muted'>
-									There is a meeting at 12 o'clock.
-								</CardSubTitle>
-							</CardLabel>
-						</Card>
-					</div>
+					<Card>
+						<div className='col-12 d-flex align-items-center'>
+							{/* <Card>
+							<div className='col-4'>
+								<CardLabel>
+									<CardTitle tag='h4' className='h5 mb-2'>
+										Marketing Team
+									</CardTitle>
+									<CardSubTitle tag='h5' className='h6 text-muted'>
+										There is a meeting at 12 o'clock.
+									</CardSubTitle>
+								</CardLabel>
+							</div>
+							
+						</Card> */}
+							<div className='col-xl-4'>
+								<CardLabel
+									icon='NotificationsActive'
+									iconColor='warning'
+									className='p-3 '>
+									<CardTitle tag='h4' className='h5 '>
+										Recent Activities
+									</CardTitle>
+									<CardSubTitle>last 2 weeks</CardSubTitle>
+								</CardLabel>
+							</div>
+							<SubheaderSeparator />
+							<div className='col-xl-4 p-4'>
+								<div className='d-flex'>
+									<div className='col-6'>
+										<div>
+											<CardTitle tag='h6' className='h6 '>
+												Recent Activities
+											</CardTitle>
+										</div>
+									</div>
+									<div className='col-6'>
+										<div>
+											<CardTitle
+												tag='h5'
+												className='h6'
+												style={{ 'text-align': 'end' }}>
+												90%
+											</CardTitle>
+										</div>
+									</div>
+								</div>
+								<div className='pl-3'>
+									<Progress
+										value={90}
+										height={10} // Example: 10, '3vh', '5rem' etc.
+										color='primary' // 'primary' || 'secondary' || 'success' || 'info' || 'warning' || 'danger' || 'light' || 'dark'
+										className={String}
+									/>
+								</div>
+							</div>
+							<SubheaderSeparator />
+							<div className='col-xl-4'>
+								<CardLabel
+									icon='NotificationsActive'
+									iconColor='warning'
+									className='p-3 '>
+									<CardTitle tag='h4' className='h5 '>
+										Recent Activities
+									</CardTitle>
+									<CardSubTitle>last 2 weeks</CardSubTitle>
+								</CardLabel>
+							</div>
+						</div>
+					</Card>
 
 					<div className='col-xl-4'>
 						<UserContact
@@ -999,7 +1046,40 @@ const CustomDashboard = () => {
 							</CardBody>
 						</Card>
 					</div>
-
+					<div className='col-12 d-flex'>
+						<div className='col-auto p-5'>
+							<Card className='p-4'>
+								<div className='bg-l25-primary card-with-number'>
+									<div style={{ 'text-align': 'end' }}><Icon icon='CustomMoreVert'/></div>
+									<span className='fw-bold'>000</span>
+								</div>
+							</Card>
+						</div>
+						<div className='col-auto p-5'>
+							<Card className='p-4'>
+								<div className='bg-l25-primary card-with-number'>
+									<div style={{ 'text-align': 'end' }}><Icon icon='CustomMoreVert'/></div>
+									<span className='fw-bold'>000</span>
+								</div>
+							</Card>
+						</div>
+						<div className='col-auto p-5'>
+							<Card className='p-4'>
+								<div className='bg-l25-primary card-with-number'>
+									<div style={{ 'text-align': 'end' }}><Icon icon='CustomMoreVert'/></div>
+									<span className='fw-bold'>000</span>
+								</div>
+							</Card>
+						</div>
+						<div className='col-auto p-5'>
+							<Card className='p-4'>
+								<div className='bg-l25-primary card-with-number'>
+									<div style={{ 'text-align': 'end' }}><Icon icon='CustomMoreVert'/></div>
+									<span className='fw-bold'>000</span>
+								</div>
+							</Card>
+						</div>
+					</div>
 					<div className='col-xxl-6'>
 						<Card stretch>
 							<CardHeader>

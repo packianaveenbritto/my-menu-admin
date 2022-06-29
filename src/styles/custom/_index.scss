@@ -16,3 +16,11 @@
 .border-transparent {
 	--#{$prefix}border-opacity: 0;
 }
+
+.card-with-number {
+	width: 4rem;
+	height: 4rem;
+	text-align: center;
+	padding-right: 3px;
+	border-radius: 5%;
+}
