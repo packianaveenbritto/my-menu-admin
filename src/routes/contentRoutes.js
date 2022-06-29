@@ -4,7 +4,8 @@ import Login from '../pages/presentation/auth/Login';
 
 const LANDING = {
 	DASHBOARD: lazy(() => import('../pages/dashboard/CustomDashboard')),
-	DASHBOARD_BOOKING: lazy(() => import('../pages/dashboard/DashboardBookingPage')),
+	// DASHBOARD_BOOKING: lazy(() => import('../pages/menus/DashboardBookingPage')),
+	MENUS: lazy(() => import('../pages/menus/Menus')),
 	SUMMARY: lazy(() => import('../pages/SummaryPage')),
 };
 const SINGLE = {
@@ -185,8 +186,8 @@ const presentation = [
 		exact: true,
 	},
 	{
-		path: dashboardMenu.dashboardBooking.path,
-		element: <LANDING.DASHBOARD_BOOKING />,
+		path: dashboardMenu.menus.path,
+		element: <LANDING.MENUS />,
 		exact: true,
 	},
 	{

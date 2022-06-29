@@ -38,13 +38,20 @@ export const dashboardMenu = {
 		icon: 'Dashboard',
 		subMenu: null,
 	},
-	dashboardBooking: {
-		id: 'dashboard-booking',
-		text: 'Dashboard Booking',
-		path: 'dashboard-booking',
-		icon: 'emoji_transportation',
+	menus: {
+		id: 'menus',
+		text: 'Menus',
+		path: 'menus',
+		icon: 'CustomMenus',
 		subMenu: null,
 	},
+	// dashboardBooking: {
+	// 	id: 'dashboard-booking',
+	// 	text: 'Dashboard Booking',
+	// 	path: 'dashboard-booking',
+	// 	icon: 'emoji_transportation',
+	// 	subMenu: null,
+	// },
 	crmDashboard: {
 		id: 'crmDashboard',
 		text: 'CRM Dashboard',
@@ -305,7 +312,7 @@ export const demoPages = {
 		path: 'appointment',
 		icon: 'Today',
 		subMenu: {
-			dashboard: dashboardMenu.dashboardBooking,
+			// dashboard: dashboardMenu.dashboardBooking,
 			calendar: {
 				id: 'calendar',
 				text: 'Calendar',

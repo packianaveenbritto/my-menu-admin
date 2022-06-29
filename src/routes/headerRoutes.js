@@ -32,8 +32,8 @@ const headers = [
 	},
 	{ path: demoPages.pricingTable.path, element: <DashboardHeader />, exact: true },
 	{
-		path: dashboardMenu.dashboardBooking.path,
-		element: <DashboardBookingHeader />,
+		path: dashboardMenu.menus.path,
+		element: <DashboardHeader />,
 		exact: true,
 	},
 	{
