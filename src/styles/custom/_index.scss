@@ -24,3 +24,23 @@
 	padding-right: 3px;
 	border-radius: 5%;
 }
+
+.custom-card {
+	width: 100px;
+	height: 100px;
+	align-items: center;
+	justify-content: center;
+}
+
+.custom-card-chart {
+	padding-right: 26px;
+	width: auto;
+	height: 100px;
+	justify-content: center;
+	.chart-container {
+		margin-left: 3rem;
+	}
+	.card-with-number{
+		margin-left: 26px;
+	}
+}

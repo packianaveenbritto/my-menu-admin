@@ -1046,40 +1046,99 @@ const CustomDashboard = () => {
 							</CardBody>
 						</Card>
 					</div>
-					<div className='col-12 d-flex'>
-						<div className='col-auto p-5'>
-							<Card className='p-4'>
-								<div className='bg-l25-primary card-with-number'>
-									<div style={{ 'text-align': 'end' }}><Icon icon='CustomMoreVert'/></div>
-									<span className='fw-bold'>000</span>
-								</div>
-							</Card>
+
+					<div className='col-xl-2'>
+						<div className='mb-2'>
+							<span className='h6 fw-bold'>Ongoing Campaigns</span>
 						</div>
-						<div className='col-auto p-5'>
-							<Card className='p-4'>
+						<div>
+							<Card className='custom-card'>
 								<div className='bg-l25-primary card-with-number'>
-									<div style={{ 'text-align': 'end' }}><Icon icon='CustomMoreVert'/></div>
-									<span className='fw-bold'>000</span>
-								</div>
-							</Card>
-						</div>
-						<div className='col-auto p-5'>
-							<Card className='p-4'>
-								<div className='bg-l25-primary card-with-number'>
-									<div style={{ 'text-align': 'end' }}><Icon icon='CustomMoreVert'/></div>
-									<span className='fw-bold'>000</span>
-								</div>
-							</Card>
-						</div>
-						<div className='col-auto p-5'>
-							<Card className='p-4'>
-								<div className='bg-l25-primary card-with-number'>
-									<div style={{ 'text-align': 'end' }}><Icon icon='CustomMoreVert'/></div>
+									<div style={{ 'text-align': 'end' }}>
+										<Icon icon='CustomMoreVert' />
+									</div>
 									<span className='fw-bold'>000</span>
 								</div>
 							</Card>
 						</div>
 					</div>
+
+					<div className='col-xl-2'>
+						<div className='mb-2'>
+							<span className='h6 fw-bold'>Ongoing Campaigns</span>
+						</div>
+						<div>
+							<Card className='custom-card'>
+								<div className='bg-l25-primary card-with-number'>
+									<div style={{ 'text-align': 'end' }}>
+										<Icon icon='CustomMoreVert' />
+									</div>
+									<span className='fw-bold'>000</span>
+								</div>
+							</Card>
+						</div>
+					</div>
+
+					<div className='col-xl-2'>
+						<div className='mb-2'>
+							<span className='h6 fw-bold'>Ongoing Campaigns</span>
+						</div>
+						<div>
+							<Card className='custom-card'>
+								<div className='bg-l25-primary card-with-number'>
+									<div style={{ 'text-align': 'end' }}>
+										<Icon icon='CustomMoreVert' />
+									</div>
+									<span className='fw-bold'>000</span>
+								</div>
+							</Card>
+						</div>
+					</div>
+
+					<div className='col-xl-2'>
+						<div className='mb-2'>
+							<span className='h6 fw-bold'>Ongoing Campaigns</span>
+						</div>
+						<div>
+							<Card className='custom-card'>
+								<div className='bg-l25-primary card-with-number'>
+									<div style={{ 'text-align': 'end' }}>
+										<Icon icon='CustomMoreVert' />
+									</div>
+									<span className='fw-bold'>000</span>
+								</div>
+							</Card>
+						</div>
+					</div>
+
+					<div className='col-xl-4'>
+						<div className='mb-2'>
+							<span className='h6 fw-bold'>Ongoing Campaigns</span>
+						</div>
+						<div>
+							<Card className='custom-card-chart'>
+								<div className='d-flex'>
+									<div className='bg-l25-primary card-with-number'>
+										<div style={{ 'text-align': 'end' }}>
+											<Icon icon='CustomMoreVert' />
+										</div>
+										<span className='fw-bold'>000</span>
+									</div>
+									<div className='chart-container'>
+										<Chart
+											className='mx-n4'
+											series={sales.series}
+											options={sales.options}
+											type={sales.options.chart.type}
+											height={50}
+											width={400}
+										/>
+									</div>
+								</div>
+							</Card>
+						</div>
+					</div>
+
 					<div className='col-xxl-6'>
 						<Card stretch>
 							<CardHeader>
