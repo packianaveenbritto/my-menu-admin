@@ -18,4 +18,4 @@ export { default as CustomMenus } from './CustomMenus';
 export { default as CustomQrEcommerce } from './CustomQrEcommerce';
 export { default as CustomMoreVert } from './CustomMoreVert';
 export { default as CustomSettings } from './CustomSettings';
-
+export { default as CustomCut } from './CustomCut';

@@ -6,9 +6,7 @@ import Input from '../../components/bootstrap/forms/Input';
 import Label from '../../components/bootstrap/forms/Label';
 import Select from '../../components/bootstrap/forms/Select';
 import { Options } from '../../components/bootstrap/Option';
-// eslint-disable-next-line no-unused-vars
 import Checks from '../../components/bootstrap/forms/Checks';
-// eslint-disable-next-line no-unused-vars
 import Button from '../../components/bootstrap/Button';
 
 const General = () => {
