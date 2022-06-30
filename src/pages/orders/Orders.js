@@ -235,6 +235,14 @@ const Orders = () => {
 								<div>AED 123</div>
 							</div>
 						</div>
+						<div className='row'>
+							<div className='col-6 p-2 d-grid g-2'>
+								<Button color='dark'>Accept</Button>
+							</div>
+							<div className='col-6 p-2 d-grid g-2'>
+								<Button color='primary'>Reject</Button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</Page>
