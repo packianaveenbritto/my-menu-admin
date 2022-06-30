@@ -51,6 +51,11 @@
 		padding-box;
 	opacity: 1;
 }
-.text-align-right{
-	text-align: right
+.text-align-right {
+	text-align: right;
+}
+
+.card-gradient {
+	background: transparent linear-gradient(180deg, #d6caa8 0%, #e6decb 100%) 0% 0% no-repeat
+		padding-box;
 }

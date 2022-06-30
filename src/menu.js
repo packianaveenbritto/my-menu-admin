@@ -45,6 +45,13 @@ export const dashboardMenu = {
 		icon: 'CustomMenus',
 		subMenu: null,
 	},
+	orders: {
+		id: 'orders',
+		text: 'Orders',
+		path: 'orders',
+		icon: 'AddShoppingCart',
+		subMenu: null,
+	},
 	// dashboardBooking: {
 	// 	id: 'dashboard-booking',
 	// 	text: 'Dashboard Booking',

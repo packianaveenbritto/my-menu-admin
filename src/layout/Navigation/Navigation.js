@@ -102,7 +102,7 @@ export const Item = ({
 	const _Inner = (
 		<>
 			<span className='navigation-link-info'>
-				{icon && <Icon className='navigation-icon' icon={icon} />}
+				{icon && <Icon className='navigation-icon' icon={icon} color='primary' />}
 				<span className='navigation-text'>{t(title)}</span>
 			</span>
 			{(!!children || !!notification) && (

@@ -37,6 +37,11 @@ const headers = [
 		exact: true,
 	},
 	{
+		path: dashboardMenu.orders.path,
+		element: <DashboardHeader />,
+		exact: true,
+	},
+	{
 		path: demoPages.appointment.subMenu.calendar.path,
 		element: <DashboardBookingHeader />,
 		exact: true,
