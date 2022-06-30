@@ -34,6 +34,7 @@ const PRICING = {
 
 const AUTH = {
 	PAGE_404: lazy(() => import('../pages/presentation/auth/Page404')),
+	SETTINGS: lazy(() => import('../pages/settings/SettingPage')),
 };
 const APP = {
 	PROJECT_MANAGEMENT: {
@@ -304,6 +305,11 @@ const presentation = [
 	{
 		path: demoPages.signUp.path,
 		element: <Login isSignUp />,
+		exact: true,
+	},
+	{
+		path: demoPages.settings.path,
+		element: <AUTH.SETTINGS />,
 		exact: true,
 	},
 

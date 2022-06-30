@@ -17,7 +17,6 @@ import Button, { ButtonGroup } from '../../components/bootstrap/Button';
 import Card, {
 	CardActions,
 	CardBody,
-	CardFooter,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
@@ -47,7 +46,7 @@ import Avatar, { AvatarGroup } from '../../components/Avatar';
 import USERS from '../../common/data/userDummyData';
 import { demoPages } from '../../menu';
 import data from '../../common/data/dummyProductData';
-import {  priceFormat } from '../../helpers/helpers';
+import { priceFormat } from '../../helpers/helpers';
 import PercentComparison from '../../components/extras/PercentComparison';
 import PaginationButtons, { dataPagination, PER_COUNT } from '../../components/PaginationButtons';
 import useSortableData from '../../hooks/useSortableData';
@@ -55,6 +54,8 @@ import useDarkMode from '../../hooks/useDarkMode';
 import Timeline, { TimelineItem } from '../../components/extras/Timeline';
 import Progress from '../../components/bootstrap/Progress';
 import CommonGridMenus from '../common/CommonGridMenus';
+import CommonUpcomingEvents from '../common/CommonUpcomingEvents';
+import CustomTransferAction from '../../components/CustomTransferAction';
 
 // eslint-disable-next-line react/prop-types
 const TableRow = ({ id, image, name, category, series, color, stock, price, store }) => {
@@ -417,328 +418,411 @@ const CustomDashboard = () => {
 	};
 	// eslint-disable-next-line no-unused-vars
 	const [activeCompanyTab, setActiveCompanyTab] = useState(COMPANIES_TAB.COMP1);
-	function randomize(value, x = year) {
-		if (x === 2019) {
-			if (value.toFixed(0) % 2) {
-				return (value * 1.5).toFixed(2);
-			}
-			return (value / 1.4).toFixed(2);
-		}
-		if (x === 2020) {
-			if (value.toFixed(0) % 2) {
-				return (value / 1.5).toFixed(2);
-			}
-			return (value * 1.4).toFixed(2);
-		}
-		if (x === 2021) {
-			if (value.toFixed(0) % 2) {
-				return (value / 2).toFixed(2);
-			}
-			return (value * 1.4).toFixed(2);
-		}
-		return value.toFixed(2);
-	}
 
-	const salesByStoreOptions = {
-		chart: {
-			height: 370,
-			type: 'line',
-			stacked: false,
-			toolbar: { show: false },
-		},
-		colors: [
-			process.env.REACT_APP_INFO_COLOR,
-			process.env.REACT_APP_SUCCESS_COLOR,
-			process.env.REACT_APP_WARNING_COLOR,
-		],
-		dataLabels: {
-			enabled: false,
-		},
-		stroke: {
-			width: [1, 1, 4],
-			curve: 'smooth',
-		},
-		plotOptions: {
-			bar: {
-				borderRadius: 5,
-				columnWidth: '20px',
-			},
-		},
-		xaxis: {
-			categories: [
-				'Jan',
-				'Feb',
-				'Mar',
-				'Apr',
-				'May',
-				'Jun',
-				'Jul',
-				'Aug',
-				'Sep',
-				'Oct',
-				'Nov',
-				'Dec',
-			],
-		},
-		yaxis: [
+	const [stackedColumn] = useState({
+		series: [
 			{
-				axisTicks: {
-					show: true,
-				},
-				axisBorder: {
-					show: true,
-					color: process.env.REACT_APP_INFO_COLOR,
-				},
-				labels: {
-					style: {
-						colors: process.env.REACT_APP_INFO_COLOR,
-					},
-				},
-				title: {
-					text: 'Income (thousand cores)',
-					style: {
-						color: process.env.REACT_APP_INFO_COLOR,
-					},
-				},
-				tooltip: {
+				name: 'John Doe',
+				data: [23, 32, 12, 13],
+			},
+			{
+				name: 'Grace Buckland',
+				data: [13, 23, 20, 24],
+			},
+			{
+				name: 'Jane Lee',
+				data: [11, 17, 15, 15],
+			},
+			{
+				name: 'Ryan McGrath',
+				data: [21, 15, 25, 13],
+			},
+		],
+		options: {
+			chart: {
+				type: 'bar',
+				height: 100,
+				stacked: true,
+				sparkline: {
 					enabled: true,
 				},
 			},
-			{
-				seriesName: 'Income',
-				opposite: true,
-				axisTicks: {
-					show: true,
-				},
-				axisBorder: {
-					show: true,
-					color: process.env.REACT_APP_SUCCESS_COLOR,
-				},
-				labels: {
-					style: {
-						colors: process.env.REACT_APP_SUCCESS_COLOR,
-					},
-				},
-				title: {
-					text: 'Operating Cash Flow (thousand cores)',
-					style: {
-						color: process.env.REACT_APP_SUCCESS_COLOR,
-					},
+			tooltip: {
+				theme: 'dark',
+			},
+			plotOptions: {
+				bar: {
+					borderRadius: 7,
+					columnWidth: '25%',
 				},
 			},
+			xaxis: {
+				type: 'category',
+				categories: ['12th week', '13th week', '14th week', '15th week'],
+			},
+			fill: {
+				opacity: 1,
+			},
+		},
+	});
+
+	const [fee] = useState({
+		series: [
 			{
-				seriesName: 'Revenue',
-				opposite: true,
-				axisTicks: {
-					show: true,
-				},
-				axisBorder: {
-					show: true,
-					color: process.env.REACT_APP_WARNING_COLOR,
-				},
-				labels: {
-					style: {
-						colors: process.env.REACT_APP_WARNING_COLOR,
-					},
-				},
-				title: {
-					text: 'Revenue (thousand cores)',
-					style: {
-						color: process.env.REACT_APP_WARNING_COLOR,
-					},
-				},
+				name: 'Sales',
+				data: [12, 18, 14, 10],
 			},
 		],
-		tooltip: {
-			theme: 'dark',
-			fixed: {
-				enabled: true,
-				position: 'topLeft', // topRight, topLeft, bottomRight, bottomLeft
-				offsetY: 30,
-				offsetX: 60,
+		options: {
+			chart: {
+				type: 'area',
+				height: '165',
+				sparkline: {
+					enabled: true,
+				},
 			},
+			stroke: {
+				curve: 'smooth',
+			},
+			fill: {
+				type: 'gradient',
+				gradient: {
+					shadeIntensity: 1,
+					opacityFrom: 0.7,
+					opacityTo: 0,
+					stops: [0, 100],
+				},
+			},
+
+			tooltip: {
+				theme: 'dark',
+			},
+			colors: [process.env.REACT_APP_PRIMARY_COLOR],
 		},
-		legend: {
-			horizontalAlign: 'left',
-			offsetX: 40,
-		},
-	};
-	const salesByStoreSeries1 = [
-		{
-			name: 'Income',
-			type: 'column',
-			data: [
-				randomize(1.4),
-				randomize(2),
-				randomize(2.5),
-				randomize(1.5),
-				randomize(2.5),
-				randomize(2.8),
-				randomize(3.8),
-				randomize(4.6),
-			],
-		},
-		{
-			name: 'Cash Flow',
-			type: 'column',
-			data: [
-				randomize(1.1),
-				randomize(3),
-				randomize(3.1),
-				randomize(4),
-				randomize(4.1),
-				randomize(4.9),
-				randomize(6.5),
-				randomize(8.5),
-			],
-		},
-		{
-			name: 'Revenue',
-			type: 'line',
-			data: [
-				randomize(20),
-				randomize(29),
-				randomize(37),
-				randomize(36),
-				randomize(44),
-				randomize(45),
-				randomize(50),
-				randomize(58),
-			],
-		},
-	];
-	const salesByStoreSeries2 = [
-		{
-			name: 'Income',
-			type: 'column',
-			data: [
-				randomize(4.4),
-				randomize(5),
-				randomize(6.5),
-				randomize(7.5),
-				randomize(6.5),
-				randomize(9.8),
-				randomize(7.8),
-				randomize(6.6),
-			],
-		},
-		{
-			name: 'Cash Flow',
-			type: 'column',
-			data: [
-				randomize(3),
-				randomize(3),
-				randomize(5.1),
-				randomize(5),
-				randomize(7.1),
-				randomize(9.9),
-				randomize(8.5),
-				randomize(9.5),
-			],
-		},
-		{
-			name: 'Revenue',
-			type: 'line',
-			data: [
-				randomize(34),
-				randomize(54),
-				randomize(43),
-				randomize(63),
-				randomize(35),
-				randomize(63),
-				randomize(46),
-				randomize(53),
-			],
-		},
-	];
-	const salesByStoreSeries3 = [
-		{
-			name: 'Income',
-			type: 'column',
-			data: [
-				randomize(4),
-				randomize(3),
-				randomize(2.5),
-				randomize(1.5),
-				randomize(2.5),
-				randomize(3.8),
-				randomize(3.8),
-				randomize(4.6),
-			],
-		},
-		{
-			name: 'Cash Flow',
-			type: 'column',
-			data: [
-				randomize(2),
-				randomize(5),
-				randomize(6.1),
-				randomize(2),
-				randomize(6.1),
-				randomize(3.9),
-				randomize(6.5),
-				randomize(8.5),
-			],
-		},
-		{
-			name: 'Revenue',
-			type: 'line',
-			data: [
-				randomize(34),
-				randomize(21),
-				randomize(54),
-				randomize(56),
-				randomize(34),
-				randomize(43),
-				randomize(37),
-				randomize(43),
-			],
-		},
-	];
-	const salesByStoreSeries4 = [
-		{
-			name: 'Income',
-			type: 'column',
-			data: [
-				randomize(3),
-				randomize(3.2),
-				randomize(1.4),
-				randomize(1.9),
-				randomize(2.9),
-				randomize(1.8),
-				randomize(4.6),
-				randomize(4.2),
-			],
-		},
-		{
-			name: 'Cash Flow',
-			type: 'column',
-			data: [
-				randomize(3),
-				randomize(2),
-				randomize(3.1),
-				randomize(5),
-				randomize(3.1),
-				randomize(3.9),
-				randomize(3.5),
-				randomize(5.5),
-			],
-		},
-		{
-			name: 'Revenue',
-			type: 'line',
-			data: [
-				randomize(30),
-				randomize(43),
-				randomize(51),
-				randomize(19),
-				randomize(32),
-				randomize(25),
-				randomize(39),
-				randomize(42),
-			],
-		},
-	];
+	});
+
+	// function randomize(value, x = year) {
+	// 	if (x === 2019) {
+	// 		if (value.toFixed(0) % 2) {
+	// 			return (value * 1.5).toFixed(2);
+	// 		}
+	// 		return (value / 1.4).toFixed(2);
+	// 	}
+	// 	if (x === 2020) {
+	// 		if (value.toFixed(0) % 2) {
+	// 			return (value / 1.5).toFixed(2);
+	// 		}
+	// 		return (value * 1.4).toFixed(2);
+	// 	}
+	// 	if (x === 2021) {
+	// 		if (value.toFixed(0) % 2) {
+	// 			return (value / 2).toFixed(2);
+	// 		}
+	// 		return (value * 1.4).toFixed(2);
+	// 	}
+	// 	return value.toFixed(2);
+	// }
+
+	// const salesByStoreOptions = {
+	// 	chart: {
+	// 		height: 370,
+	// 		type: 'line',
+	// 		stacked: false,
+	// 		toolbar: { show: false },
+	// 	},
+	// 	colors: [
+	// 		process.env.REACT_APP_INFO_COLOR,
+	// 		process.env.REACT_APP_SUCCESS_COLOR,
+	// 		process.env.REACT_APP_WARNING_COLOR,
+	// 	],
+	// 	dataLabels: {
+	// 		enabled: false,
+	// 	},
+	// 	stroke: {
+	// 		width: [1, 1, 4],
+	// 		curve: 'smooth',
+	// 	},
+	// 	plotOptions: {
+	// 		bar: {
+	// 			borderRadius: 5,
+	// 			columnWidth: '20px',
+	// 		},
+	// 	},
+	// 	xaxis: {
+	// 		categories: [
+	// 			'Jan',
+	// 			'Feb',
+	// 			'Mar',
+	// 			'Apr',
+	// 			'May',
+	// 			'Jun',
+	// 			'Jul',
+	// 			'Aug',
+	// 			'Sep',
+	// 			'Oct',
+	// 			'Nov',
+	// 			'Dec',
+	// 		],
+	// 	},
+	// 	yaxis: [
+	// 		{
+	// 			axisTicks: {
+	// 				show: true,
+	// 			},
+	// 			axisBorder: {
+	// 				show: true,
+	// 				color: process.env.REACT_APP_INFO_COLOR,
+	// 			},
+	// 			labels: {
+	// 				style: {
+	// 					colors: process.env.REACT_APP_INFO_COLOR,
+	// 				},
+	// 			},
+	// 			title: {
+	// 				text: 'Income (thousand cores)',
+	// 				style: {
+	// 					color: process.env.REACT_APP_INFO_COLOR,
+	// 				},
+	// 			},
+	// 			tooltip: {
+	// 				enabled: true,
+	// 			},
+	// 		},
+	// 		{
+	// 			seriesName: 'Income',
+	// 			opposite: true,
+	// 			axisTicks: {
+	// 				show: true,
+	// 			},
+	// 			axisBorder: {
+	// 				show: true,
+	// 				color: process.env.REACT_APP_SUCCESS_COLOR,
+	// 			},
+	// 			labels: {
+	// 				style: {
+	// 					colors: process.env.REACT_APP_SUCCESS_COLOR,
+	// 				},
+	// 			},
+	// 			title: {
+	// 				text: 'Operating Cash Flow (thousand cores)',
+	// 				style: {
+	// 					color: process.env.REACT_APP_SUCCESS_COLOR,
+	// 				},
+	// 			},
+	// 		},
+	// 		{
+	// 			seriesName: 'Revenue',
+	// 			opposite: true,
+	// 			axisTicks: {
+	// 				show: true,
+	// 			},
+	// 			axisBorder: {
+	// 				show: true,
+	// 				color: process.env.REACT_APP_WARNING_COLOR,
+	// 			},
+	// 			labels: {
+	// 				style: {
+	// 					colors: process.env.REACT_APP_WARNING_COLOR,
+	// 				},
+	// 			},
+	// 			title: {
+	// 				text: 'Revenue (thousand cores)',
+	// 				style: {
+	// 					color: process.env.REACT_APP_WARNING_COLOR,
+	// 				},
+	// 			},
+	// 		},
+	// 	],
+	// 	tooltip: {
+	// 		theme: 'dark',
+	// 		fixed: {
+	// 			enabled: true,
+	// 			position: 'topLeft', // topRight, topLeft, bottomRight, bottomLeft
+	// 			offsetY: 30,
+	// 			offsetX: 60,
+	// 		},
+	// 	},
+	// 	legend: {
+	// 		horizontalAlign: 'left',
+	// 		offsetX: 40,
+	// 	},
+	// };
+	// const salesByStoreSeries1 = [
+	// 	{
+	// 		name: 'Income',
+	// 		type: 'column',
+	// 		data: [
+	// 			randomize(1.4),
+	// 			randomize(2),
+	// 			randomize(2.5),
+	// 			randomize(1.5),
+	// 			randomize(2.5),
+	// 			randomize(2.8),
+	// 			randomize(3.8),
+	// 			randomize(4.6),
+	// 		],
+	// 	},
+	// 	{
+	// 		name: 'Cash Flow',
+	// 		type: 'column',
+	// 		data: [
+	// 			randomize(1.1),
+	// 			randomize(3),
+	// 			randomize(3.1),
+	// 			randomize(4),
+	// 			randomize(4.1),
+	// 			randomize(4.9),
+	// 			randomize(6.5),
+	// 			randomize(8.5),
+	// 		],
+	// 	},
+	// 	{
+	// 		name: 'Revenue',
+	// 		type: 'line',
+	// 		data: [
+	// 			randomize(20),
+	// 			randomize(29),
+	// 			randomize(37),
+	// 			randomize(36),
+	// 			randomize(44),
+	// 			randomize(45),
+	// 			randomize(50),
+	// 			randomize(58),
+	// 		],
+	// 	},
+	// ];
+	// const salesByStoreSeries2 = [
+	// 	{
+	// 		name: 'Income',
+	// 		type: 'column',
+	// 		data: [
+	// 			randomize(4.4),
+	// 			randomize(5),
+	// 			randomize(6.5),
+	// 			randomize(7.5),
+	// 			randomize(6.5),
+	// 			randomize(9.8),
+	// 			randomize(7.8),
+	// 			randomize(6.6),
+	// 		],
+	// 	},
+	// 	{
+	// 		name: 'Cash Flow',
+	// 		type: 'column',
+	// 		data: [
+	// 			randomize(3),
+	// 			randomize(3),
+	// 			randomize(5.1),
+	// 			randomize(5),
+	// 			randomize(7.1),
+	// 			randomize(9.9),
+	// 			randomize(8.5),
+	// 			randomize(9.5),
+	// 		],
+	// 	},
+	// 	{
+	// 		name: 'Revenue',
+	// 		type: 'line',
+	// 		data: [
+	// 			randomize(34),
+	// 			randomize(54),
+	// 			randomize(43),
+	// 			randomize(63),
+	// 			randomize(35),
+	// 			randomize(63),
+	// 			randomize(46),
+	// 			randomize(53),
+	// 		],
+	// 	},
+	// ];
+	// const salesByStoreSeries3 = [
+	// 	{
+	// 		name: 'Income',
+	// 		type: 'column',
+	// 		data: [
+	// 			randomize(4),
+	// 			randomize(3),
+	// 			randomize(2.5),
+	// 			randomize(1.5),
+	// 			randomize(2.5),
+	// 			randomize(3.8),
+	// 			randomize(3.8),
+	// 			randomize(4.6),
+	// 		],
+	// 	},
+	// 	{
+	// 		name: 'Cash Flow',
+	// 		type: 'column',
+	// 		data: [
+	// 			randomize(2),
+	// 			randomize(5),
+	// 			randomize(6.1),
+	// 			randomize(2),
+	// 			randomize(6.1),
+	// 			randomize(3.9),
+	// 			randomize(6.5),
+	// 			randomize(8.5),
+	// 		],
+	// 	},
+	// 	{
+	// 		name: 'Revenue',
+	// 		type: 'line',
+	// 		data: [
+	// 			randomize(34),
+	// 			randomize(21),
+	// 			randomize(54),
+	// 			randomize(56),
+	// 			randomize(34),
+	// 			randomize(43),
+	// 			randomize(37),
+	// 			randomize(43),
+	// 		],
+	// 	},
+	// ];
+	// const salesByStoreSeries4 = [
+	// 	{
+	// 		name: 'Income',
+	// 		type: 'column',
+	// 		data: [
+	// 			randomize(3),
+	// 			randomize(3.2),
+	// 			randomize(1.4),
+	// 			randomize(1.9),
+	// 			randomize(2.9),
+	// 			randomize(1.8),
+	// 			randomize(4.6),
+	// 			randomize(4.2),
+	// 		],
+	// 	},
+	// 	{
+	// 		name: 'Cash Flow',
+	// 		type: 'column',
+	// 		data: [
+	// 			randomize(3),
+	// 			randomize(2),
+	// 			randomize(3.1),
+	// 			randomize(5),
+	// 			randomize(3.1),
+	// 			randomize(3.9),
+	// 			randomize(3.5),
+	// 			randomize(5.5),
+	// 		],
+	// 	},
+	// 	{
+	// 		name: 'Revenue',
+	// 		type: 'line',
+	// 		data: [
+	// 			randomize(30),
+	// 			randomize(43),
+	// 			randomize(51),
+	// 			randomize(19),
+	// 			randomize(32),
+	// 			randomize(25),
+	// 			randomize(39),
+	// 			randomize(42),
+	// 		],
+	// 	},
+	// ];
 
 	const TOP_SELLER_FILTER = {
 		DAY: 'day',
@@ -1139,322 +1223,167 @@ const CustomDashboard = () => {
 						</div>
 					</div>
 					<div className='col-xl-4'>
-						<Card stretch shadow='sm'>
-							<CardHeader className='bg-transparent'>
-								<CardLabel>
-									<CardTitle tag='h4' className='h5'>
-										New Customers
-									</CardTitle>
-								</CardLabel>
-								<CardActions>
-									<AvatarGroup>
-										<Avatar
-											srcSet={USERS.JANE.srcSet}
-											src={USERS.JANE.src}
-											userName={`${USERS.JANE.name} ${USERS.JANE.surname}`}
-											color={USERS.JANE.color}
-										/>
-										<Avatar
-											srcSet={USERS.JOHN.srcSet}
-											src={USERS.JOHN.src}
-											userName={`${USERS.JOHN.name} ${USERS.JOHN.surname}`}
-											color={USERS.JOHN.color}
-										/>
-										<Avatar
-											srcSet={USERS.ELLA.srcSet}
-											src={USERS.ELLA.src}
-											userName={`${USERS.ELLA.name} ${USERS.ELLA.surname}`}
-											color={USERS.ELLA.color}
-										/>
-										<Avatar
-											srcSet={USERS.RYAN.srcSet}
-											src={USERS.RYAN.src}
-											userName={`${USERS.RYAN.name} ${USERS.RYAN.surname}`}
-											color={USERS.RYAN.color}
-										/>
-									</AvatarGroup>
-								</CardActions>
-							</CardHeader>
-							<CardBody>
-								<Chart
-									className='mx-n4'
-									series={sales.series}
-									options={sales.options}
-									type={sales.options.chart.type}
-									height={sales.options.chart.height}
-									width={sales.options.chart.width}
-								/>
-								<div className='d-flex align-items-center pb-3'>
-									<div className='flex-grow-1 ms-3'>
-										<div className='fw-bold fs-3 mb-0'>216</div>
-										<div className='fw-bold fs-5 mb-0'>Since 10 Days</div>
-									</div>
-								</div>
-							</CardBody>
-						</Card>
-					</div>
-					<div className='col-xl-4'>
-						<Card stretch shadow='sm'>
-							<CardHeader className='bg-transparent'>
-								<CardLabel>
-									<CardTitle tag='h4' className='h5'>
-										New Customers
-									</CardTitle>
-								</CardLabel>
-								<CardActions>
-									<AvatarGroup>
-										<Avatar
-											srcSet={USERS.JANE.srcSet}
-											src={USERS.JANE.src}
-											userName={`${USERS.JANE.name} ${USERS.JANE.surname}`}
-											color={USERS.JANE.color}
-										/>
-										<Avatar
-											srcSet={USERS.JOHN.srcSet}
-											src={USERS.JOHN.src}
-											userName={`${USERS.JOHN.name} ${USERS.JOHN.surname}`}
-											color={USERS.JOHN.color}
-										/>
-										<Avatar
-											srcSet={USERS.ELLA.srcSet}
-											src={USERS.ELLA.src}
-											userName={`${USERS.ELLA.name} ${USERS.ELLA.surname}`}
-											color={USERS.ELLA.color}
-										/>
-										<Avatar
-											srcSet={USERS.RYAN.srcSet}
-											src={USERS.RYAN.src}
-											userName={`${USERS.RYAN.name} ${USERS.RYAN.surname}`}
-											color={USERS.RYAN.color}
-										/>
-									</AvatarGroup>
-								</CardActions>
-							</CardHeader>
-							<CardBody>
-								<Chart
-									className='mx-n4'
-									series={sales.series}
-									options={sales.options}
-									type={sales.options.chart.type}
-									height={sales.options.chart.height}
-									width={sales.options.chart.width}
-								/>
-								<div className='d-flex align-items-center pb-3'>
-									<div className='flex-grow-1 ms-3'>
-										<div className='fw-bold fs-3 mb-0'>216</div>
-										<div className='fw-bold fs-5 mb-0'>Since 10 Days</div>
-									</div>
-								</div>
-							</CardBody>
-						</Card>
-					</div>
-					<div className='col-xl-4'>
-						<Card stretch shadow='sm'>
-							<CardHeader className='bg-transparent'>
-								<CardLabel>
-									<CardTitle tag='h4' className='h5'>
-										New Customers
-									</CardTitle>
-								</CardLabel>
-								<CardActions>
-									<AvatarGroup>
-										<Avatar
-											srcSet={USERS.JANE.srcSet}
-											src={USERS.JANE.src}
-											userName={`${USERS.JANE.name} ${USERS.JANE.surname}`}
-											color={USERS.JANE.color}
-										/>
-										<Avatar
-											srcSet={USERS.JOHN.srcSet}
-											src={USERS.JOHN.src}
-											userName={`${USERS.JOHN.name} ${USERS.JOHN.surname}`}
-											color={USERS.JOHN.color}
-										/>
-										<Avatar
-											srcSet={USERS.ELLA.srcSet}
-											src={USERS.ELLA.src}
-											userName={`${USERS.ELLA.name} ${USERS.ELLA.surname}`}
-											color={USERS.ELLA.color}
-										/>
-										<Avatar
-											srcSet={USERS.RYAN.srcSet}
-											src={USERS.RYAN.src}
-											userName={`${USERS.RYAN.name} ${USERS.RYAN.surname}`}
-											color={USERS.RYAN.color}
-										/>
-									</AvatarGroup>
-								</CardActions>
-							</CardHeader>
-							<CardBody>
-								<Chart
-									series={
-										(activeCompanyTab === COMPANIES_TAB.COMP1 &&
-											salesByStoreSeries1) ||
-										(activeCompanyTab === COMPANIES_TAB.COMP2 &&
-											salesByStoreSeries2) ||
-										(activeCompanyTab === COMPANIES_TAB.COMP3 &&
-											salesByStoreSeries3) ||
-										salesByStoreSeries4
-									}
-									options={salesByStoreOptions}
-									type={salesByStoreOptions.chart.type}
-									height={100}
-								/>
-							</CardBody>
-							<CardFooter>
-								<div className='d-flex align-items-center pb-3'>
-									<div className='flex-grow-1 ms-3'>
-										<div className='fw-bold fs-3 mb-0'>216</div>
-										<div className='fw-bold fs-5 mb-0'>Since 10 Days</div>
-									</div>
-								</div>
-							</CardFooter>
-						</Card>
-					</div>
-					<div className='col-xxl-12'>
 						<Card>
 							<CardHeader>
-								<CardLabel icon='Storefront' iconColor='info'>
-									<CardTitle tag='h4' className='h5'>
-										Top Seller
-									</CardTitle>
+								<CardLabel>
+									<CardTitle>Team Fee</CardTitle>
 								</CardLabel>
 								<CardActions>
-									<Dropdown isButtonGroup>
-										<Button color='success' isLight icon='WaterfallChart'>
-											{(topSellerFilter === TOP_SELLER_FILTER.DAY &&
-												moment().format('MMM Do')) ||
-												(topSellerFilter === TOP_SELLER_FILTER.WEEK &&
-													`${moment()
-														.startOf('week')
-														.format('MMM Do')} - ${moment()
-														.endOf('week')
-														.format('MMM Do')}`) ||
-												(topSellerFilter === TOP_SELLER_FILTER.MONTH &&
-													moment().format('MMM YYYY'))}
-										</Button>
-										<DropdownToggle>
-											<Button color='success' isLight isVisuallyHidden />
-										</DropdownToggle>
-										<DropdownMenu isAlignmentEnd>
-											<DropdownItem>
-												<Button
-													onClick={() =>
-														setTopSellerFilter(TOP_SELLER_FILTER.DAY)
-													}>
-													Last Day
-												</Button>
-											</DropdownItem>
-											<DropdownItem>
-												<Button
-													onClick={() =>
-														setTopSellerFilter(TOP_SELLER_FILTER.WEEK)
-													}>
-													Last Week
-												</Button>
-											</DropdownItem>
-											<DropdownItem>
-												<Button
-													onClick={() =>
-														setTopSellerFilter(TOP_SELLER_FILTER.MONTH)
-													}>
-													Last Month
-												</Button>
-											</DropdownItem>
-										</DropdownMenu>
-									</Dropdown>
-									<Button
-										color='info'
-										icon='CloudDownload'
-										isLight
-										tag='a'
-										to='/somefile.txt'
-										target='_blank'
-										download>
-										Export
-									</Button>
+									<AvatarGroup>
+										<Avatar
+											srcSet={USERS.JANE.srcSet}
+											src={USERS.JANE.src}
+											userName={`${USERS.JANE.name} ${USERS.JANE.surname}`}
+											color={USERS.JANE.color}
+										/>
+										<Avatar
+											srcSet={USERS.JOHN.srcSet}
+											src={USERS.JOHN.src}
+											userName={`${USERS.JOHN.name} ${USERS.JOHN.surname}`}
+											color={USERS.JOHN.color}
+										/>
+										<Avatar
+											srcSet={USERS.ELLA.srcSet}
+											src={USERS.ELLA.src}
+											userName={`${USERS.ELLA.name} ${USERS.ELLA.surname}`}
+											color={USERS.ELLA.color}
+										/>
+										<Avatar
+											srcSet={USERS.RYAN.srcSet}
+											src={USERS.RYAN.src}
+											userName={`${USERS.RYAN.name} ${USERS.RYAN.surname}`}
+											color={USERS.RYAN.color}
+										/>
+									</AvatarGroup>
 								</CardActions>
 							</CardHeader>
-							<CardBody className='table-responsive'>
-								<table className='table table-modern table-hover'>
-									<thead>
-										<tr>
-											<th
-												scope='col'
-												onClick={() => requestSort('id')}
-												className='cursor-pointer text-decoration-underline'>
-												#{' '}
-												<Icon
-													size='lg'
-													className={getClassNamesFor('id')}
-													icon='FilterList'
-												/>
-											</th>
-											<th scope='col'>Image</th>
-											<th
-												scope='col'
-												onClick={() => requestSort('name')}
-												className='cursor-pointer text-decoration-underline'>
-												Name{' '}
-												<Icon
-													size='lg'
-													className={getClassNamesFor('name')}
-													icon='FilterList'
-												/>
-											</th>
-											<th scope='col'>Sales</th>
-											<th
-												scope='col'
-												onClick={() => requestSort('stock')}
-												className='cursor-pointer text-decoration-underline'>
-												Stock{' '}
-												<Icon
-													size='lg'
-													className={getClassNamesFor('stock')}
-													icon='FilterList'
-												/>
-											</th>
-											<th
-												scope='col'
-												onClick={() => requestSort('price')}
-												className='cursor-pointer text-decoration-underline'>
-												Price{' '}
-												<Icon
-													size='lg'
-													className={getClassNamesFor('price')}
-													icon='FilterList'
-												/>
-											</th>
-											<th
-												scope='col'
-												onClick={() => requestSort('store')}
-												className='cursor-pointer text-decoration-underline'>
-												Store{' '}
-												<Icon
-													size='lg'
-													className={getClassNamesFor('store')}
-													icon='FilterList'
-												/>
-											</th>
-										</tr>
-									</thead>
-									<tbody>
-										{dataPagination(items, currentPage, perPage).map((i) => (
-											// eslint-disable-next-line react/jsx-props-no-spreading
-											<TableRow key={i.id} {...i} />
-										))}
-									</tbody>
-								</table>
+							<CardBody>
+								<div className='row align-items-end'>
+									<div className='col-lg-6'>
+										<div className='h4 mb-3'>Total Fee</div>
+										<span className='display-6 fw-bold'>$216</span>
+									</div>
+									<div className='col-lg-6'>
+										<Chart
+											series={fee.series}
+											options={fee.options}
+											type='area'
+											height={165}
+										/>
+									</div>
+								</div>
 							</CardBody>
-							<PaginationButtons
-								data={items}
-								label='items'
-								setCurrentPage={setCurrentPage}
-								currentPage={currentPage}
-								perPage={perPage}
-								setPerPage={setPerPage}
-							/>
 						</Card>
+					</div>
+					<div className='col-xl-4'>
+						<Card>
+							<CardHeader>
+								<CardLabel>
+									<CardTitle>Team Fee</CardTitle>
+								</CardLabel>
+								<CardActions>
+									<AvatarGroup>
+										<Avatar
+											srcSet={USERS.JANE.srcSet}
+											src={USERS.JANE.src}
+											userName={`${USERS.JANE.name} ${USERS.JANE.surname}`}
+											color={USERS.JANE.color}
+										/>
+										<Avatar
+											srcSet={USERS.JOHN.srcSet}
+											src={USERS.JOHN.src}
+											userName={`${USERS.JOHN.name} ${USERS.JOHN.surname}`}
+											color={USERS.JOHN.color}
+										/>
+										<Avatar
+											srcSet={USERS.ELLA.srcSet}
+											src={USERS.ELLA.src}
+											userName={`${USERS.ELLA.name} ${USERS.ELLA.surname}`}
+											color={USERS.ELLA.color}
+										/>
+										<Avatar
+											srcSet={USERS.RYAN.srcSet}
+											src={USERS.RYAN.src}
+											userName={`${USERS.RYAN.name} ${USERS.RYAN.surname}`}
+											color={USERS.RYAN.color}
+										/>
+									</AvatarGroup>
+								</CardActions>
+							</CardHeader>
+							<CardBody>
+								<div className='row align-items-end'>
+									<div className='col-lg-6'>
+										<div className='h4 mb-3'>Total Fee</div>
+										<span className='display-6 fw-bold'>$216</span>
+									</div>
+									<div className='col-lg-6'>
+										<Chart
+											series={fee.series}
+											options={fee.options}
+											type='area'
+											height={165}
+										/>
+									</div>
+								</div>
+							</CardBody>
+						</Card>
+					</div>
+					<div className='col-xl-4'>
+						<Card>
+							<CardHeader>
+								<CardLabel>
+									<CardTitle>Team Earning</CardTitle>
+								</CardLabel>
+								<CardActions>
+									<AvatarGroup>
+										<Avatar
+											srcSet={USERS.JANE.srcSet}
+											src={USERS.JANE.src}
+											userName={`${USERS.JANE.name} ${USERS.JANE.surname}`}
+											color={USERS.JANE.color}
+										/>
+										<Avatar
+											srcSet={USERS.JOHN.srcSet}
+											src={USERS.JOHN.src}
+											userName={`${USERS.JOHN.name} ${USERS.JOHN.surname}`}
+											color={USERS.JOHN.color}
+										/>
+										<Avatar
+											srcSet={USERS.ELLA.srcSet}
+											src={USERS.ELLA.src}
+											userName={`${USERS.ELLA.name} ${USERS.ELLA.surname}`}
+											color={USERS.ELLA.color}
+										/>
+										<Avatar
+											srcSet={USERS.RYAN.srcSet}
+											src={USERS.RYAN.src}
+											userName={`${USERS.RYAN.name} ${USERS.RYAN.surname}`}
+											color={USERS.RYAN.color}
+										/>
+									</AvatarGroup>
+								</CardActions>
+							</CardHeader>
+							<CardBody>
+								<div className='row align-items-end'>
+									<div className='col-lg-6'>
+										<div className='h4 mb-3'>Total Earning</div>
+										<span className='display-6 fw-bold '>$1342</span>
+										<span className='text-muted ms-3'>(Incl. Tax)</span>
+									</div>
+									<div className='col-lg-6'>
+										<Chart
+											series={stackedColumn.series}
+											options={stackedColumn.options}
+											type='bar'
+											height={165}
+										/>
+									</div>
+								</div>
+							</CardBody>
+						</Card>
+					</div>
+					<div>
+						<CommonUpcomingEvents />
 					</div>
 
 					<div className='col-xxl-12'>
@@ -1535,149 +1464,159 @@ const CustomDashboard = () => {
 					</div>
 
 					<div className='col-xxl-12'>
-						<Card>
-							<CardHeader>
-								<CardLabel icon='Storefront' iconColor='info'>
-									<CardTitle tag='h4' className='h5'>
-										Top Seller
-									</CardTitle>
-								</CardLabel>
-								<CardActions>
-									<Dropdown isButtonGroup>
-										<Button color='success' isLight icon='WaterfallChart'>
-											{(topSellerFilter === TOP_SELLER_FILTER.DAY &&
-												moment().format('MMM Do')) ||
-												(topSellerFilter === TOP_SELLER_FILTER.WEEK &&
-													`${moment()
-														.startOf('week')
-														.format('MMM Do')} - ${moment()
-														.endOf('week')
-														.format('MMM Do')}`) ||
-												(topSellerFilter === TOP_SELLER_FILTER.MONTH &&
-													moment().format('MMM YYYY'))}
+						<div className='col-xxl-12'>
+							<Card>
+								<CardHeader>
+									<CardLabel icon='Storefront' iconColor='info'>
+										<CardTitle tag='h4' className='h5'>
+											Top Seller
+										</CardTitle>
+									</CardLabel>
+									<CardActions>
+										<Dropdown isButtonGroup>
+											<Button color='success' isLight icon='WaterfallChart'>
+												{(topSellerFilter === TOP_SELLER_FILTER.DAY &&
+													moment().format('MMM Do')) ||
+													(topSellerFilter === TOP_SELLER_FILTER.WEEK &&
+														`${moment()
+															.startOf('week')
+															.format('MMM Do')} - ${moment()
+															.endOf('week')
+															.format('MMM Do')}`) ||
+													(topSellerFilter === TOP_SELLER_FILTER.MONTH &&
+														moment().format('MMM YYYY'))}
+											</Button>
+											<DropdownToggle>
+												<Button color='success' isLight isVisuallyHidden />
+											</DropdownToggle>
+											<DropdownMenu isAlignmentEnd>
+												<DropdownItem>
+													<Button
+														onClick={() =>
+															setTopSellerFilter(
+																TOP_SELLER_FILTER.DAY,
+															)
+														}>
+														Last Day
+													</Button>
+												</DropdownItem>
+												<DropdownItem>
+													<Button
+														onClick={() =>
+															setTopSellerFilter(
+																TOP_SELLER_FILTER.WEEK,
+															)
+														}>
+														Last Week
+													</Button>
+												</DropdownItem>
+												<DropdownItem>
+													<Button
+														onClick={() =>
+															setTopSellerFilter(
+																TOP_SELLER_FILTER.MONTH,
+															)
+														}>
+														Last Month
+													</Button>
+												</DropdownItem>
+											</DropdownMenu>
+										</Dropdown>
+										<Button
+											color='info'
+											icon='CloudDownload'
+											isLight
+											tag='a'
+											to='/somefile.txt'
+											target='_blank'
+											download>
+											Export
 										</Button>
-										<DropdownToggle>
-											<Button color='success' isLight isVisuallyHidden />
-										</DropdownToggle>
-										<DropdownMenu isAlignmentEnd>
-											<DropdownItem>
-												<Button
-													onClick={() =>
-														setTopSellerFilter(TOP_SELLER_FILTER.DAY)
-													}>
-													Last Day
-												</Button>
-											</DropdownItem>
-											<DropdownItem>
-												<Button
-													onClick={() =>
-														setTopSellerFilter(TOP_SELLER_FILTER.WEEK)
-													}>
-													Last Week
-												</Button>
-											</DropdownItem>
-											<DropdownItem>
-												<Button
-													onClick={() =>
-														setTopSellerFilter(TOP_SELLER_FILTER.MONTH)
-													}>
-													Last Month
-												</Button>
-											</DropdownItem>
-										</DropdownMenu>
-									</Dropdown>
-									<Button
-										color='info'
-										icon='CloudDownload'
-										isLight
-										tag='a'
-										to='/somefile.txt'
-										target='_blank'
-										download>
-										Export
-									</Button>
-								</CardActions>
-							</CardHeader>
-							<CardBody className='table-responsive'>
-								<table className='table table-modern table-hover'>
-									<thead>
-										<tr>
-											<th
-												scope='col'
-												onClick={() => requestSort('id')}
-												className='cursor-pointer text-decoration-underline'>
-												#{' '}
-												<Icon
-													size='lg'
-													className={getClassNamesFor('id')}
-													icon='FilterList'
-												/>
-											</th>
-											<th scope='col'>Image</th>
-											<th
-												scope='col'
-												onClick={() => requestSort('name')}
-												className='cursor-pointer text-decoration-underline'>
-												Name{' '}
-												<Icon
-													size='lg'
-													className={getClassNamesFor('name')}
-													icon='FilterList'
-												/>
-											</th>
-											<th scope='col'>Sales</th>
-											<th
-												scope='col'
-												onClick={() => requestSort('stock')}
-												className='cursor-pointer text-decoration-underline'>
-												Stock{' '}
-												<Icon
-													size='lg'
-													className={getClassNamesFor('stock')}
-													icon='FilterList'
-												/>
-											</th>
-											<th
-												scope='col'
-												onClick={() => requestSort('price')}
-												className='cursor-pointer text-decoration-underline'>
-												Price{' '}
-												<Icon
-													size='lg'
-													className={getClassNamesFor('price')}
-													icon='FilterList'
-												/>
-											</th>
-											<th
-												scope='col'
-												onClick={() => requestSort('store')}
-												className='cursor-pointer text-decoration-underline'>
-												Store{' '}
-												<Icon
-													size='lg'
-													className={getClassNamesFor('store')}
-													icon='FilterList'
-												/>
-											</th>
-										</tr>
-									</thead>
-									<tbody>
-										{dataPagination(items, currentPage, perPage).map((i) => (
-											// eslint-disable-next-line react/jsx-props-no-spreading
-											<TableRow key={i.id} {...i} />
-										))}
-									</tbody>
-								</table>
-							</CardBody>
-							<PaginationButtons
-								data={items}
-								label='items'
-								setCurrentPage={setCurrentPage}
-								currentPage={currentPage}
-								perPage={perPage}
-								setPerPage={setPerPage}
-							/>
-						</Card>
+									</CardActions>
+								</CardHeader>
+								<CardBody className='table-responsive'>
+									<table className='table table-modern table-hover'>
+										<thead>
+											<tr>
+												<th
+													scope='col'
+													onClick={() => requestSort('id')}
+													className='cursor-pointer text-decoration-underline'>
+													#{' '}
+													<Icon
+														size='lg'
+														className={getClassNamesFor('id')}
+														icon='FilterList'
+													/>
+												</th>
+												<th scope='col'>Image</th>
+												<th
+													scope='col'
+													onClick={() => requestSort('name')}
+													className='cursor-pointer text-decoration-underline'>
+													Name{' '}
+													<Icon
+														size='lg'
+														className={getClassNamesFor('name')}
+														icon='FilterList'
+													/>
+												</th>
+												<th scope='col'>Sales</th>
+												<th
+													scope='col'
+													onClick={() => requestSort('stock')}
+													className='cursor-pointer text-decoration-underline'>
+													Stock{' '}
+													<Icon
+														size='lg'
+														className={getClassNamesFor('stock')}
+														icon='FilterList'
+													/>
+												</th>
+												<th
+													scope='col'
+													onClick={() => requestSort('price')}
+													className='cursor-pointer text-decoration-underline'>
+													Price{' '}
+													<Icon
+														size='lg'
+														className={getClassNamesFor('price')}
+														icon='FilterList'
+													/>
+												</th>
+												<th
+													scope='col'
+													onClick={() => requestSort('store')}
+													className='cursor-pointer text-decoration-underline'>
+													Store{' '}
+													<Icon
+														size='lg'
+														className={getClassNamesFor('store')}
+														icon='FilterList'
+													/>
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											{dataPagination(items, currentPage, perPage).map(
+												(i) => (
+													// eslint-disable-next-line react/jsx-props-no-spreading
+													<TableRow key={i.id} {...i} />
+												),
+											)}
+										</tbody>
+									</table>
+								</CardBody>
+								<PaginationButtons
+									data={items}
+									label='items'
+									setCurrentPage={setCurrentPage}
+									currentPage={currentPage}
+									perPage={perPage}
+									setPerPage={setPerPage}
+								/>
+							</Card>
+						</div>
 					</div>
 
 					<div>
@@ -1734,7 +1673,44 @@ const CustomDashboard = () => {
 						/>
 					</div>
 
-					<div className='col-xl-7'>
+					<div className='col-lg-8'>
+						<CardHeader className='px-0 bg-transparent'>
+							<CardLabel>
+								<CardTitle>Integrations</CardTitle>
+							</CardLabel>
+							<CardActions>
+								<Button color='info' isLight icon='PublishedWithChanges'>
+								Add New
+								</Button>
+							</CardActions>
+						</CardHeader>
+						<CustomTransferAction
+							currency='$'
+							amount={80}
+							status='Completed'
+							middleText='Payment Solution'
+						/>
+						<CustomTransferAction
+							currency='$'
+							amount={80}
+							status='Completed'
+							middleText='Payment Solution'
+						/>
+						<CustomTransferAction
+							currency='$'
+							amount={80}
+							status='Completed'
+							middleText='Payment Solution'
+						/>
+						<CustomTransferAction
+							currency='$'
+							amount={80}
+							status='Completed'
+							middleText='Payment Solution'
+						/>
+					</div>
+
+					<div className='col-xl-4'>
 						<Card stretch>
 							<CardHeader>
 								<CardLabel icon='ContactSupport' iconColor='secondary'>
@@ -1829,102 +1805,6 @@ const CustomDashboard = () => {
 							</CardBody>
 						</Card>
 					</div>
-
-					<div className='col-xl-5'>
-						<Card stretch>
-							<CardHeader>
-								<CardLabel icon='ContactSupport' iconColor='secondary'>
-									<CardTitle tag='h4' className='h5'>
-										Waiting for an Answer
-									</CardTitle>
-									<CardSubTitle tag='h5' className='h6'>
-										Customer
-									</CardSubTitle>
-								</CardLabel>
-								<CardActions>
-									<Dropdown>
-										<DropdownToggle hasIcon={false}>
-											<Button
-												color={darkModeStatus ? 'light' : 'dark'}
-												isLink
-												hoverShadow='default'
-												icon='MoreHoriz'
-												aria-label='More Actions'
-											/>
-										</DropdownToggle>
-										<DropdownMenu isAlignmentEnd>
-											<DropdownItem>
-												<Button
-													icon='Send'
-													tag='a'
-													href='mailto:example@site.com'>
-													Send Bulk Mail
-												</Button>
-											</DropdownItem>
-										</DropdownMenu>
-									</Dropdown>
-								</CardActions>
-							</CardHeader>
-							<CardBody>
-								<div className='row g-3'>
-									<AnswerCustomer
-										id={USERS.GRACE.id}
-										img={USERS.GRACE.src}
-										imgWebp={USERS.GRACE.srcSet}
-										name={`${USERS.GRACE.name} ${USERS.GRACE.surname}`}
-										color={USERS.GRACE.color}
-										job='Maryland'
-										value={43}
-									/>
-									<AnswerCustomer
-										id={USERS.JANE.id}
-										img={USERS.JANE.src}
-										imgWebp={USERS.JANE.srcSet}
-										name={`${USERS.JANE.name} ${USERS.JANE.surname}`}
-										color={USERS.JANE.color}
-										job='North Carolina'
-										value={35}
-									/>
-									<AnswerCustomer
-										id={USERS.RYAN.id}
-										img={USERS.RYAN.src}
-										imgWebp={USERS.RYAN.srcSet}
-										name={`${USERS.RYAN.name} ${USERS.RYAN.surname}`}
-										color={USERS.RYAN.color}
-										job='Rhode Island'
-										value={27}
-									/>
-									<AnswerCustomer
-										id={USERS.ELLA.id}
-										img={USERS.ELLA.src}
-										imgWebp={USERS.ELLA.srcSet}
-										name={`${USERS.ELLA.name} ${USERS.ELLA.surname}`}
-										color={USERS.ELLA.color}
-										job='Washington'
-										value={15}
-									/>
-									<AnswerCustomer
-										id={USERS.CHLOE.id}
-										img={USERS.CHLOE.src}
-										imgWebp={USERS.CHLOE.srcSet}
-										name={`${USERS.CHLOE.name} ${USERS.CHLOE.surname}`}
-										color={USERS.CHLOE.color}
-										job='Kentucky'
-										value={12}
-									/>
-									<AnswerCustomer
-										id={USERS.SAM.id}
-										img={USERS.SAM.src}
-										imgWebp={USERS.SAM.srcSet}
-										name={`${USERS.SAM.name} ${USERS.SAM.surname}`}
-										color={USERS.SAM.color}
-										job='Michigan'
-										value={12}
-									/>
-								</div>
-							</CardBody>
-						</Card>
-					</div>
 					<div className='col-xl-3'>
 						<Card
 							color='success'
@@ -2084,11 +1964,6 @@ const CustomDashboard = () => {
 							</CardBody>
 						</Card>
 					</div>
-					
-					
-
-					
-					
 				</div>
 			</Page>
 		</PageWrapper>

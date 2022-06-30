@@ -202,6 +202,12 @@ export const demoPages = {
 		path: 'auth-pages/sign-up',
 		icon: 'PersonAdd',
 	},
+	settings: {
+		id: 'settings',
+		text: 'Settings',
+		path: '/settings',
+		icon: 'CustomSettings',
+	},
 
 	page404: {
 		id: 'Page404',
