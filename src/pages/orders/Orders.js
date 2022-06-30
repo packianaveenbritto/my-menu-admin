@@ -1,6 +1,7 @@
 /* eslint-disable eslint-comments/disable-enable-pair */
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
 // import { NavLink } from 'react-router-dom';
 import useDarkMode from '../../hooks/useDarkMode';
 import Nav, { NavItem } from '../../components/bootstrap/Nav';
@@ -10,6 +11,7 @@ import SubHeader, {
 	SubHeaderRight,
 	SubheaderSeparator,
 } from '../../layout/SubHeader/SubHeader';
+import { dashboardMenu } from '../../menu';
 import Page from '../../layout/Page/Page';
 import Button, { ButtonGroup } from '../../components/bootstrap/Button';
 import Input from '../../components/bootstrap/forms/Input';
@@ -40,6 +42,7 @@ const Orders = () => {
 		EN_ROUTE: 'EN Route',
 		FUTURE_ORDER: 'Future Order',
 	};
+	// const navigate = useNavigate();
 	const [activeTab, setActiveTab] = useState(TABS.ALL);
 	// eslint-disable-next-line no-unused-vars
 	const [data, setData] = useState(orders);
@@ -63,7 +66,9 @@ const Orders = () => {
 						))}
 					</ButtonGroup>
 					<SubheaderSeparator />
-					<Button color='success'>Reports</Button>
+					<Button color='success' tag='a' to={`../${dashboardMenu.orderReports.path}`}>
+						Reports
+					</Button>
 				</SubHeaderLeft>
 
 				<SubHeaderRight>

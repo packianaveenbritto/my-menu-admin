@@ -7,6 +7,7 @@ const LANDING = {
 	// DASHBOARD_BOOKING: lazy(() => import('../pages/menus/DashboardBookingPage')),
 	MENUS: lazy(() => import('../pages/menus/Menus')),
 	ORDERS: lazy(() => import('../pages/orders/Orders')),
+	ORDERS_REPORTS: lazy(() => import('../pages/orders/OrdersReports')),
 	SUMMARY: lazy(() => import('../pages/SummaryPage')),
 };
 const SINGLE = {
@@ -195,6 +196,11 @@ const presentation = [
 	{
 		path: dashboardMenu.orders.path,
 		element: <LANDING.ORDERS />,
+		exact: true,
+	},
+	{
+		path: dashboardMenu.orderReports.path,
+		element: <LANDING.ORDERS_REPORTS />,
 		exact: true,
 	},
 	{

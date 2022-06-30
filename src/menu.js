@@ -52,6 +52,12 @@ export const dashboardMenu = {
 		icon: 'AddShoppingCart',
 		subMenu: null,
 	},
+	orderReports: {
+		id: 'orderReports',
+		text: 'Order Reports',
+		path: 'orders/reports',
+		hide: true,
+	},
 	// dashboardBooking: {
 	// 	id: 'dashboard-booking',
 	// 	text: 'Dashboard Booking',
@@ -401,12 +407,12 @@ export const demoPages = {
 			// 	path: 'crm/invoice',
 			// 	hide: true,
 			// },
-			// invoice: {
-			// 	id: 'invoice',
-			// 	text: 'Invoice',
-			// 	path: 'crm/invoice/1',
-			// 	icon: 'Receipt',
-			// },
+			invoice: {
+				id: 'invoice',
+				text: 'Invoice',
+				path: 'crm/invoice/1',
+				icon: 'Receipt',
+			},
 		},
 	},
 	chat: {
