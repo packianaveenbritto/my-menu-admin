@@ -59,3 +59,21 @@
 	background: transparent linear-gradient(180deg, #d6caa8 0%, #e6decb 100%) 0% 0% no-repeat
 		padding-box;
 }
+
+.form-select {
+	background-color: #ebe4d5 !important;
+}
+
+.form-control {
+	background-color: #ebe4d5 !important;
+}
+
+.logo-drag-drop {
+	width: 220px;
+	height: 213px;
+	/* UI Properties */
+	background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+	background: #ffffff 0% 0% no-repeat padding-box;
+	box-shadow: inset 0px 2px 3px #00000029;
+	opacity: 1;
+}
