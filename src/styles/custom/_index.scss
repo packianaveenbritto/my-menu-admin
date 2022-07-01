@@ -155,3 +155,22 @@
 .bg-color-secondary2 {
 	background-color: $secondary2 !important;
 }
+
+.sub-header-right-button {
+	border: none;
+	margin-left: 0.5rem;
+	color: $primary;
+	background: none;
+	font-size: 12px;
+}
+
+.sub-header-right-button-clicked {
+	padding-left: 10px;
+	padding-right: 10px;
+	border: none;
+	border-radius: 2.3125rem;
+	margin-left: 0.5rem;
+	color: #ffffff;
+	background: #f35421 0% 0% no-repeat padding-box;
+	font-size: 12px;
+}

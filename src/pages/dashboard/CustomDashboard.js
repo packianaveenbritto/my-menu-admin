@@ -66,6 +66,7 @@ import storeLogoPlay from '../../assets/img/custom/store-logo-play.svg';
 import storeLogoAndroid from '../../assets/img/custom/store-logo-android.svg';
 import storeLogoApple from '../../assets/img/custom/store-logo-apple.svg';
 import CustomTableOne from '../common/CustomTableOne';
+import SubHeaderRightButtons from '../../components/common/SubHeaderRightButtons';
 // eslint-disable-next-line react/prop-types
 const TableRow = ({ id, image, name, category, series, color, stock, price, store }) => {
 	const { darkModeStatus } = useDarkMode();
@@ -163,6 +164,13 @@ const CustomDashboard = () => {
 	/**
 	 * Tour Start
 	 */
+	const SubHeaderRightValues = [
+		{ id: 1, name: 'Help' },
+		{ id: 2, name: 'Upgrade' },
+		{ id: 3, name: 'Explore' },
+		{ id: 4, name: 'Switch Account' },
+	];
+
 	const { setIsOpen } = useTour();
 	useEffect(() => {
 		if (localStorage.getItem('tourModalStarted') !== 'shown') {
@@ -492,7 +500,7 @@ const CustomDashboard = () => {
 
 				<SubHeaderRight>
 					<CommonAvatarTeam>
-						<strong>Marketing</strong> Team
+						<SubHeaderRightButtons buttons={SubHeaderRightValues} />
 					</CommonAvatarTeam>
 				</SubHeaderRight>
 			</SubHeader>
