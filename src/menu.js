@@ -56,6 +56,7 @@ export const dashboardMenu = {
 		id: 'orderReports',
 		text: 'Order Reports',
 		path: 'orders/reports',
+		subMenu: null,
 		hide: true,
 	},
 	// dashboardBooking: {
@@ -76,6 +77,21 @@ export const dashboardMenu = {
 		text: 'Summary',
 		path: 'summary',
 		icon: 'sticky_note_2',
+		subMenu: null,
+	},
+};
+
+export const marketing = {
+	marketing: {
+		id: 'pages',
+		text: 'Marketing',
+		icon: 'marketing',
+	},
+	campaigns: {
+		id: 'campaigns',
+		text: 'Campaigns',
+		path: 'marketing/campaigns',
+		icon: 'Campaign',
 		subMenu: null,
 	},
 };

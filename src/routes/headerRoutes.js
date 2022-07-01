@@ -1,5 +1,5 @@
 import React from 'react';
-import { componentsMenu, dashboardMenu, demoPages, layoutMenu } from '../menu';
+import { componentsMenu, dashboardMenu, demoPages, layoutMenu, marketing} from '../menu';
 import DashboardHeader from '../pages/common/Headers/DashboardHeader';
 import DashboardBookingHeader from '../pages/common/Headers/DashboardBookingHeader';
 import ProfilePageHeader from '../pages/common/Headers/ProfilePageHeader';
@@ -43,6 +43,11 @@ const headers = [
 	},
 	{
 		path: dashboardMenu.orderReports.path,
+		element: <DashboardHeader />,
+		exact: true,
+	},
+	{
+		path: marketing.campaigns.path,
 		element: <DashboardHeader />,
 		exact: true,
 	},

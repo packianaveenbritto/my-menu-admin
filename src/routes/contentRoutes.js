@@ -1,5 +1,5 @@
 import React, { lazy } from 'react';
-import { componentsMenu, dashboardMenu, demoPages, layoutMenu } from '../menu';
+import { componentsMenu, dashboardMenu, demoPages, layoutMenu, marketing } from '../menu';
 import Login from '../pages/presentation/auth/Login';
 
 const LANDING = {
@@ -74,6 +74,10 @@ const APP = {
 		WITH_LIST: lazy(() => import('../pages/presentation/chat/WithListChatPage')),
 		ONLY_LIST: lazy(() => import('../pages/presentation/chat/OnlyListChatPage')),
 	},
+};
+
+const MRKETING = {
+	CAMPAIGNS: lazy(() => import('../pages/marketing/campaigns/Campaigns')),
 };
 const PAGE_LAYOUTS = {
 	HEADER_SUBHEADER: lazy(() => import('../pages/presentation/page-layouts/HeaderAndSubheader')),
@@ -211,6 +215,14 @@ const presentation = [
 
 	/** ************************************************** */
 
+	/**
+	 * Marketing
+	 */
+	{
+		path: marketing.campaigns.path,
+		element: <MRKETING.CAMPAIGNS />,
+		exact: true,
+	},
 	/**
 	 * Pages
 	 */
