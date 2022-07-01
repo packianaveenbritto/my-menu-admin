@@ -14,6 +14,7 @@ import Checks from '../../components/bootstrap/forms/Checks';
 import Button from '../../components/bootstrap/Button';
 import FormText from '../../components/bootstrap/forms/FormText';
 import Textarea from '../../components/bootstrap/forms/Textarea';
+import GeneralQr from '../../assets/img/custom/general-qr.svg';
 
 const QRMenu = () => {
 	return (
@@ -424,6 +425,270 @@ const QRMenu = () => {
 						</div>
 					</div>
 				</FormGroup>
+
+				<FormGroup className='mb-3'>
+					<div className='d-flex align-items-center'>
+						<div className='col-4 d-flex justify-content-start'>
+							<div className='fs-5'>Serving time range</div>
+						</div>
+						<div className='d-flex col-8'>
+							<Input type='time' id='example' />
+							<Button color='success'>Minute</Button>
+						</div>
+					</div>
+				</FormGroup>
+
+				<FormGroup className='mb-3'>
+					<div className='fw-bold fs-5'>Enable ASAP</div>
+					<FormText className='fs-6' id='test'>
+						If enabled, ASAP (As Soon As Possible) will be first selection for time
+						interval
+					</FormText>
+				</FormGroup>
+
+				<FormGroup className='mb-3'>
+					<div className='d-flex justify-content-start'>
+						<Checks checked className='fs-5' id='example' name='example' />
+						<div className='fs-5'>Enable ordering for today</div>
+					</div>
+					<FormText className='fs-6' id='test'>
+						If enabled, guest can make an order for the current day. This option can be
+						used along with future ordering. For example, if you have a special
+						requirement where you need altleast 1 day for preparing an order. In this
+						case, you can disable ordering for today and then set the future order date
+						starts at 1 day.
+					</FormText>
+				</FormGroup>
+
+				<div className='fw-bold fs-5 mb-3'>Future ordering</div>
+				<FormGroup className='mb-3'>
+					<div className='d-flex justify-content-start'>
+						<Checks checked className='fs-5' id='example' name='example' />
+						<div className='fs-5'>Enable Future Order</div>
+					</div>
+					<FormText className='fs-6' id='test'>
+						Enable future ordering allows your guest to place an pre-order for a future
+						date.
+					</FormText>
+				</FormGroup>
+
+				<div className='section-seperate mb-3' />
+
+				<div className='fs-4 fw-bold mb-3'>Payment Types</div>
+				<FormGroup className='mb-3'>
+					<div className='d-flex justify-content-start'>
+						<Checks checked className='fs-5' id='example' name='example' />
+						<div className='fs-5'>Pay with Cash</div>
+					</div>
+				</FormGroup>
+
+				<FormGroup className='mb-3'>
+					<div className='d-flex justify-content-start'>
+						<Checks checked className='fs-5' id='example' name='example' />
+						<div className='fs-5'>Pay with Online Payment</div>
+					</div>
+				</FormGroup>
+
+				<FormGroup className='mb-3'>
+					<div className='d-flex justify-content-start'>
+						<Checks checked className='fs-5' id='example' name='example' />
+						<div className='fs-5'>Pay with Room Charge</div>
+					</div>
+					<FormText className='fs-6' id='test'>
+						For online payment, you can connect your payment gateway from our
+						integration page. If nothing connected, My Menu Pay will be enabled as
+						default.
+					</FormText>
+				</FormGroup>
+
+				<FormGroup className='mb-3'>
+					<div className='d-flex justify-content-start'>
+						<Checks checked className='fs-5' id='example' name='example' />
+						<div className='fs-5'>Allow Payment with Cryptocurrency</div>
+					</div>
+					<FormText className='fs-6' id='test'>
+						If enabled, My Menu collects the Crypto Currencies in our wallet and we
+						transfer the equivalent amount in local currency once every month.
+					</FormText>
+				</FormGroup>
+
+				<FormGroup className='mb-3'>
+					.<div className='fw-bold fs-5'>Future ordering +</div>
+					<FormText className='fs-6' id='test'>
+						Custom payments consider as a offline payments. If you have integrated with
+						POS. we will send this custom payment as Non-paid
+					</FormText>
+				</FormGroup>
+
+				<div className='section-seperate mb-3' />
+
+				<div className='fs-4 fw-bold mb-3'>Tips</div>
+				<FormGroup className='mb-3'>
+					<div className='d-flex justify-content-start'>
+						<Checks checked className='fs-5' id='example' name='example' />
+						<div className='fs-5'>Tips Enabled</div>
+					</div>
+				</FormGroup>
+
+				<div className='fs-4 fw-bold mb-3'>Misc</div>
+				<FormGroup className='mb-3'>
+					<div className='d-flex justify-content-start'>
+						<Checks checked className='fs-5' id='example' name='example' />
+						<div className='fs-5'>Enable item notes</div>
+					</div>
+					<FormText className='fs-6' id='test'>
+						If enabled, guest will be able to add an item level note while ordering
+					</FormText>
+				</FormGroup>
+
+				<div className='fs-4 fw-bold mb-3'>
+					Notification service <small className='fs-7 fw-normal'>New</small>
+				</div>
+
+				<FormGroup className='mb-3'>
+					<div className='d-flex justify-content-start'>
+						<Checks checked className='fs-5' id='example' name='example' />
+						<div className='fs-5'>Enable Notifications</div>
+					</div>
+				</FormGroup>
+
+				<FormGroup className='mb-3'>
+					<div className='fs-5'>Platforms</div>
+					<Select id='example'>
+						<Options
+							list={[
+								{
+									text: 'English',
+									value: 1,
+								},
+								{
+									text: 'Bengali - lorem',
+									value: 2,
+								},
+								{
+									text: 'Arabic - lorem',
+									value: 3,
+								},
+							]}
+						/>
+					</Select>
+					<FormText className='fs-6' id='test'>
+						Enable notification for order status change
+					</FormText>
+				</FormGroup>
+
+				<FormGroup className='mb-3'>
+					<div className='d-flex justify-content-start'>
+						<Checks checked className='fs-5' id='example' name='example' />
+						<div className='fs-5'>Accepted</div>
+					</div>
+				</FormGroup>
+				<FormGroup className='mb-3'>
+					<div className='d-flex justify-content-start'>
+						<Checks checked className='fs-5' id='example' name='example' />
+						<div className='fs-5'>Cancelled</div>
+					</div>
+				</FormGroup>
+				<FormGroup className='mb-3'>
+					<div className='d-flex justify-content-start'>
+						<Checks checked className='fs-5' id='example' name='example' />
+						<div className='fs-5'>Rejected</div>
+					</div>
+				</FormGroup>
+				<FormGroup className='mb-3'>
+					<div className='d-flex justify-content-start'>
+						<Checks checked className='fs-5' id='example' name='example' />
+						<div className='fs-5'>In kitchen</div>
+					</div>
+				</FormGroup>
+				<FormGroup className='mb-3'>
+					<div className='d-flex justify-content-start'>
+						<Checks checked className='fs-5' id='example' name='example' />
+						<div className='fs-5'>En route</div>
+					</div>
+				</FormGroup>
+				<FormGroup className='mb-3'>
+					<div className='d-flex justify-content-start'>
+						<Checks checked className='fs-5' id='example' name='example' />
+						<div className='fs-5'>En route</div>
+					</div>
+				</FormGroup>
+				<FormGroup className='mb-3'>
+					<div className='d-flex justify-content-start'>
+						<Checks checked className='fs-5' id='example' name='example' />
+						<div className='fs-5'>Delivered</div>
+					</div>
+				</FormGroup>
+				<FormText className='fs-6' id='test'>
+					If enabled, on each order status change, system will trigger an notification to
+					the guest. Notification service is chargeable. You can check the pricing from
+					here
+				</FormText>
+			</div>
+
+			<div className='col-xl-6'>
+				<div className='d-flex justify-content-end'>
+					<div className='custom-qr-card '>
+						<div className='text-align-center'>
+							<div className='fs-4 fw-bold mb-3'>General QR</div>
+							<div className='mb-3'>
+								<img src={GeneralQr} alt='' />
+							</div>
+							<div className='fc-white mb-3'>
+								https://qr.mydigimenu.com/cc9eb4ac-a8a0- 4e4e-96f7-f5327a78359d
+							</div>
+							<div className='mb-3'>
+								<Button color='success'>Download</Button>
+							</div>
+							<div className='mb-3'>
+								Use general QR code to showcase your menu without ordering
+							</div>
+
+							<div className='section-seperate mb-3' />
+
+							<div className='fs-4 fw-bold mb-3'>QR code settings</div>
+
+							<div className='debossed-effect-qr mb-3'>
+								<FormGroup className='mb-3'>
+									<div className='d-flex justify-content-start'>
+										<div>
+											<Checks
+												checked
+												id='example'
+												name='example'
+												label='Show logo'
+											/>
+										</div>
+									</div>
+								</FormGroup>
+								<FormGroup className='mb-3'>
+									<div className='d-flex justify-content-start'>
+										<div>
+											<Checks
+												checked
+												id='example'
+												name='example'
+												label='Show Venue name'
+											/>
+										</div>
+									</div>
+								</FormGroup>
+								<FormGroup className='mb-3'>
+									<div className='d-flex justify-content-start'>
+										<div>
+											<Checks
+												checked
+												id='example'
+												name='example'
+												label='Show table name'
+											/>
+										</div>
+									</div>
+								</FormGroup>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	);
