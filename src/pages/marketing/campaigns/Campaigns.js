@@ -17,6 +17,7 @@ import Checks from '../../../components/bootstrap/forms/Checks';
 import CommonAvatarTeam from '../../../components/common/CommonAvatarTeam';
 import Card, { CardBody } from '../../../components/bootstrap/Card';
 // import useDarkMode from '../../../hooks/useDarkMode';
+import useSelectTable from '../../../hooks/useSelectTable';
 import useSortableData from '../../../hooks/useSortableData';
 import data from '../../../common/data/dummyCustomerData';
 import PAYMENTS from '../../../common/data/enumPaymentMethod';
@@ -27,7 +28,7 @@ import PAYMENTS from '../../../common/data/enumPaymentMethod';
 const Campaigns = () => {
 	// const { darkModeStatus } = useDarkMode();
 	const [currentPage, setCurrentPage] = useState(1);
-	const [perPage, setPerPage] = useState(PER_COUNT['10']);
+	const [perPage, setPerPage] = useState(PER_COUNT['4']);
 	const formik = useFormik({
 		initialValues: {
 			searchInput: '',
@@ -51,6 +52,10 @@ const Campaigns = () => {
 			formik.values.payment.includes(f.payout),
 	);
 	const { items, requestSort } = useSortableData(filteredData);
+	const onCurrentPageItems = dataPagination(items, currentPage, perPage);
+	// eslint-disable-next-line no-unused-vars
+    const { selectTable, SelectAllCheck } = useSelectTable(onCurrentPageItems);
+    
 	return (
 		<PageWrapper>
 			<SubHeader>
@@ -83,6 +88,7 @@ const Campaigns = () => {
 						<table className='table table-modern table-hover'>
 							<thead>
 								<tr>
+									<th scope='col'>{SelectAllCheck}</th>
 									<th
 										onClick={() => requestSort('name')}
 										className='cursor-pointer text-decoration-underline'>
@@ -97,6 +103,9 @@ const Campaigns = () => {
 							<tbody>
 								{dataPagination(items, currentPage, perPage).map((i) => (
 									<tr key={i.id}>
+										<td>
+											<Checks id={i.id.toString()} value={i.id} />
+										</td>
 										<td>
 											<strong>{i.name}</strong>
 										</td>
