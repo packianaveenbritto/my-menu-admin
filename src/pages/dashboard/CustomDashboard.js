@@ -57,7 +57,15 @@ import CommonGridMenus from '../common/CommonGridMenus';
 import CommonUpcomingEvents from '../common/CommonUpcomingEvents';
 import CustomTransferAction from '../../components/CustomTransferAction';
 import CardWithNumbrrAndButton from '../../components/custom/CardWithNumbrrAndButton';
+import Input from '../../components/bootstrap/forms/Input';
+import facebookIcon from '../../assets/img/custom/facebook-icon.svg';
+import twitterIcon from '../../assets/img/custom/twitter-icon.svg';
+import inIcon from '../../assets/img/custom/in-icon.svg';
+import instaIcon from '../../assets/img/custom/insta-icon.svg';
 
+import storeLogoPlay from '../../assets/img/custom/store-logo-play.svg';
+import storeLogoAndroid from '../../assets/img/custom/store-logo-android.svg';
+import storeLogoApple from '../../assets/img/custom/store-logo-apple.svg';
 // eslint-disable-next-line react/prop-types
 const TableRow = ({ id, image, name, category, series, color, stock, price, store }) => {
 	const { darkModeStatus } = useDarkMode();
@@ -148,109 +156,6 @@ const TableRow = ({ id, image, name, category, series, color, stock, price, stor
 				</Badge>
 			</td>
 		</tr>
-	);
-};
-
-// eslint-disable-next-line react/prop-types
-const AnswerCustomer = ({ id, imgWebp, img, name, job, value, color }) => {
-	const { darkModeStatus } = useDarkMode();
-
-	const [state] = useState({
-		series: [value],
-		options: {
-			chart: {
-				type: 'radialBar',
-				width: 50,
-				height: 50,
-				sparkline: {
-					enabled: true,
-				},
-			},
-			dataLabels: {
-				enabled: false,
-			},
-			plotOptions: {
-				radialBar: {
-					hollow: {
-						margin: 0,
-						size: '50%',
-					},
-					track: {
-						margin: 0,
-					},
-					dataLabels: {
-						show: false,
-					},
-				},
-			},
-			stroke: {
-				lineCap: 'round',
-			},
-			colors: [
-				(color === 'primary' && process.env.REACT_APP_PRIMARY_COLOR) ||
-					(color === 'secondary' && process.env.REACT_APP_SECONDARY_COLOR) ||
-					(color === 'success' && process.env.REACT_APP_SUCCESS_COLOR) ||
-					(color === 'info' && process.env.REACT_APP_INFO_COLOR) ||
-					(color === 'warning' && process.env.REACT_APP_WARNING_COLOR) ||
-					(color === 'danger' && process.env.REACT_APP_DANGER_COLOR),
-			],
-		},
-	});
-	return (
-		<div className='col-12'>
-			<div className='row g-2'>
-				<div className='col d-flex'>
-					<div className='flex-shrink-0'>
-						<Avatar
-							src={img}
-							srcSet={imgWebp}
-							size={54}
-							userName={name}
-							color={color}
-						/>
-					</div>
-					<div className='flex-grow-1 ms-3 d-flex justify-content-between align-items-center'>
-						<div>
-							<Link
-								to={`../${demoPages.appointment.subMenu.employeeID.path}/${id}`}
-								className={classNames('fw-bold fs-6 mb-0', {
-									'link-dark': !darkModeStatus,
-									'link-light': darkModeStatus,
-								})}>
-								{name}
-							</Link>
-							<div className='text-muted mt-n1'>
-								<small>{job}</small>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div className='col-auto'>
-					<div className='d-flex align-items-center'>
-						<Popovers desc='Remaining time' trigger='hover'>
-							<span className='me-3'>%{value}</span>
-						</Popovers>
-						<Chart
-							series={state.series}
-							options={state.options}
-							type={state.options.chart.type}
-							height={state.options.chart.height}
-							width={state.options.chart.width}
-							className='me-3'
-						/>
-						<Button
-							color='info'
-							isLight
-							icon='ScheduleSend'
-							className='text-nowrap'
-							tag='a'
-							href='mailto:example@site.com'>
-							Send
-						</Button>
-					</div>
-				</div>
-			</div>
-		</div>
 	);
 };
 
@@ -553,7 +458,7 @@ const CustomDashboard = () => {
 					<span className='h5 mb-0 fw-normal'>Preview</span>
 					<div className='col-auto'>
 						<Popovers trigger='hover' desc='QR Menu Preview' flip='bottom'>
-							<Icon icon='CustomQrEcommerce' />
+							<img src={icEcommerceQr} width='100%' alt='' />
 						</Popovers>
 					</div>
 					<div className='col-auto'>
@@ -624,56 +529,37 @@ const CustomDashboard = () => {
 							
 						</Card> */}
 							<div className='col-xl-4'>
-								<CardLabel
-									icon='NotificationsActive'
-									iconColor='warning'
-									className='p-3 '>
+								<CardLabel icon='CustomMenuIcon' className='p-3 '>
 									<CardTitle tag='h4' className='h5 '>
-										Recent Activities
+										Your MyMenu Current Plan
 									</CardTitle>
-									<CardSubTitle>last 2 weeks</CardSubTitle>
+									<CardSubTitle className='d-flex'>
+										FREE Trial | 10 Days Remaining{' '}
+									</CardSubTitle>
 								</CardLabel>
 							</div>
-							<SubheaderSeparator />
+							<SubheaderSeparator className='vert-seperator' />
 							<div className='col-xl-4 p-4'>
-								<div className='d-flex'>
-									<div className='col-6'>
-										<div>
-											<CardTitle tag='h6' className='h6 '>
-												Recent Activities
-											</CardTitle>
-										</div>
+								<CardBody>
+									<div className='d-flex justify-content-between'>
+										<p>Complete Your Profile</p>
+										<p className='fw-bold'>90%</p>
 									</div>
-									<div className='col-6'>
-										<div>
-											<CardTitle
-												tag='h5'
-												className='h6'
-												style={{ 'text-align': 'end' }}>
-												90%
-											</CardTitle>
-										</div>
-									</div>
-								</div>
-								<div className='pl-3'>
-									<Progress
-										value={90}
-										height={10} // Example: 10, '3vh', '5rem' etc.
-										color='primary' // 'primary' || 'secondary' || 'success' || 'info' || 'warning' || 'danger' || 'light' || 'dark'
-										className={String}
-									/>
-								</div>
+									<Progress value={90} />
+								</CardBody>
 							</div>
-							<SubheaderSeparator />
+							<SubheaderSeparator className='vert-seperator' />
 							<div className='col-xl-4'>
-								<CardLabel
-									icon='NotificationsActive'
-									iconColor='warning'
-									className='p-3 '>
+								<CardLabel className='p-3 '>
 									<CardTitle tag='h4' className='h5 '>
-										Recent Activities
+										<div className='d-flex'>
+											<Icon icon='CustomEnvelop' />
+											<div>Email Verification</div>
+										</div>
 									</CardTitle>
-									<CardSubTitle>last 2 weeks</CardSubTitle>
+									<CardSubTitle>
+										<Input type='text' />
+									</CardSubTitle>
 								</CardLabel>
 							</div>
 						</div>
@@ -811,7 +697,7 @@ const CustomDashboard = () => {
 
 					<div className='col-xl-2'>
 						<div className='mb-2'>
-							<span className='h6 fw-bold'>Ongoing Campaigns</span>
+							<span className='h5 fw-bold'>Ongoing Campaigns</span>
 						</div>
 						<div>
 							<CardWithNumbrrAndButton number='000' />
@@ -820,7 +706,7 @@ const CustomDashboard = () => {
 
 					<div className='col-xl-2'>
 						<div className='mb-2'>
-							<span className='h6 fw-bold'>Ongoing Campaigns</span>
+							<span className='h5 fw-bold'>Total Feedbacks</span>
 						</div>
 						<div>
 							<CardWithNumbrrAndButton number='000' />
@@ -829,7 +715,7 @@ const CustomDashboard = () => {
 
 					<div className='col-xl-2'>
 						<div className='mb-2'>
-							<span className='h6 fw-bold'>Ongoing Campaigns</span>
+							<span className='h5 fw-bold'>Profiles Captured</span>
 						</div>
 						<div>
 							<CardWithNumbrrAndButton number='000' />
@@ -838,7 +724,7 @@ const CustomDashboard = () => {
 
 					<div className='col-xl-2'>
 						<div className='mb-2'>
-							<span className='h6 fw-bold'>Ongoing Campaigns</span>
+							<span className='h5 fw-bold'>Existing Customers</span>
 						</div>
 						<div>
 							<CardWithNumbrrAndButton number='000' />
@@ -847,7 +733,7 @@ const CustomDashboard = () => {
 
 					<div className='col-xl-4'>
 						<div className='mb-2'>
-							<span className='h6 fw-bold'>Ongoing Campaigns</span>
+							<span className='h5 fw-bold'>Total Customers</span>
 						</div>
 						<div>
 							<Card className='custom-card-chart'>
@@ -1328,7 +1214,7 @@ const CustomDashboard = () => {
 						/>
 					</div>
 
-					<div className='col-lg-8'>
+					<div className='col-xl-8' style={{ height: '641px' }}>
 						<CardHeader className='px-0 bg-transparent'>
 							<CardLabel>
 								<CardTitle>Integrations</CardTitle>
@@ -1364,102 +1250,48 @@ const CustomDashboard = () => {
 							middleText='Payment Solution'
 						/>
 					</div>
-
 					<div className='col-xl-4'>
-						<Card stretch>
-							<CardHeader>
-								<CardLabel icon='ContactSupport' iconColor='secondary'>
-									<CardTitle tag='h4' className='h5'>
-										Waiting for an Answer
-									</CardTitle>
-									<CardSubTitle tag='h5' className='h6'>
-										Customer
-									</CardSubTitle>
-								</CardLabel>
-								<CardActions>
-									<Dropdown>
-										<DropdownToggle hasIcon={false}>
-											<Button
-												color={darkModeStatus ? 'light' : 'dark'}
-												isLink
-												hoverShadow='default'
-												icon='MoreHoriz'
-												aria-label='More Actions'
-											/>
-										</DropdownToggle>
-										<DropdownMenu isAlignmentEnd>
-											<DropdownItem>
-												<Button
-													icon='Send'
-													tag='a'
-													href='mailto:example@site.com'>
-													Send Bulk Mail
-												</Button>
-											</DropdownItem>
-										</DropdownMenu>
-									</Dropdown>
-								</CardActions>
-							</CardHeader>
-							<CardBody>
-								<div className='row g-3'>
-									<AnswerCustomer
-										id={USERS.GRACE.id}
-										img={USERS.GRACE.src}
-										imgWebp={USERS.GRACE.srcSet}
-										name={`${USERS.GRACE.name} ${USERS.GRACE.surname}`}
-										color={USERS.GRACE.color}
-										job='Maryland'
-										value={43}
-									/>
-									<AnswerCustomer
-										id={USERS.JANE.id}
-										img={USERS.JANE.src}
-										imgWebp={USERS.JANE.srcSet}
-										name={`${USERS.JANE.name} ${USERS.JANE.surname}`}
-										color={USERS.JANE.color}
-										job='North Carolina'
-										value={35}
-									/>
-									<AnswerCustomer
-										id={USERS.RYAN.id}
-										img={USERS.RYAN.src}
-										imgWebp={USERS.RYAN.srcSet}
-										name={`${USERS.RYAN.name} ${USERS.RYAN.surname}`}
-										color={USERS.RYAN.color}
-										job='Rhode Island'
-										value={27}
-									/>
-									<AnswerCustomer
-										id={USERS.ELLA.id}
-										img={USERS.ELLA.src}
-										imgWebp={USERS.ELLA.srcSet}
-										name={`${USERS.ELLA.name} ${USERS.ELLA.surname}`}
-										color={USERS.ELLA.color}
-										job='Washington'
-										value={15}
-									/>
-									<AnswerCustomer
-										id={USERS.CHLOE.id}
-										img={USERS.CHLOE.src}
-										imgWebp={USERS.CHLOE.srcSet}
-										name={`${USERS.CHLOE.name} ${USERS.CHLOE.surname}`}
-										color={USERS.CHLOE.color}
-										job='Kentucky'
-										value={12}
-									/>
-									<AnswerCustomer
-										id={USERS.SAM.id}
-										img={USERS.SAM.src}
-										imgWebp={USERS.SAM.srcSet}
-										name={`${USERS.SAM.name} ${USERS.SAM.surname}`}
-										color={USERS.SAM.color}
-										job='Michigan'
-										value={12}
-									/>
+						<Card style={{ height: '510px', marginTop: '75px' }}>
+							<div className='fw-bold fs-4 p-3'>Support</div>
+							<div className='p-3'>
+								<Button color='primary'>Request Professional Support</Button>
+							</div>
+							<div className='fw-bold fs-4 p-3'>WhatsApp Support</div>
+							<div className='p-3'>
+								<Button icon='CustomWhatsapp' color='primary'>
+									Request Professional Support
+								</Button>
+							</div>
+							<div className='fw-bold fs-4 p-3'>Social Media</div>
+							<div className='d-flex'>
+								<div className='p-2'>
+									<img src={facebookIcon} alt='' />
 								</div>
-							</CardBody>
+								<div className='p-2'>
+									<img src={twitterIcon} alt='' />
+								</div>
+								<div className='p-2'>
+									<img src={instaIcon} alt='' />
+								</div>
+								<div className='p-2'>
+									<img src={inIcon} alt='' />
+								</div>
+							</div>
+							<div className='fw-bold fs-4 p-3'>App Download Links</div>
+							<div className='d-flex'>
+								<div className='p-2'>
+									<img src={storeLogoApple} alt='' />
+								</div>
+								<div className='p-2'>
+									<img src={storeLogoPlay} alt='' />
+								</div>
+								<div className='p-2'>
+									<img src={storeLogoAndroid} alt='' />
+								</div>
+							</div>
 						</Card>
 					</div>
+
 					<div className='col-xl-3'>
 						<Card
 							color='success'
