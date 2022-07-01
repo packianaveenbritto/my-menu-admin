@@ -56,6 +56,7 @@ import Progress from '../../components/bootstrap/Progress';
 import CommonGridMenus from '../common/CommonGridMenus';
 import CommonUpcomingEvents from '../common/CommonUpcomingEvents';
 import CustomTransferAction from '../../components/CustomTransferAction';
+import CardWithNumbrrAndButton from '../../components/custom/CardWithNumbrrAndButton';
 
 // eslint-disable-next-line react/prop-types
 const TableRow = ({ id, image, name, category, series, color, stock, price, store }) => {
@@ -501,329 +502,6 @@ const CustomDashboard = () => {
 		},
 	});
 
-	// function randomize(value, x = year) {
-	// 	if (x === 2019) {
-	// 		if (value.toFixed(0) % 2) {
-	// 			return (value * 1.5).toFixed(2);
-	// 		}
-	// 		return (value / 1.4).toFixed(2);
-	// 	}
-	// 	if (x === 2020) {
-	// 		if (value.toFixed(0) % 2) {
-	// 			return (value / 1.5).toFixed(2);
-	// 		}
-	// 		return (value * 1.4).toFixed(2);
-	// 	}
-	// 	if (x === 2021) {
-	// 		if (value.toFixed(0) % 2) {
-	// 			return (value / 2).toFixed(2);
-	// 		}
-	// 		return (value * 1.4).toFixed(2);
-	// 	}
-	// 	return value.toFixed(2);
-	// }
-
-	// const salesByStoreOptions = {
-	// 	chart: {
-	// 		height: 370,
-	// 		type: 'line',
-	// 		stacked: false,
-	// 		toolbar: { show: false },
-	// 	},
-	// 	colors: [
-	// 		process.env.REACT_APP_INFO_COLOR,
-	// 		process.env.REACT_APP_SUCCESS_COLOR,
-	// 		process.env.REACT_APP_WARNING_COLOR,
-	// 	],
-	// 	dataLabels: {
-	// 		enabled: false,
-	// 	},
-	// 	stroke: {
-	// 		width: [1, 1, 4],
-	// 		curve: 'smooth',
-	// 	},
-	// 	plotOptions: {
-	// 		bar: {
-	// 			borderRadius: 5,
-	// 			columnWidth: '20px',
-	// 		},
-	// 	},
-	// 	xaxis: {
-	// 		categories: [
-	// 			'Jan',
-	// 			'Feb',
-	// 			'Mar',
-	// 			'Apr',
-	// 			'May',
-	// 			'Jun',
-	// 			'Jul',
-	// 			'Aug',
-	// 			'Sep',
-	// 			'Oct',
-	// 			'Nov',
-	// 			'Dec',
-	// 		],
-	// 	},
-	// 	yaxis: [
-	// 		{
-	// 			axisTicks: {
-	// 				show: true,
-	// 			},
-	// 			axisBorder: {
-	// 				show: true,
-	// 				color: process.env.REACT_APP_INFO_COLOR,
-	// 			},
-	// 			labels: {
-	// 				style: {
-	// 					colors: process.env.REACT_APP_INFO_COLOR,
-	// 				},
-	// 			},
-	// 			title: {
-	// 				text: 'Income (thousand cores)',
-	// 				style: {
-	// 					color: process.env.REACT_APP_INFO_COLOR,
-	// 				},
-	// 			},
-	// 			tooltip: {
-	// 				enabled: true,
-	// 			},
-	// 		},
-	// 		{
-	// 			seriesName: 'Income',
-	// 			opposite: true,
-	// 			axisTicks: {
-	// 				show: true,
-	// 			},
-	// 			axisBorder: {
-	// 				show: true,
-	// 				color: process.env.REACT_APP_SUCCESS_COLOR,
-	// 			},
-	// 			labels: {
-	// 				style: {
-	// 					colors: process.env.REACT_APP_SUCCESS_COLOR,
-	// 				},
-	// 			},
-	// 			title: {
-	// 				text: 'Operating Cash Flow (thousand cores)',
-	// 				style: {
-	// 					color: process.env.REACT_APP_SUCCESS_COLOR,
-	// 				},
-	// 			},
-	// 		},
-	// 		{
-	// 			seriesName: 'Revenue',
-	// 			opposite: true,
-	// 			axisTicks: {
-	// 				show: true,
-	// 			},
-	// 			axisBorder: {
-	// 				show: true,
-	// 				color: process.env.REACT_APP_WARNING_COLOR,
-	// 			},
-	// 			labels: {
-	// 				style: {
-	// 					colors: process.env.REACT_APP_WARNING_COLOR,
-	// 				},
-	// 			},
-	// 			title: {
-	// 				text: 'Revenue (thousand cores)',
-	// 				style: {
-	// 					color: process.env.REACT_APP_WARNING_COLOR,
-	// 				},
-	// 			},
-	// 		},
-	// 	],
-	// 	tooltip: {
-	// 		theme: 'dark',
-	// 		fixed: {
-	// 			enabled: true,
-	// 			position: 'topLeft', // topRight, topLeft, bottomRight, bottomLeft
-	// 			offsetY: 30,
-	// 			offsetX: 60,
-	// 		},
-	// 	},
-	// 	legend: {
-	// 		horizontalAlign: 'left',
-	// 		offsetX: 40,
-	// 	},
-	// };
-	// const salesByStoreSeries1 = [
-	// 	{
-	// 		name: 'Income',
-	// 		type: 'column',
-	// 		data: [
-	// 			randomize(1.4),
-	// 			randomize(2),
-	// 			randomize(2.5),
-	// 			randomize(1.5),
-	// 			randomize(2.5),
-	// 			randomize(2.8),
-	// 			randomize(3.8),
-	// 			randomize(4.6),
-	// 		],
-	// 	},
-	// 	{
-	// 		name: 'Cash Flow',
-	// 		type: 'column',
-	// 		data: [
-	// 			randomize(1.1),
-	// 			randomize(3),
-	// 			randomize(3.1),
-	// 			randomize(4),
-	// 			randomize(4.1),
-	// 			randomize(4.9),
-	// 			randomize(6.5),
-	// 			randomize(8.5),
-	// 		],
-	// 	},
-	// 	{
-	// 		name: 'Revenue',
-	// 		type: 'line',
-	// 		data: [
-	// 			randomize(20),
-	// 			randomize(29),
-	// 			randomize(37),
-	// 			randomize(36),
-	// 			randomize(44),
-	// 			randomize(45),
-	// 			randomize(50),
-	// 			randomize(58),
-	// 		],
-	// 	},
-	// ];
-	// const salesByStoreSeries2 = [
-	// 	{
-	// 		name: 'Income',
-	// 		type: 'column',
-	// 		data: [
-	// 			randomize(4.4),
-	// 			randomize(5),
-	// 			randomize(6.5),
-	// 			randomize(7.5),
-	// 			randomize(6.5),
-	// 			randomize(9.8),
-	// 			randomize(7.8),
-	// 			randomize(6.6),
-	// 		],
-	// 	},
-	// 	{
-	// 		name: 'Cash Flow',
-	// 		type: 'column',
-	// 		data: [
-	// 			randomize(3),
-	// 			randomize(3),
-	// 			randomize(5.1),
-	// 			randomize(5),
-	// 			randomize(7.1),
-	// 			randomize(9.9),
-	// 			randomize(8.5),
-	// 			randomize(9.5),
-	// 		],
-	// 	},
-	// 	{
-	// 		name: 'Revenue',
-	// 		type: 'line',
-	// 		data: [
-	// 			randomize(34),
-	// 			randomize(54),
-	// 			randomize(43),
-	// 			randomize(63),
-	// 			randomize(35),
-	// 			randomize(63),
-	// 			randomize(46),
-	// 			randomize(53),
-	// 		],
-	// 	},
-	// ];
-	// const salesByStoreSeries3 = [
-	// 	{
-	// 		name: 'Income',
-	// 		type: 'column',
-	// 		data: [
-	// 			randomize(4),
-	// 			randomize(3),
-	// 			randomize(2.5),
-	// 			randomize(1.5),
-	// 			randomize(2.5),
-	// 			randomize(3.8),
-	// 			randomize(3.8),
-	// 			randomize(4.6),
-	// 		],
-	// 	},
-	// 	{
-	// 		name: 'Cash Flow',
-	// 		type: 'column',
-	// 		data: [
-	// 			randomize(2),
-	// 			randomize(5),
-	// 			randomize(6.1),
-	// 			randomize(2),
-	// 			randomize(6.1),
-	// 			randomize(3.9),
-	// 			randomize(6.5),
-	// 			randomize(8.5),
-	// 		],
-	// 	},
-	// 	{
-	// 		name: 'Revenue',
-	// 		type: 'line',
-	// 		data: [
-	// 			randomize(34),
-	// 			randomize(21),
-	// 			randomize(54),
-	// 			randomize(56),
-	// 			randomize(34),
-	// 			randomize(43),
-	// 			randomize(37),
-	// 			randomize(43),
-	// 		],
-	// 	},
-	// ];
-	// const salesByStoreSeries4 = [
-	// 	{
-	// 		name: 'Income',
-	// 		type: 'column',
-	// 		data: [
-	// 			randomize(3),
-	// 			randomize(3.2),
-	// 			randomize(1.4),
-	// 			randomize(1.9),
-	// 			randomize(2.9),
-	// 			randomize(1.8),
-	// 			randomize(4.6),
-	// 			randomize(4.2),
-	// 		],
-	// 	},
-	// 	{
-	// 		name: 'Cash Flow',
-	// 		type: 'column',
-	// 		data: [
-	// 			randomize(3),
-	// 			randomize(2),
-	// 			randomize(3.1),
-	// 			randomize(5),
-	// 			randomize(3.1),
-	// 			randomize(3.9),
-	// 			randomize(3.5),
-	// 			randomize(5.5),
-	// 		],
-	// 	},
-	// 	{
-	// 		name: 'Revenue',
-	// 		type: 'line',
-	// 		data: [
-	// 			randomize(30),
-	// 			randomize(43),
-	// 			randomize(51),
-	// 			randomize(19),
-	// 			randomize(32),
-	// 			randomize(25),
-	// 			randomize(39),
-	// 			randomize(42),
-	// 		],
-	// 	},
-	// ];
-
 	const TOP_SELLER_FILTER = {
 		DAY: 'day',
 		WEEK: 'week',
@@ -840,7 +518,7 @@ const CustomDashboard = () => {
 		.filter((c, index) => index < 5);
 
 	const [currentPage, setCurrentPage] = useState(1);
-	const [perPage, setPerPage] = useState(PER_COUNT['3']);
+	const [perPage, setPerPage] = useState(PER_COUNT['4']);
 	const { items, requestSort, getClassNamesFor } = useSortableData(filteredData);
 
 	function compareLabel(amount = -1, name = false) {
@@ -1136,14 +814,7 @@ const CustomDashboard = () => {
 							<span className='h6 fw-bold'>Ongoing Campaigns</span>
 						</div>
 						<div>
-							<Card className='custom-card'>
-								<div className='bg-l25-primary card-with-number'>
-									<div style={{ 'text-align': 'end' }}>
-										<Icon icon='CustomMoreVert' />
-									</div>
-									<span className='fw-bold'>000</span>
-								</div>
-							</Card>
+							<CardWithNumbrrAndButton number='000' />
 						</div>
 					</div>
 
@@ -1152,14 +823,7 @@ const CustomDashboard = () => {
 							<span className='h6 fw-bold'>Ongoing Campaigns</span>
 						</div>
 						<div>
-							<Card className='custom-card'>
-								<div className='bg-l25-primary card-with-number'>
-									<div style={{ 'text-align': 'end' }}>
-										<Icon icon='CustomMoreVert' />
-									</div>
-									<span className='fw-bold'>000</span>
-								</div>
-							</Card>
+							<CardWithNumbrrAndButton number='000' />
 						</div>
 					</div>
 
@@ -1168,14 +832,7 @@ const CustomDashboard = () => {
 							<span className='h6 fw-bold'>Ongoing Campaigns</span>
 						</div>
 						<div>
-							<Card className='custom-card'>
-								<div className='bg-l25-primary card-with-number'>
-									<div style={{ 'text-align': 'end' }}>
-										<Icon icon='CustomMoreVert' />
-									</div>
-									<span className='fw-bold'>000</span>
-								</div>
-							</Card>
+							<CardWithNumbrrAndButton number='000' />
 						</div>
 					</div>
 
@@ -1184,14 +841,7 @@ const CustomDashboard = () => {
 							<span className='h6 fw-bold'>Ongoing Campaigns</span>
 						</div>
 						<div>
-							<Card className='custom-card'>
-								<div className='bg-l25-primary card-with-number'>
-									<div style={{ 'text-align': 'end' }}>
-										<Icon icon='CustomMoreVert' />
-									</div>
-									<span className='fw-bold'>000</span>
-								</div>
-							</Card>
+							<CardWithNumbrrAndButton number='000' />
 						</div>
 					</div>
 
@@ -1201,21 +851,26 @@ const CustomDashboard = () => {
 						</div>
 						<div>
 							<Card className='custom-card-chart'>
-								<div className='d-flex'>
-									<div className='bg-l25-primary card-with-number'>
-										<div style={{ 'text-align': 'end' }}>
-											<Icon icon='CustomMoreVert' />
+								<div className='row align-items-center;'>
+									<div className='col-auto'>
+										<div className='bg-l25-primary card-with-number'>
+											<div style={{ 'text-align': 'end' }}>
+												<Button
+													icon='CustomMoreVert'
+													color='bg-l25-primary'
+													shadow='default'
+													hoverShadow='none'
+												/>
+											</div>
+											<div className='fw-bold fs-4'>000</div>
 										</div>
-										<span className='fw-bold'>000</span>
 									</div>
-									<div className='chart-container'>
+									<div className='col-auto'>
 										<Chart
-											className='mx-n4'
-											series={sales.series}
-											options={sales.options}
-											type={sales.options.chart.type}
-											height={50}
-											width={400}
+											series={fee.series}
+											options={fee.options}
+											type='area'
+											height={70}
 										/>
 									</div>
 								</div>
@@ -1680,7 +1335,7 @@ const CustomDashboard = () => {
 							</CardLabel>
 							<CardActions>
 								<Button color='info' isLight icon='PublishedWithChanges'>
-								Add New
+									Add New
 								</Button>
 							</CardActions>
 						</CardHeader>

@@ -18,31 +18,41 @@
 }
 
 .card-with-number {
-	width: 4rem;
-	height: 4rem;
 	text-align: center;
-	padding-right: 3px;
-	border-radius: 5%;
+	width: 99px;
+	height: 99px;
+	/* UI Properties */
+	background: var(--unnamed-color-ebe4d5) 0% 0% no-repeat padding-box;
+	background: #ebe4d5 0% 0% no-repeat padding-box;
+	border-radius: 3px;
+	opacity: 1;
 }
 
 .custom-card {
-	width: 100px;
-	height: 100px;
+	width: 153px;
+	height: 153px;
+	/* UI Properties */
+	background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+	background: #ffffff 0% 0% no-repeat padding-box;
+	box-shadow: 0px 40px 50px #7070701a;
+	border: 1px solid #7070704d;
+	border-radius: 13px;
+	opacity: 1;
 	align-items: center;
 	justify-content: center;
 }
 
 .custom-card-chart {
-	padding-right: 26px;
-	width: auto;
-	height: 100px;
+	height: 153px;
+	/* UI Properties */
+	background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+	background: #ffffff 0% 0% no-repeat padding-box;
+	box-shadow: 0px 40px 50px #7070701a;
+	border: 1px solid #7070704d;
+	border-radius: 13px;
+	opacity: 1;
 	justify-content: center;
-	.chart-container {
-		margin-left: 3rem;
-	}
-	.card-with-number {
-		margin-left: 26px;
-	}
+    padding-left: 2rem;
 }
 
 .custom-card-with-shaddow {
