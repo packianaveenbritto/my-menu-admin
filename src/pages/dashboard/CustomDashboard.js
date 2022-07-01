@@ -956,7 +956,7 @@ const CustomDashboard = () => {
 					<div className='col-xxl-12'>
 						<Card stretch>
 							<CardHeader>
-								<CardLabel icon='NotificationsActive' iconColor='warning'>
+								<CardLabel icon='NotificationsActive' iconColor='primary'>
 									<CardTitle tag='h4' className='h5'>
 										Recent Activities
 									</CardTitle>

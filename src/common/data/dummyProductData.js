@@ -1,20 +1,21 @@
-import BeveledCone from '../../assets/img/abstract/beveled-cone.png';
-import CloudBall from '../../assets/img/abstract/cloud-ball.png';
-import Quadrilateral from '../../assets/img/abstract/quadrilateral.png';
-import HardSharpDonut from '../../assets/img/abstract/hald-sharp-donut.png';
-import BendyRectangle from '../../assets/img/abstract/bendy-rectangle.png';
-import Infinity from '../../assets/img/abstract/infinity.png';
-import Octahedron from '../../assets/img/abstract/octahedron.png';
-import Triangle from '../../assets/img/abstract/triangle.png';
-import SquiglyGlobe from '../../assets/img/abstract/squigly-globe.png';
-import Dodecagon from '../../assets/img/abstract/dodecagon.png';
-import BeveledCube from '../../assets/img/abstract/beveled-cube.png';
-import Cylinder from '../../assets/img/abstract/cylinder.png';
+// import BeveledCone from '../../assets/img/abstract/beveled-cone.png';
+// import CloudBall from '../../assets/img/abstract/cloud-ball.png';
+// import Quadrilateral from '../../assets/img/abstract/quadrilateral.png';
+// import HardSharpDonut from '../../assets/img/abstract/hald-sharp-donut.png';
+// import BendyRectangle from '../../assets/img/abstract/bendy-rectangle.png';
+// import Infinity from '../../assets/img/abstract/infinity.png';
+// import Octahedron from '../../assets/img/abstract/octahedron.png';
+// import Triangle from '../../assets/img/abstract/triangle.png';
+// import SquiglyGlobe from '../../assets/img/abstract/squigly-globe.png';
+// import Dodecagon from '../../assets/img/abstract/dodecagon.png';
+// import BeveledCube from '../../assets/img/abstract/beveled-cube.png';
+// import Cylinder from '../../assets/img/abstract/cylinder.png';
+import foodPlate from '../../assets/img/custom/food-plate.png';
 
 const data = [
 	{
 		id: 1,
-		image: BeveledCone,
+		image: foodPlate,
 		name: 'Beveled Cone',
 		category: '3D Shapes',
 		series: [
@@ -30,7 +31,7 @@ const data = [
 	},
 	{
 		id: 2,
-		image: CloudBall,
+		image: foodPlate,
 		name: 'Cloud Ball',
 		category: '3D Shapes',
 		series: [
@@ -46,7 +47,7 @@ const data = [
 	},
 	{
 		id: 3,
-		image: Quadrilateral,
+		image: foodPlate,
 		name: 'Quadrilateral',
 		category: '3D Shapes',
 		series: [
@@ -62,7 +63,7 @@ const data = [
 	},
 	{
 		id: 4,
-		image: HardSharpDonut,
+		image: foodPlate,
 		name: 'Bendy Rectangle',
 		category: '3D Shapes',
 		series: [
@@ -78,7 +79,7 @@ const data = [
 	},
 	{
 		id: 5,
-		image: BendyRectangle,
+		image: foodPlate,
 		name: 'Bendy Rectangle',
 		category: '3D Shapes',
 		series: [
@@ -94,7 +95,7 @@ const data = [
 	},
 	{
 		id: 6,
-		image: Infinity,
+		image: foodPlate,
 		name: 'Bendy Rectangle',
 		category: '3D Shapes',
 		series: [
@@ -110,7 +111,7 @@ const data = [
 	},
 	{
 		id: 7,
-		image: Octahedron,
+		image: foodPlate,
 		name: 'Octahedron',
 		category: '3D Shapes',
 		series: [
@@ -126,7 +127,7 @@ const data = [
 	},
 	{
 		id: 8,
-		image: Triangle,
+		image: foodPlate,
 		name: 'Triangle',
 		category: '3D Shapes',
 		series: [
@@ -142,7 +143,7 @@ const data = [
 	},
 	{
 		id: 9,
-		image: SquiglyGlobe,
+		image: foodPlate,
 		name: 'SquiglyGlobe',
 		category: '3D Shapes',
 		series: [
@@ -158,7 +159,7 @@ const data = [
 	},
 	{
 		id: 10,
-		image: Dodecagon,
+		image: foodPlate,
 		name: 'Dodecagon',
 		category: '3D Shapes',
 		series: [
@@ -174,7 +175,7 @@ const data = [
 	},
 	{
 		id: 11,
-		image: BeveledCube,
+		image: foodPlate,
 		name: 'Beveled Cube',
 		category: '3D Shapes',
 		series: [
@@ -190,7 +191,7 @@ const data = [
 	},
 	{
 		id: 12,
-		image: Cylinder,
+		image: foodPlate,
 		name: 'Cylinder',
 		category: '3D Shapes',
 		series: [
