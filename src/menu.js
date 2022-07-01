@@ -52,6 +52,13 @@ export const dashboardMenu = {
 		icon: 'AddShoppingCart',
 		subMenu: null,
 	},
+	orderReports: {
+		id: 'orderReports',
+		text: 'Order Reports',
+		path: 'orders/reports',
+		subMenu: null,
+		hide: true,
+	},
 	// dashboardBooking: {
 	// 	id: 'dashboard-booking',
 	// 	text: 'Dashboard Booking',
@@ -70,6 +77,21 @@ export const dashboardMenu = {
 		text: 'Summary',
 		path: 'summary',
 		icon: 'sticky_note_2',
+		subMenu: null,
+	},
+};
+
+export const marketing = {
+	marketing: {
+		id: 'pages',
+		text: 'Marketing',
+		icon: 'marketing',
+	},
+	campaigns: {
+		id: 'campaigns',
+		text: 'Campaigns',
+		path: 'marketing/campaigns',
+		icon: 'Campaign',
 		subMenu: null,
 	},
 };
@@ -401,12 +423,12 @@ export const demoPages = {
 			// 	path: 'crm/invoice',
 			// 	hide: true,
 			// },
-			// invoice: {
-			// 	id: 'invoice',
-			// 	text: 'Invoice',
-			// 	path: 'crm/invoice/1',
-			// 	icon: 'Receipt',
-			// },
+			invoice: {
+				id: 'invoice',
+				text: 'Invoice',
+				path: 'crm/invoice/1',
+				icon: 'Receipt',
+			},
 		},
 	},
 	chat: {

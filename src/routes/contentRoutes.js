@@ -1,5 +1,5 @@
 import React, { lazy } from 'react';
-import { componentsMenu, dashboardMenu, demoPages, layoutMenu } from '../menu';
+import { componentsMenu, dashboardMenu, demoPages, layoutMenu, marketing } from '../menu';
 import Login from '../pages/presentation/auth/Login';
 
 const LANDING = {
@@ -7,6 +7,7 @@ const LANDING = {
 	// DASHBOARD_BOOKING: lazy(() => import('../pages/menus/DashboardBookingPage')),
 	MENUS: lazy(() => import('../pages/menus/Menus')),
 	ORDERS: lazy(() => import('../pages/orders/Orders')),
+	ORDERS_REPORTS: lazy(() => import('../pages/orders/OrdersReports')),
 	SUMMARY: lazy(() => import('../pages/SummaryPage')),
 };
 const SINGLE = {
@@ -73,6 +74,10 @@ const APP = {
 		WITH_LIST: lazy(() => import('../pages/presentation/chat/WithListChatPage')),
 		ONLY_LIST: lazy(() => import('../pages/presentation/chat/OnlyListChatPage')),
 	},
+};
+
+const MRKETING = {
+	CAMPAIGNS: lazy(() => import('../pages/marketing/campaigns/Campaigns')),
 };
 const PAGE_LAYOUTS = {
 	HEADER_SUBHEADER: lazy(() => import('../pages/presentation/page-layouts/HeaderAndSubheader')),
@@ -198,6 +203,11 @@ const presentation = [
 		exact: true,
 	},
 	{
+		path: dashboardMenu.orderReports.path,
+		element: <LANDING.ORDERS_REPORTS />,
+		exact: true,
+	},
+	{
 		path: dashboardMenu.summary.path,
 		element: <LANDING.SUMMARY />,
 		exact: true,
@@ -205,6 +215,14 @@ const presentation = [
 
 	/** ************************************************** */
 
+	/**
+	 * Marketing
+	 */
+	{
+		path: marketing.campaigns.path,
+		element: <MRKETING.CAMPAIGNS />,
+		exact: true,
+	},
 	/**
 	 * Pages
 	 */

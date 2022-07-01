@@ -19,12 +19,21 @@ import Page from '../../layout/Page/Page';
 import Button, { ButtonGroup } from '../../components/bootstrap/Button';
 import tableData from '../../common/data/dummyProductData';
 import CommonGridMenus from '../common/CommonGridMenus';
-import PaginationButtons, {
-	dataPagination,
-	PER_COUNT,
-} from '../../components/PaginationButtons';
+import PaginationButtons, { dataPagination, PER_COUNT } from '../../components/PaginationButtons';
+import Modal, { ModalBody, ModalFooter, ModalHeader } from '../../components/bootstrap/Modal';
+import FormGroup from '../../components/bootstrap/forms/FormGroup';
+import Input from '../../components/bootstrap/forms/Input';
+import Select from '../../components/bootstrap/forms/Select';
+// import Textarea from '../../components/bootstrap/forms/Textarea';
+import Checks from '../../components/bootstrap/forms/Checks';
+import PlaceholderImage from '../../components/extras/PlaceholderImage';
+import {
+	// OffCanvasBody,
+	// OffCanvasHeader,
+	OffCanvasTitle,
+} from '../../components/bootstrap/OffCanvas';
 // eslint-disable-next-line no-unused-vars
-import Card, {
+import {
 	// CardActions,
 	// CardBody,
 	// CardFooter,
@@ -168,6 +177,15 @@ const Menus = () => {
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [editItem]);
+	// const [upcomingEventsInfoOffcanvas, setUpcomingEventsInfoOffcanvas] = useState(false);
+	// const handleUpcomingDetails = () => {
+	// 	setUpcomingEventsInfoOffcanvas(!upcomingEventsInfoOffcanvas);
+	// };
+
+	const [upcomingEventsEditOffcanvas, setUpcomingEventsEditOffcanvas] = useState(false);
+	const handleUpcomingEdit = () => {
+		setUpcomingEventsEditOffcanvas(!upcomingEventsEditOffcanvas);
+	};
 	return (
 		<PageWrapper>
 			<SubHeader>
@@ -247,6 +265,7 @@ const Menus = () => {
 								color='dark'
 								size='md'
 								forceFamily='material'
+								onClick={handleUpcomingEdit}
 							/>
 						</CardTitle>
 					</div>
@@ -280,6 +299,271 @@ const Menus = () => {
 					perPage={perPage}
 					setPerPage={setPerPage}
 				/>
+
+				<Modal
+					setIsOpen={setUpcomingEventsEditOffcanvas}
+					isOpen={upcomingEventsEditOffcanvas}
+					titleId='upcomingEdit'
+					isCentered
+					isScrollable
+					size='lg'>
+					<ModalHeader setIsOpen={setUpcomingEventsEditOffcanvas}>
+						<OffCanvasTitle id='upcomingEdit'>New Menu</OffCanvasTitle>
+					</ModalHeader>
+					<ModalBody>
+						<div className='row g-4'>
+							<div className='col-7'>
+								<div className='row'>
+									<div className='col-12'>
+										<FormGroup id='title' label='Menu Title'>
+											<Input
+												placeholder='Menu Title'
+												// onChange={formik.handleChange}
+												// value={formik.values.service}
+											/>
+										</FormGroup>
+									</div>
+									<div className='col-12'>
+										<FormGroup id='description' label='Description'>
+											<Input
+												placeholder='Description'
+												// onChange={formik.handleChange}
+												// value={formik.values.employee}
+											/>
+										</FormGroup>
+									</div>
+									<div className='col-12'>
+										<FormGroup id='availability' label='Availability'>
+											<Input
+												placeholder='Availability'
+												// onChange={formik.handleChange}
+												// value={formik.values.location}
+											/>
+										</FormGroup>
+									</div>
+									<div className='col-12'>
+										<FormGroup id='availability' label='Availability'>
+											<Select id='example' placeholder='--Select--' />
+										</FormGroup>
+									</div>
+									<div className='col-4'>
+										<Checks label='Sunday' />
+									</div>
+									<div className='col-4'>
+										<FormGroup id='sunFTime' label='Time'>
+											<Input
+												placeholder='Time'
+												onChange={formik.handleChange}
+												value={formik.values.time}
+												type='time'
+											/>
+										</FormGroup>
+									</div>
+									<div className='col-4'>
+										<FormGroup id='sunTTime' label='Time'>
+											<Input
+												placeholder='Time'
+												onChange={formik.handleChange}
+												value={formik.values.time}
+												type='time'
+											/>
+										</FormGroup>
+									</div>
+									<div className='col-4'>
+										<Checks label='MonDay' />
+									</div>
+									<div className='col-4'>
+										<FormGroup id='monFTime' label='Time'>
+											<Input
+												placeholder='Time'
+												onChange={formik.handleChange}
+												value={formik.values.time}
+												type='time'
+											/>
+										</FormGroup>
+									</div>
+									<div className='col-4'>
+										<FormGroup id='monTTime' label='Time'>
+											<Input
+												placeholder='Time'
+												onChange={formik.handleChange}
+												value={formik.values.time}
+												type='time'
+											/>
+										</FormGroup>
+									</div>
+									<div className='col-4'>
+										<Checks label='Tuesday' />
+									</div>
+									<div className='col-4'>
+										<FormGroup id='tueFTime' label='Time'>
+											<Input
+												placeholder='Time'
+												onChange={formik.handleChange}
+												value={formik.values.time}
+												type='time'
+											/>
+										</FormGroup>
+									</div>
+									<div className='col-4'>
+										<FormGroup id='tueTTime' label='Time'>
+											<Input
+												placeholder='Time'
+												onChange={formik.handleChange}
+												value={formik.values.time}
+												type='time'
+											/>
+										</FormGroup>
+									</div>
+									<div className='col-4'>
+										<Checks label='WednesDay' />
+									</div>
+									<div className='col-4'>
+										<FormGroup id='wedFTime' label='Time'>
+											<Input
+												placeholder='Time'
+												onChange={formik.handleChange}
+												value={formik.values.time}
+												type='time'
+											/>
+										</FormGroup>
+									</div>
+									<div className='col-4'>
+										<FormGroup id='wedTTime' label='Time'>
+											<Input
+												placeholder='Time'
+												onChange={formik.handleChange}
+												value={formik.values.time}
+												type='time'
+											/>
+										</FormGroup>
+									</div>
+									<div className='col-4'>
+										<Checks label='Thursday' />
+									</div>
+									<div className='col-4'>
+										<FormGroup id='thuFTime' label='Time'>
+											<Input
+												placeholder='Time'
+												onChange={formik.handleChange}
+												value={formik.values.time}
+												type='time'
+											/>
+										</FormGroup>
+									</div>
+									<div className='col-4'>
+										<FormGroup id='thuTTime' label='Time'>
+											<Input
+												placeholder='Time'
+												onChange={formik.handleChange}
+												value={formik.values.time}
+												type='time'
+											/>
+										</FormGroup>
+									</div>
+									<div className='col-4'>
+										<Checks label='Friday' />
+									</div>
+									<div className='col-4'>
+										<FormGroup id='friFTime' label='Time'>
+											<Input
+												placeholder='Time'
+												onChange={formik.handleChange}
+												value={formik.values.time}
+												type='time'
+											/>
+										</FormGroup>
+									</div>
+									<div className='col-4'>
+										<FormGroup id='friTTime' label='Time'>
+											<Input
+												placeholder='Time'
+												onChange={formik.handleChange}
+												value={formik.values.time}
+												type='time'
+											/>
+										</FormGroup>
+									</div>
+									<div className='col-4'>
+										<Checks label='Saturday' />
+									</div>
+									<div className='col-4'>
+										<FormGroup id='satFTime' label='Time'>
+											<Input
+												placeholder='Time'
+												onChange={formik.handleChange}
+												value={formik.values.time}
+												type='time'
+											/>
+										</FormGroup>
+									</div>
+									<div className='col-4'>
+										<FormGroup id='satTTime' label='Time'>
+											<Input
+												placeholder='Time'
+												onChange={formik.handleChange}
+												value={formik.values.time}
+												type='time'
+											/>
+										</FormGroup>
+									</div>
+								</div>
+							</div>
+							<div className='col-5'>
+								<div className='row'>
+									<div>Display Image</div>
+									{/* <Checks  /> */}
+									<div className='col'>
+										{/* {editItem?.image ? (
+											<img
+												src={editItem.image}
+												alt=''
+												width={128}
+												height={128}
+												className='mx-auto d-block img-fluid mb-3'
+											/>
+										) : ( */}
+										<PlaceholderImage
+											width={128}
+											height={128}
+											className='mx-auto d-block img-fluid mb-3 rounded'
+										/>
+										{/* )} */}
+									</div>
+									<div className='col-lg-8'>
+										<div className='row g-4'>
+											<div className='col-12'>
+												<Input type='file' autoComplete='photo' />
+											</div>
+											<div className='col-12'>
+												<Button
+													color='dark'
+													isLight
+													icon='Delete'
+													onClick={() => {
+														setEditItem({
+															...editItem,
+															image: null,
+														});
+													}}>
+													Delete Image
+												</Button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</ModalBody>
+					<ModalFooter className='bg-transparent'>
+						<Button
+							color='info'
+							className='w-100'
+							onClick={() => setUpcomingEventsEditOffcanvas(false)}>
+							Save
+						</Button>
+					</ModalFooter>
+				</Modal>
 			</Page>
 		</PageWrapper>
 	);

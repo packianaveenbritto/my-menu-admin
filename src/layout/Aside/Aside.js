@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import Brand from '../Brand/Brand';
 import Navigation, { NavigationLine } from '../Navigation/Navigation';
 import User from '../User/User';
-import { componentsMenu, dashboardMenu, demoPages, layoutMenu } from '../../menu';
+import { componentsMenu, dashboardMenu, demoPages, layoutMenu, marketing } from '../../menu';
 import ThemeContext from '../../contexts/themeContext';
 import Card, { CardBody } from '../../components/bootstrap/Card';
 
@@ -50,6 +50,8 @@ const Aside = () => {
 				</div>
 				<div className='aside-body'>
 					<Navigation menu={dashboardMenu} id='aside-dashboard' />
+					<NavigationLine />
+					<Navigation menu={marketing} id='aside-marketing' />
 					{!doc && (
 						<>
 							<NavigationLine />
