@@ -41,7 +41,7 @@ import Company2 from '../../assets/logos/company2.png';
 import Company3 from '../../assets/logos/company3.png';
 import Company4 from '../../assets/logos/company4.png';
 
-import UserContact from '../../components/UserContact';
+// eslint-disable-next-line no-unused-vars
 import Avatar, { AvatarGroup } from '../../components/Avatar';
 import USERS from '../../common/data/userDummyData';
 import { demoPages } from '../../menu';
@@ -54,7 +54,6 @@ import useDarkMode from '../../hooks/useDarkMode';
 import Timeline, { TimelineItem } from '../../components/extras/Timeline';
 import Progress from '../../components/bootstrap/Progress';
 import CommonGridMenus from '../common/CommonGridMenus';
-import CommonUpcomingEvents from '../common/CommonUpcomingEvents';
 import CustomTransferAction from '../../components/CustomTransferAction';
 import CardWithNumbrrAndButton from '../../components/custom/CardWithNumbrrAndButton';
 import Input from '../../components/bootstrap/forms/Input';
@@ -66,6 +65,7 @@ import instaIcon from '../../assets/img/custom/insta-icon.svg';
 import storeLogoPlay from '../../assets/img/custom/store-logo-play.svg';
 import storeLogoAndroid from '../../assets/img/custom/store-logo-android.svg';
 import storeLogoApple from '../../assets/img/custom/store-logo-apple.svg';
+import CustomTableOne from '../common/CustomTableOne';
 // eslint-disable-next-line react/prop-types
 const TableRow = ({ id, image, name, category, series, color, stock, price, store }) => {
 	const { darkModeStatus } = useDarkMode();
@@ -515,19 +515,6 @@ const CustomDashboard = () => {
 
 					<Card>
 						<div className='col-12 d-flex align-items-center'>
-							{/* <Card>
-							<div className='col-4'>
-								<CardLabel>
-									<CardTitle tag='h4' className='h5 mb-2'>
-										Marketing Team
-									</CardTitle>
-									<CardSubTitle tag='h5' className='h6 text-muted'>
-										There is a meeting at 12 o'clock.
-									</CardSubTitle>
-								</CardLabel>
-							</div>
-							
-						</Card> */}
 							<div className='col-xl-4'>
 								<CardLabel icon='CustomMenuIcon' className='p-3 '>
 									<CardTitle tag='h4' className='h5 '>
@@ -564,30 +551,61 @@ const CustomDashboard = () => {
 							</div>
 						</div>
 					</Card>
-
+					<span className='fw-bold fs-4 mb-3'>
+						Overview <samll className='fw-normal fs-5'>{activeTab}</samll>
+					</span>
 					<div className='col-xl-4'>
-						<UserContact
-							name={`${USERS.SAM.name} ${USERS.SAM.surname}`}
-							position='Team Lead'
-							mail={`${USERS.SAM.username}@site.com`}
-							phone='1234567'
-							onChat={() =>
-								navigate(`../${demoPages.chat.subMenu.withListChat.path}`)
-							}
-							src={USERS.SAM.src}
-							srcSet={USERS.SAM.srcSet}
-							color={USERS.SAM.color}
-						/>
+						<Card stretch>
+							<CardBody className='d-flex'>
+								<div className='col-6'>
+									<div>
+										<CardTitle tag='h4' className='h5'>
+											Connected Devices
+										</CardTitle>
+										<CardSubTitle tag='h5' className='h6 text-muted'>
+											{activeTab}
+										</CardSubTitle>
+									</div>
+									<div style={{ marginTop: '40px' }}>
+										<div className='row'>
+											<div className='col-auto align-items-botte'>
+												<Button
+													color='info'
+													icon='Computer'
+													isLight
+													aria-label='Computer'
+													tag='a'
+												/>
+											</div>
+											<div className='col-auto'>
+												<Button
+													color='info'
+													icon='PhoneIphone'
+													isLight
+													aria-label='Phone'
+													tag='a'
+												/>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div className='col-6 d-flex justify-content-end align-items-center'>
+									<div className='device-cont-round'>
+										<div className='fc-white fw-bold fs-5'>000</div>
+									</div>
+								</div>
+							</CardBody>
+						</Card>
 					</div>
 					<div className='col-xl-4'>
 						<Card stretch>
 							<CardHeader className='bg-transparent'>
 								<CardLabel>
 									<CardTitle tag='h4' className='h5'>
-										Marketing Team
+										New Profiles Captured
 									</CardTitle>
 									<CardSubTitle tag='h5' className='h6 text-muted'>
-										There is a meeting at 12 o'clock.
+										{activeTab}
 									</CardSubTitle>
 								</CardLabel>
 								<CardActions>
@@ -648,10 +666,10 @@ const CustomDashboard = () => {
 							<CardHeader className='bg-transparent'>
 								<CardLabel>
 									<CardTitle tag='h4' className='h5'>
-										Design Team
+										New Feedbacks
 									</CardTitle>
 									<CardSubTitle tag='h5' className='h6 text-muted'>
-										There is a meeting at 15 o'clock.
+										Form Name
 									</CardSubTitle>
 								</CardLabel>
 								<CardActions>
@@ -767,7 +785,7 @@ const CustomDashboard = () => {
 						<Card>
 							<CardHeader>
 								<CardLabel>
-									<CardTitle>Team Fee</CardTitle>
+									<CardTitle>New Customers</CardTitle>
 								</CardLabel>
 								<CardActions>
 									<AvatarGroup>
@@ -801,7 +819,7 @@ const CustomDashboard = () => {
 							<CardBody>
 								<div className='row align-items-end'>
 									<div className='col-lg-6'>
-										<div className='h4 mb-3'>Total Fee</div>
+										<div className='h4 mb-3'>Since 10 days</div>
 										<span className='display-6 fw-bold'>$216</span>
 									</div>
 									<div className='col-lg-6'>
@@ -820,7 +838,7 @@ const CustomDashboard = () => {
 						<Card>
 							<CardHeader>
 								<CardLabel>
-									<CardTitle>Team Fee</CardTitle>
+									<CardTitle>Total Earning</CardTitle>
 								</CardLabel>
 								<CardActions>
 									<AvatarGroup>
@@ -854,8 +872,8 @@ const CustomDashboard = () => {
 							<CardBody>
 								<div className='row align-items-end'>
 									<div className='col-lg-6'>
-										<div className='h4 mb-3'>Total Fee</div>
-										<span className='display-6 fw-bold'>$216</span>
+										<div className='h4 mb-3'>Last 10 Days</div>
+										<span className='display-6 fw-bold'>$1342</span>
 									</div>
 									<div className='col-lg-6'>
 										<Chart
@@ -924,7 +942,7 @@ const CustomDashboard = () => {
 						</Card>
 					</div>
 					<div>
-						<CommonUpcomingEvents />
+						<CustomTableOne />
 					</div>
 
 					<div className='col-xxl-12'>
@@ -1008,9 +1026,9 @@ const CustomDashboard = () => {
 						<div className='col-xxl-12'>
 							<Card>
 								<CardHeader>
-									<CardLabel icon='Storefront' iconColor='info'>
+									<CardLabel icon='MenuBook' iconColor='info'>
 										<CardTitle tag='h4' className='h5'>
-											Top Seller
+											Unpublished Menus
 										</CardTitle>
 									</CardLabel>
 									<CardActions>
@@ -1073,6 +1091,15 @@ const CustomDashboard = () => {
 											download>
 											Export
 										</Button>
+										<Button
+											color='info'
+											icon='MoreHoriz'
+											isLight
+											tag='a'
+											to='/somefile.txt'
+											target='_blank'
+											download
+										/>
 									</CardActions>
 								</CardHeader>
 								<CardBody className='table-responsive'>
@@ -1170,18 +1197,6 @@ const CustomDashboard = () => {
 									</CardTitle>
 								</CardLabel>
 							</div>
-							<div className='col text-end p-4' style={{ alignItems: 'center' }}>
-								<CardTitle tag='h6' className='h6'>
-									Add New Menu
-									<Icon
-										icon='Add'
-										// className={}
-										color='dark'
-										size='md'
-										forceFamily='material'
-									/>
-								</CardTitle>
-							</div>
 						</div>
 
 						<div className='row'>
@@ -1220,7 +1235,7 @@ const CustomDashboard = () => {
 								<CardTitle>Integrations</CardTitle>
 							</CardLabel>
 							<CardActions>
-								<Button color='info' isLight icon='PublishedWithChanges'>
+								<Button color='info' isLight icon='Add'>
 									Add New
 								</Button>
 							</CardActions>
@@ -1258,7 +1273,7 @@ const CustomDashboard = () => {
 							</div>
 							<div className='fw-bold fs-4 p-3'>WhatsApp Support</div>
 							<div className='p-3'>
-								<Button icon='CustomWhatsapp' color='primary'>
+								<Button icon='Whatsapp' className='bg-color-secondary2'>
 									Request Professional Support
 								</Button>
 							</div>

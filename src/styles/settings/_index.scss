@@ -192,7 +192,8 @@ $table-modern-cell-vertical-align: middle !default;
 
 $table-striped-color: $table-color;
 $table-striped-bg-factor: 0.0375;
-$table-striped-bg: rgba($black, $table-striped-bg-factor);
+// $table-striped-bg: rgba($black, $table-striped-bg-factor);
+$table-striped-bg: $secondary2;
 $dark-table-striped-color: $dark-table-color !default;
 $dark-table-striped-bg-factor: 0.0375 !default;
 $dark-table-striped-bg: rgba($white, $dark-table-striped-bg-factor) !default;
