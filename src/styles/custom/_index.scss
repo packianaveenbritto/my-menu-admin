@@ -105,8 +105,13 @@
 .ml-5 {
 	margin-left: 5px;
 }
+.ml-10 {
+	margin-left: 10px;
+}
 
 .section-seperate {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
 	border: 1px solid var(--unnamed-color-707070);
 	border: 1px solid #707070;
 	opacity: 1;
@@ -173,4 +178,32 @@
 	color: #ffffff;
 	background: #f35421 0% 0% no-repeat padding-box;
 	font-size: 12px;
+}
+
+.settings-online-menu-qr-card {
+	height: 170px;
+	background: rgba(235, 228, 213, 0.2);
+	border-radius: 8px;
+	align-items: center;
+	justify-content: center;
+	div {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	label {
+		color: $primary;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+}
+
+.custom-check-box {
+	padding-left: 3px;
+	.form-check-input {
+		transform: scale(1.4);
+	}
+	.form-check-label {
+		margin-left: 5px;
+		font-size: 14px;
+	}
 }

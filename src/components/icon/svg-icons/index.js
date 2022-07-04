@@ -22,3 +22,4 @@ export { default as CustomCut } from './CustomCut';
 export { default as CustomMenuIcon } from './CustomMenuIcon';
 export { default as CustomEnvelop } from './CustomEnvelop';
 export { default as CustomFaceBook1 } from './CustomFaceBook1';
+export { default as CustomLorryIcon } from './CustomLorryIcon';

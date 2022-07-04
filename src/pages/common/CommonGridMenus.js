@@ -122,13 +122,7 @@ const CommonGridMenus = ({
 				</CardActions>
 			</CardHeader>
 			<CardBody>
-				<img
-					src={img}
-					alt=''
-					width={128}
-					height={128}
-					className='mx-auto d-block img-fluid mb-3'
-				/>
+				<img src={img} alt='' className='mx-auto d-block img-fluid mb-3' />
 				<div className='row align-items-center'>
 					<div className='col'>Monthly sales</div>
 					<div className='col-auto'>

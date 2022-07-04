@@ -8,6 +8,7 @@
 import React, { useState } from 'react';
 import Button, { ButtonGroup } from '../../components/bootstrap/Button';
 import CommonAvatarTeam from '../../components/common/CommonAvatarTeam';
+import SubHeaderRightButtons from '../../components/common/SubHeaderRightButtons';
 import useDarkMode from '../../hooks/useDarkMode';
 import Page from '../../layout/Page/Page';
 import PageWrapper from '../../layout/PageWrapper/PageWrapper';
@@ -29,6 +30,12 @@ const SettingPage = () => {
 		SETTINGS3: 'QR Menu',
 		SETTINGS4: 'Online Menu',
 	};
+	const SubHeaderRightValues = [
+		{ id: 1, name: 'Help' },
+		{ id: 2, name: 'Upgrade' },
+		{ id: 3, name: 'Explore' },
+		{ id: 4, name: 'Switch Account' },
+	];
 	const [activeTab, setActiveTab] = useState(TABS.SETTINGS1);
 	// eslint-disable-next-line no-unused-vars
 	const { themeStatus, darkModeStatus } = useDarkMode(TABS.SETTINGS1);
@@ -53,30 +60,7 @@ const SettingPage = () => {
 				</SubHeaderLeft>
 				<SubHeaderRight>
 					<CommonAvatarTeam>
-						<span
-							className='text-success fs-6 fw-normal'
-							style={{ 'margin-right': '20px' }}
-							role={'button'}>
-							Help
-						</span>
-						<span
-							className='text-success fs-6 fw-normal'
-							style={{ 'margin-right': '20px' }}
-							role={'button'}>
-							Upgrade
-						</span>
-						<span
-							className='text-success fs-6 fw-normal'
-							style={{ 'margin-right': '20px' }}
-							role={'button'}>
-							Explore
-						</span>
-						<span
-							className='text-success fs-6 fw-normal'
-							style={{ 'margin-right': '20px' }}
-							role={'button'}>
-							Switch Account
-						</span>
+						<SubHeaderRightButtons buttons={SubHeaderRightValues} />
 					</CommonAvatarTeam>
 				</SubHeaderRight>
 			</SubHeader>
