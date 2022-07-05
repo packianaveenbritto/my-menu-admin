@@ -24,3 +24,6 @@ export { default as CustomEnvelop } from './CustomEnvelop';
 export { default as CustomFaceBook1 } from './CustomFaceBook1';
 export { default as CustomLorryIcon } from './CustomLorryIcon';
 export { default as CustomExclamation } from './CustomExclamation';
+export { default as Undo } from './Undo';
+export { default as Redo } from './Redo';
+export { default as Ecllips } from './Ecllips';

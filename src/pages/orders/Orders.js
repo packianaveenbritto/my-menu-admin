@@ -11,7 +11,6 @@ import SubHeader, {
 	SubHeaderRight,
 	SubheaderSeparator,
 } from '../../layout/SubHeader/SubHeader';
-import { dashboardMenu } from '../../menu';
 import Page from '../../layout/Page/Page';
 import Button, { ButtonGroup } from '../../components/bootstrap/Button';
 import Input from '../../components/bootstrap/forms/Input';
@@ -66,7 +65,7 @@ const Orders = () => {
 						))}
 					</ButtonGroup>
 					<SubheaderSeparator />
-					<Button color='success' tag='a' to={`../${dashboardMenu.orderReports.path}`}>
+					<Button color='success' tag='a' to='../orders/reports'>
 						Reports
 					</Button>
 				</SubHeaderLeft>

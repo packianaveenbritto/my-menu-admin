@@ -52,13 +52,6 @@ export const dashboardMenu = {
 		icon: 'AddShoppingCart',
 		subMenu: null,
 	},
-	orderReports: {
-		id: 'orderReports',
-		text: 'Order Reports',
-		path: 'orders/reports',
-		subMenu: null,
-		hide: true,
-	},
 	// dashboardBooking: {
 	// 	id: 'dashboard-booking',
 	// 	text: 'Dashboard Booking',
@@ -79,6 +72,13 @@ export const dashboardMenu = {
 		icon: 'sticky_note_2',
 		subMenu: null,
 	},
+	// orderReports: {
+	// 	id: 'orderReports',
+	// 	text: 'Order Reports',
+	// 	path: 'orders/reports',
+	// 	subMenu: null,
+	// 	hide: true,
+	// },
 };
 
 export const marketing = {

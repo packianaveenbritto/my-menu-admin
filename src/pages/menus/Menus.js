@@ -20,13 +20,13 @@ import Button, { ButtonGroup } from '../../components/bootstrap/Button';
 import tableData from '../../common/data/dummyProductData';
 import CommonGridMenus from '../common/CommonGridMenus';
 import PaginationButtons, { dataPagination, PER_COUNT } from '../../components/PaginationButtons';
-import Modal, { ModalBody, ModalFooter, ModalHeader } from '../../components/bootstrap/Modal';
+import Modal, { ModalBody, ModalHeader } from '../../components/bootstrap/Modal';
 import FormGroup from '../../components/bootstrap/forms/FormGroup';
 import Input from '../../components/bootstrap/forms/Input';
 import Select from '../../components/bootstrap/forms/Select';
-// import Textarea from '../../components/bootstrap/forms/Textarea';
 import Checks from '../../components/bootstrap/forms/Checks';
 import PlaceholderImage from '../../components/extras/PlaceholderImage';
+import Label from '../../components/bootstrap/forms/Label';
 import {
 	// OffCanvasBody,
 	// OffCanvasHeader,
@@ -45,47 +45,9 @@ import {
 	CardTitle,
 } from '../../components/bootstrap/Card';
 import Icon from '../../components/icon/Icon';
-// import Card, {
-// 	CardActions,
-// 	CardBody,
-// 	CardHeader,
-// 	CardLabel,
-// 	CardSubTitle,
-// 	CardTitle,
-// } from '../../components/bootstrap/Card';
-// import Chart from '../../components/extras/Chart';
-
-// import Dropdown, {
-// 	DropdownItem,
-// 	DropdownMenu,
-// 	DropdownToggle,
-// } from '../../components/bootstrap/Dropdown';
-// import Alert, { AlertHeading } from '../../components/bootstrap/Alert';
-// import Icon from '../../components/icon/Icon';
-// import Badge from '../../components/bootstrap/Badge';
-
 import Popovers from '../../components/bootstrap/Popovers';
 import CommonAvatarTeam from '../../components/common/CommonAvatarTeam';
-// import CommonMyWallet from '../common/CommonMyWallet';
-
-// import Company1 from '../../assets/logos/company1.png';
-// import Company2 from '../../assets/logos/company2.png';
-// import Company3 from '../../assets/logos/company3.png';
-// import Company4 from '../../assets/logos/company4.png';
-
-// import UserContact from '../../components/UserContact';
-// import Avatar, { AvatarGroup } from '../../components/Avatar';
-// import USERS from '../../common/data/userDummyData';
-// import { demoPages } from '../../menu';
-// import data from '../../common/data/dummyProductData';
-// import { average, priceFormat } from '../../helpers/helpers';
-// import PercentComparison from '../../components/extras/PercentComparison';
-// import PaginationButtons, { dataPagination, PER_COUNT } from '../../components/PaginationButtons';
-// import useSortableData from '../../hooks/useSortableData';
 import useDarkMode from '../../hooks/useDarkMode';
-// import Pagination, { PaginationItem } from '../../components/bootstrap/Pagination';
-// import Timeline, { TimelineItem } from '../../components/extras/Timeline';
-// import CommonTodo from '../common/CommonTodo';
 
 const validate = (values) => {
 	const errors = {};
@@ -186,6 +148,8 @@ const Menus = () => {
 	const handleUpcomingEdit = () => {
 		setUpcomingEventsEditOffcanvas(!upcomingEventsEditOffcanvas);
 	};
+	const [showImg, setShowImg] = useState(true);
+
 	return (
 		<PageWrapper>
 			<SubHeader>
@@ -307,14 +271,16 @@ const Menus = () => {
 					isCentered
 					isScrollable
 					size='lg'>
-					<ModalHeader setIsOpen={setUpcomingEventsEditOffcanvas}>
+					<ModalHeader
+						setIsOpen={setUpcomingEventsEditOffcanvas}
+						style={{ backgroundColor: process.env.REACT_APP_SECONDARY2_COLOR }}>
 						<OffCanvasTitle id='upcomingEdit'>New Menu</OffCanvasTitle>
 					</ModalHeader>
-					<ModalBody>
+					<ModalBody style={{ backgroundColor: process.env.REACT_APP_SECONDARY2_COLOR }}>
 						<div className='row g-4'>
 							<div className='col-7'>
 								<div className='row'>
-									<div className='col-12'>
+									<div className='col-12 my-2'>
 										<FormGroup id='title' label='Menu Title'>
 											<Input
 												placeholder='Menu Title'
@@ -323,7 +289,7 @@ const Menus = () => {
 											/>
 										</FormGroup>
 									</div>
-									<div className='col-12'>
+									<div className='col-12 mb-2'>
 										<FormGroup id='description' label='Description'>
 											<Input
 												placeholder='Description'
@@ -332,16 +298,7 @@ const Menus = () => {
 											/>
 										</FormGroup>
 									</div>
-									<div className='col-12'>
-										<FormGroup id='availability' label='Availability'>
-											<Input
-												placeholder='Availability'
-												// onChange={formik.handleChange}
-												// value={formik.values.location}
-											/>
-										</FormGroup>
-									</div>
-									<div className='col-12'>
+									<div className='col-12 mb-2'>
 										<FormGroup id='availability' label='Availability'>
 											<Select id='example' placeholder='--Select--' />
 										</FormGroup>
@@ -350,7 +307,7 @@ const Menus = () => {
 										<Checks label='Sunday' />
 									</div>
 									<div className='col-4'>
-										<FormGroup id='sunFTime' label='Time'>
+										<FormGroup id='sunFTime'>
 											<Input
 												placeholder='Time'
 												onChange={formik.handleChange}
@@ -360,7 +317,7 @@ const Menus = () => {
 										</FormGroup>
 									</div>
 									<div className='col-4'>
-										<FormGroup id='sunTTime' label='Time'>
+										<FormGroup id='sunTTime'>
 											<Input
 												placeholder='Time'
 												onChange={formik.handleChange}
@@ -373,7 +330,7 @@ const Menus = () => {
 										<Checks label='MonDay' />
 									</div>
 									<div className='col-4'>
-										<FormGroup id='monFTime' label='Time'>
+										<FormGroup id='monFTime'>
 											<Input
 												placeholder='Time'
 												onChange={formik.handleChange}
@@ -383,7 +340,7 @@ const Menus = () => {
 										</FormGroup>
 									</div>
 									<div className='col-4'>
-										<FormGroup id='monTTime' label='Time'>
+										<FormGroup id='monTTime'>
 											<Input
 												placeholder='Time'
 												onChange={formik.handleChange}
@@ -396,7 +353,7 @@ const Menus = () => {
 										<Checks label='Tuesday' />
 									</div>
 									<div className='col-4'>
-										<FormGroup id='tueFTime' label='Time'>
+										<FormGroup id='tueFTime'>
 											<Input
 												placeholder='Time'
 												onChange={formik.handleChange}
@@ -406,7 +363,7 @@ const Menus = () => {
 										</FormGroup>
 									</div>
 									<div className='col-4'>
-										<FormGroup id='tueTTime' label='Time'>
+										<FormGroup id='tueTTime'>
 											<Input
 												placeholder='Time'
 												onChange={formik.handleChange}
@@ -419,7 +376,7 @@ const Menus = () => {
 										<Checks label='WednesDay' />
 									</div>
 									<div className='col-4'>
-										<FormGroup id='wedFTime' label='Time'>
+										<FormGroup id='wedFTime'>
 											<Input
 												placeholder='Time'
 												onChange={formik.handleChange}
@@ -429,7 +386,7 @@ const Menus = () => {
 										</FormGroup>
 									</div>
 									<div className='col-4'>
-										<FormGroup id='wedTTime' label='Time'>
+										<FormGroup id='wedTTime'>
 											<Input
 												placeholder='Time'
 												onChange={formik.handleChange}
@@ -442,7 +399,7 @@ const Menus = () => {
 										<Checks label='Thursday' />
 									</div>
 									<div className='col-4'>
-										<FormGroup id='thuFTime' label='Time'>
+										<FormGroup id='thuFTime'>
 											<Input
 												placeholder='Time'
 												onChange={formik.handleChange}
@@ -452,7 +409,7 @@ const Menus = () => {
 										</FormGroup>
 									</div>
 									<div className='col-4'>
-										<FormGroup id='thuTTime' label='Time'>
+										<FormGroup id='thuTTime'>
 											<Input
 												placeholder='Time'
 												onChange={formik.handleChange}
@@ -465,7 +422,7 @@ const Menus = () => {
 										<Checks label='Friday' />
 									</div>
 									<div className='col-4'>
-										<FormGroup id='friFTime' label='Time'>
+										<FormGroup id='friFTime'>
 											<Input
 												placeholder='Time'
 												onChange={formik.handleChange}
@@ -475,7 +432,7 @@ const Menus = () => {
 										</FormGroup>
 									</div>
 									<div className='col-4'>
-										<FormGroup id='friTTime' label='Time'>
+										<FormGroup id='friTTime'>
 											<Input
 												placeholder='Time'
 												onChange={formik.handleChange}
@@ -488,7 +445,7 @@ const Menus = () => {
 										<Checks label='Saturday' />
 									</div>
 									<div className='col-4'>
-										<FormGroup id='satFTime' label='Time'>
+										<FormGroup id='satFTime'>
 											<Input
 												placeholder='Time'
 												onChange={formik.handleChange}
@@ -498,7 +455,7 @@ const Menus = () => {
 										</FormGroup>
 									</div>
 									<div className='col-4'>
-										<FormGroup id='satTTime' label='Time'>
+										<FormGroup id='satTTime'>
 											<Input
 												placeholder='Time'
 												onChange={formik.handleChange}
@@ -510,59 +467,72 @@ const Menus = () => {
 								</div>
 							</div>
 							<div className='col-5'>
+								<strong>Image</strong>
 								<div className='row'>
-									<div>Display Image</div>
-									{/* <Checks  /> */}
-									<div className='col'>
-										{/* {editItem?.image ? (
-											<img
-												src={editItem.image}
-												alt=''
+									<div className='col-5'>
+										<Label>Display Image</Label>
+									</div>
+									<div className='col-7'>
+										<Checks
+											checked={showImg}
+											id='example'
+											name='example'
+											type='switch'
+											onChange={() => {
+												setShowImg(!showImg);
+											}}
+										/>
+									</div>
+								</div>
+								{showImg ? (
+									<div
+										className='row'
+										style={{
+											border: `2px dashed ${process.env.REACT_APP_PRIMARY_COLOR}`,
+										}}>
+										<div className='col align-self-center'>
+											<PlaceholderImage
 												width={128}
 												height={128}
-												className='mx-auto d-block img-fluid mb-3'
+												className='mx-auto d-block img-fluid rounded'
 											/>
-										) : ( */}
-										<PlaceholderImage
-											width={128}
-											height={128}
-											className='mx-auto d-block img-fluid mb-3 rounded'
-										/>
-										{/* )} */}
-									</div>
-									<div className='col-lg-8'>
-										<div className='row g-4'>
-											<div className='col-12'>
-												<Input type='file' autoComplete='photo' />
-											</div>
-											<div className='col-12'>
-												<Button
-													color='dark'
-													isLight
-													icon='Delete'
-													onClick={() => {
-														setEditItem({
-															...editItem,
-															image: null,
-														});
-													}}>
-													Delete Image
-												</Button>
-											</div>
 										</div>
+										<div className='col-1 align-self-end'>
+											<Icon icon='Trash' />
+										</div>
+									</div>
+								) : (
+									''
+								)}
+								<div className='text-primary my-2'>
+									{' '}
+									Image Recomended Size:{' '}
+									<span className='text-dark'>1080 px X 1920px</span>
+								</div>
+								<strong>PDF Menu</strong>
+								<div className='logo-drag-drop mb-3'>img</div>
+
+								<FormGroup>
+									<Button className='mb-2' color='success'>
+										Browse
+									</Button>
+								</FormGroup>
+
+								<div className='row'>
+									<div className='col'>
+										<Button color='info' className='w-100'>
+											Cancel
+										</Button>
+									</div>
+									<div className='col'>
+										<Button color='info' className='w-100'>
+											Create
+										</Button>
 									</div>
 								</div>
 							</div>
 						</div>
 					</ModalBody>
-					<ModalFooter className='bg-transparent'>
-						<Button
-							color='info'
-							className='w-100'
-							onClick={() => setUpcomingEventsEditOffcanvas(false)}>
-							Save
-						</Button>
-					</ModalFooter>
 				</Modal>
 			</Page>
 		</PageWrapper>
