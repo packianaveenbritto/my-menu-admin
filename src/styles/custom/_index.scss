@@ -31,28 +31,16 @@
 .custom-card {
 	width: 153px;
 	height: 153px;
-	/* UI Properties */
-	background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-	background: #ffffff 0% 0% no-repeat padding-box;
-	box-shadow: 0px 40px 50px #7070701a;
-	border: 1px solid #7070704d;
-	border-radius: 13px;
 	opacity: 1;
 	align-items: center;
 	justify-content: center;
 }
 
 .custom-card-chart {
-	height: 153px;
-	/* UI Properties */
-	background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-	background: #ffffff 0% 0% no-repeat padding-box;
-	box-shadow: 0px 40px 50px #7070701a;
-	border: 1px solid #7070704d;
-	border-radius: 13px;
-	opacity: 1;
-	justify-content: center;
-	padding-left: 2rem;
+	min-height: 153px;
+	align-items: center;
+	display: flex;
+	margin-left: 0.7rem;
 }
 
 .custom-card-with-shaddow {
@@ -208,11 +196,18 @@
 	}
 }
 
+.support-details {
+	margin-top: 75px;
+}
+
 @media only screen and (max-width: 1200px) {
 	.vert-seperator {
 		display: none;
 	}
-	.res-margin{
-		margin-top: 2rem;
+	.res-margin {
+		margin-top: 1rem;
+	}
+	.support-details {
+		margin-top: 0.8rem;
 	}
 }

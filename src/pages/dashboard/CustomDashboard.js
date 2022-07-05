@@ -452,7 +452,7 @@ const CustomDashboard = () => {
 				<SubHeaderLeft>
 					<span className='h4 mb-0 fw-bold'>Dashboard</span>
 					<SubheaderSeparator />
-					<ButtonGroup>
+					<ButtonGroup className='res-margin'>
 						{Object.keys(TABS).map((key) => (
 							<Button
 								icon
@@ -467,44 +467,49 @@ const CustomDashboard = () => {
 
 					<SubheaderSeparator />
 
-					<ButtonGroup>
-						<span className='h5 mb-0 fw-bold'>Preview</span>
-						<div className='col-auto ms-3'>
+					<ButtonGroup className='d-flex'>
+						<div className='col-6 p-2'>
+							<span className='h5 mb-0 fw-bold'>Preview</span>
+						</div>
+						<div className='col-auto p-2'>
 							<Popovers trigger='hover' desc='QR Menu Preview' flip='bottom'>
-								<img src={icEcommerceQr} width='100%' alt='' />
+								<img src={icEcommerceQr} width='80%' alt='' />
 							</Popovers>
 						</div>
-						<div className='col-auto ms-3'>
-							<Popovers trigger='hover' desc='Preview in Device' flip='bottom'>
-								<img src={icDevicesIpad} width='100%' alt='' />
+						<div className='col-auto p-2'>
+							<Popovers trigger='hover' desc='QR Menu Preview' flip='bottom'>
+								<img src={icDevicesIpad} width='80%' alt='' />
 							</Popovers>
 						</div>
-						<div className='col-auto ms-3'>
-							<Popovers trigger='hover' desc='Preview Online' flip='bottom'>
-								<img src={icActionsCode} width='100%' alt='' />
+						<div className='col-auto p-2'>
+							<Popovers trigger='hover' desc='QR Menu Preview' flip='bottom'>
+								<img src={icActionsCode} width='80%' alt='' />
 							</Popovers>
 						</div>
 					</ButtonGroup>
 					<SubheaderSeparator />
 
-					<ButtonGroup>
-						<span className='h5 mb-0 fw-bold'>Connect</span>
-						<div className='col-auto ms-3'>
+					<ButtonGroup className='d-flex'>
+						<div className='col-6 p-2'>
+							<span className='h5 mb-0 fw-bold'>Connect</span>
+						</div>
+						<div className='col-auto p-2'>
 							<Popovers trigger='hover' desc='QR Menu Preview' flip='bottom'>
-								<img src={icEcommerceQr} width='100%' alt='' />
+								<img src={icEcommerceQr} width='80%' alt='' />
 							</Popovers>
 						</div>
-						<div className='col-auto ms-3'>
-							<Popovers trigger='hover' desc='Preview in Device' flip='bottom'>
-								<img src={icDevicesIpad} width='100%' alt='' />
+						<div className='col-auto p-2'>
+							<Popovers trigger='hover' desc='QR Menu Preview' flip='bottom'>
+								<img src={icDevicesIpad} width='80%' alt='' />
 							</Popovers>
 						</div>
-						<div className='col-auto ms-3'>
-							<Popovers trigger='hover' desc='Preview Online' flip='bottom'>
-								<img src={icActionsCode} width='100%' alt='' />
+						<div className='col-auto p-2'>
+							<Popovers trigger='hover' desc='QR Menu Preview' flip='bottom'>
+								<img src={icActionsCode} width='80%' alt='' />
 							</Popovers>
 						</div>
 					</ButtonGroup>
+					<SubheaderSeparator />
 				</SubHeaderLeft>
 
 				<SubHeaderRight>
@@ -512,7 +517,7 @@ const CustomDashboard = () => {
 						<div className='col-auto'>
 							<SubHeaderRightButtons buttons={SubHeaderRightValues} />
 						</div>
-						<div className='col-auto'>
+						<div className='col-auto res-margin'>
 							{' '}
 							<CommonAvatarTeam />
 						</div>
@@ -537,7 +542,7 @@ const CustomDashboard = () => {
 					</div>
 
 					<Card>
-						<div className='row  p-4'>
+						<div className='row justify-content-between p-4 '>
 							<div className='col-xl-4 d-flex align-items-center '>
 								<div className='d-flex col-11'>
 									<CardLabel icon='CustomMenuIcon' className='p-3 '>
@@ -565,7 +570,30 @@ const CustomDashboard = () => {
 								<SubheaderSeparator className='vert-seperator me-5' />
 							</div>
 
-							<div className='col-xl-4  d-flex flex-column justify-content-center res-margin'>
+							<div className='col-xl-4 d-flex align-items-center res-margin'>
+								<CardBody>
+									<div className='d-flex  align-items-center'>
+										<div className='d-flex col-8'>
+											<Icon icon='CustomEnvelop' />
+											<div className='h5'>Email Verification</div>
+										</div>
+										<div className='ms-2 d-flex justify-content-end'>
+											<Icon icon='CustomExclamation' />
+											<span className='text-danger'>Pending</span>
+										</div>
+									</div>
+									<div className='d-flex  align-items-center'>
+										<div className='col-8'>
+											<Input type='text' />
+										</div>
+										<div className='ms-2 d-flex justify-content-end'>
+											<Button color='primary'>Resend Email</Button>
+										</div>
+									</div>
+								</CardBody>
+								{/* <SubheaderSeparator className='vert-seperator me-5' /> */}
+							</div>
+							{/* <div className='col-xl-4  d-flex flex-column justify-content-center res-margin'>
 								<div className='d-flex  align-items-center'>
 									<div className='d-flex col-7'>
 										<Icon icon='CustomEnvelop' />
@@ -584,7 +612,7 @@ const CustomDashboard = () => {
 										<Button color='primary'>Resend Email</Button>
 									</div>
 								</div>
-							</div>
+							</div> */}
 						</div>
 					</Card>
 					<span className='fw-bold fs-4 mb-3'>
@@ -785,13 +813,41 @@ const CustomDashboard = () => {
 						</div>
 					</div>
 
+					{/* <div className='col-xl-4'>
+						<div className='mb-2'>
+							<span className='h5 fw-bold'>Total Customers</span>
+						</div>
+						<div className='custom-card-chart'>
+							<div className='col-auto'>
+								<div className='bg-l25-primary card-with-number'>
+									<div style={{ 'text-align': 'end' }}>
+										<Button
+											icon='CustomMoreVert'
+											color='bg-l25-primary'
+											shadow='default'
+											hoverShadow='none'
+										/>
+									</div>
+									<div className='fw-bold fs-4'>000</div>
+								</div>
+							</div>
+							<div className='col-auto ms-5'>
+								<Chart
+									series={fee.series}
+									options={fee.options}
+									type='area'
+									height={70}
+								/>
+							</div>
+						</div>
+					</div> */}
 					<div className='col-xl-4'>
 						<div className='mb-2'>
 							<span className='h5 fw-bold'>Total Customers</span>
 						</div>
-						<div>
-							<Card className='custom-card-chart'>
-								<div className='row align-items-center;'>
+						<Card>
+							<CardBody className='custom-card-chart'>
+								<div className='row align-items-center'>
 									<div className='col-auto'>
 										<div className='bg-l25-primary card-with-number'>
 											<div style={{ 'text-align': 'end' }}>
@@ -805,18 +861,19 @@ const CustomDashboard = () => {
 											<div className='fw-bold fs-4'>000</div>
 										</div>
 									</div>
-									<div className='col-auto'>
+									<div className='col-auto res-margin'>
 										<Chart
 											series={fee.series}
 											options={fee.options}
 											type='area'
-											height={70}
+											height={60}
 										/>
 									</div>
 								</div>
-							</Card>
-						</div>
+							</CardBody>
+						</Card>
 					</div>
+
 					<div className='col-xl-4'>
 						<Card>
 							<CardHeader>
@@ -1265,7 +1322,7 @@ const CustomDashboard = () => {
 						/>
 					</div>
 
-					<div className='col-xl-8' style={{ height: '641px' }}>
+					<div className='col-xl-8'>
 						<CardHeader className='px-0 bg-transparent'>
 							<CardLabel>
 								<CardTitle>Integrations</CardTitle>
@@ -1301,8 +1358,8 @@ const CustomDashboard = () => {
 							middleText='Payment Solution'
 						/>
 					</div>
-					<div className='col-xl-4'>
-						<Card style={{ height: '510px', marginTop: '75px' }}>
+					<div className='col-xl-4 support-details'>
+						<Card style={{ height: '510px' }}>
 							<div className='fw-bold fs-4 p-3'>Support</div>
 							<div className='p-3'>
 								<Button color='primary'>Request Professional Support</Button>
@@ -1329,14 +1386,14 @@ const CustomDashboard = () => {
 								</div>
 							</div>
 							<div className='fw-bold fs-4 p-3'>App Download Links</div>
-							<div className='d-flex'>
-								<div className='p-2'>
+							<div className='row ms-2'>
+								<div className='p-2 col-auto'>
 									<img src={storeLogoApple} alt='' />
 								</div>
-								<div className='p-2'>
+								<div className='p-2 col-auto'>
 									<img src={storeLogoPlay} alt='' />
 								</div>
-								<div className='p-2'>
+								<div className='p-2 col-auto'>
 									<img src={storeLogoAndroid} alt='' />
 								</div>
 							</div>
