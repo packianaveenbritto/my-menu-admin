@@ -183,6 +183,10 @@ const EXTRA = {
 	HOOKS: lazy(() => import('../pages/documentation/extras/HooksPage')),
 };
 
+const MENU_EDITOR = {
+	MENU_EDITOR_MAIN: lazy(() => import('../pages/menuEditor/MenuEditor'))
+}
+
 const presentation = [
 	/**
 	 * Landing
@@ -203,7 +207,7 @@ const presentation = [
 		exact: true,
 	},
 	{
-		path: dashboardMenu.orderReports.path,
+		path: 'orders/reports',
 		element: <LANDING.ORDERS_REPORTS />,
 		exact: true,
 	},
@@ -221,6 +225,14 @@ const presentation = [
 	{
 		path: marketing.campaigns.path,
 		element: <MRKETING.CAMPAIGNS />,
+		exact: true,
+	},
+	/**
+	 * Menu Editor
+	 */
+	{
+		path: 'menu_editor/items',
+		element: <MENU_EDITOR.MENU_EDITOR_MAIN />,
 		exact: true,
 	},
 	/**

@@ -42,12 +42,17 @@ const headers = [
 		exact: true,
 	},
 	{
-		path: dashboardMenu.orderReports.path,
+		path: 'orders/reports',
 		element: <DashboardHeader />,
 		exact: true,
 	},
 	{
 		path: marketing.campaigns.path,
+		element: <DashboardHeader />,
+		exact: true,
+	},
+	{
+		path: 'menu_editor/items',
 		element: <DashboardHeader />,
 		exact: true,
 	},
