@@ -207,3 +207,12 @@
 		font-size: 14px;
 	}
 }
+
+@media only screen and (max-width: 1200px) {
+	.vert-seperator {
+		display: none;
+	}
+	.res-margin{
+		margin-top: 2rem;
+	}
+}

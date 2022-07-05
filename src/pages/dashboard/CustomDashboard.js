@@ -52,10 +52,12 @@ import PaginationButtons, { dataPagination, PER_COUNT } from '../../components/P
 import useSortableData from '../../hooks/useSortableData';
 import useDarkMode from '../../hooks/useDarkMode';
 import Timeline, { TimelineItem } from '../../components/extras/Timeline';
+// eslint-disable-next-line no-unused-vars
 import Progress from '../../components/bootstrap/Progress';
 import CommonGridMenus from '../common/CommonGridMenus';
 import CustomTransferAction from '../../components/CustomTransferAction';
 import CardWithNumbrrAndButton from '../../components/custom/CardWithNumbrrAndButton';
+// eslint-disable-next-line no-unused-vars
 import Input from '../../components/bootstrap/forms/Input';
 import facebookIcon from '../../assets/img/custom/facebook-icon.svg';
 import twitterIcon from '../../assets/img/custom/twitter-icon.svg';
@@ -460,48 +462,61 @@ const CustomDashboard = () => {
 								{TABS[key]}
 							</Button>
 						))}
+						<Button icon='add' />
 					</ButtonGroup>
-					<span className='h4 mb-0 fw-normal'>+</span>
+
 					<SubheaderSeparator />
-					<span className='h5 mb-0 fw-normal'>Preview</span>
-					<div className='col-auto'>
-						<Popovers trigger='hover' desc='QR Menu Preview' flip='bottom'>
-							<img src={icEcommerceQr} width='100%' alt='' />
-						</Popovers>
-					</div>
-					<div className='col-auto'>
-						<Popovers trigger='hover' desc='Preview in Device' flip='bottom'>
-							<img src={icDevicesIpad} width='100%' alt='' />
-						</Popovers>
-					</div>
-					<div className='col-auto'>
-						<Popovers trigger='hover' desc='Preview Online' flip='bottom'>
-							<img src={icActionsCode} width='100%' alt='' />
-						</Popovers>
-					</div>
+
+					<ButtonGroup>
+						<span className='h5 mb-0 fw-bold'>Preview</span>
+						<div className='col-auto ms-3'>
+							<Popovers trigger='hover' desc='QR Menu Preview' flip='bottom'>
+								<img src={icEcommerceQr} width='100%' alt='' />
+							</Popovers>
+						</div>
+						<div className='col-auto ms-3'>
+							<Popovers trigger='hover' desc='Preview in Device' flip='bottom'>
+								<img src={icDevicesIpad} width='100%' alt='' />
+							</Popovers>
+						</div>
+						<div className='col-auto ms-3'>
+							<Popovers trigger='hover' desc='Preview Online' flip='bottom'>
+								<img src={icActionsCode} width='100%' alt='' />
+							</Popovers>
+						</div>
+					</ButtonGroup>
 					<SubheaderSeparator />
-					<span className='h5 mb-0 fw-normal'>Connect</span>
-					<div className='col-auto'>
-						<Popovers trigger='hover' desc='QR Menu Preview' flip='bottom'>
-							<img src={icEcommerceQr} width='100%' alt='' />
-						</Popovers>
-					</div>
-					<div className='col-auto'>
-						<Popovers trigger='hover' desc='Preview in Device' flip='bottom'>
-							<img src={icDevicesIpad} width='100%' alt='' />
-						</Popovers>
-					</div>
-					<div className='col-auto'>
-						<Popovers trigger='hover' desc='Preview Online' flip='bottom'>
-							<img src={icActionsCode} width='100%' alt='' />
-						</Popovers>
-					</div>
+
+					<ButtonGroup>
+						<span className='h5 mb-0 fw-bold'>Connect</span>
+						<div className='col-auto ms-3'>
+							<Popovers trigger='hover' desc='QR Menu Preview' flip='bottom'>
+								<img src={icEcommerceQr} width='100%' alt='' />
+							</Popovers>
+						</div>
+						<div className='col-auto ms-3'>
+							<Popovers trigger='hover' desc='Preview in Device' flip='bottom'>
+								<img src={icDevicesIpad} width='100%' alt='' />
+							</Popovers>
+						</div>
+						<div className='col-auto ms-3'>
+							<Popovers trigger='hover' desc='Preview Online' flip='bottom'>
+								<img src={icActionsCode} width='100%' alt='' />
+							</Popovers>
+						</div>
+					</ButtonGroup>
 				</SubHeaderLeft>
 
 				<SubHeaderRight>
-					<CommonAvatarTeam>
-						<SubHeaderRightButtons buttons={SubHeaderRightValues} />
-					</CommonAvatarTeam>
+					<div className='row align-items-center'>
+						<div className='col-auto'>
+							<SubHeaderRightButtons buttons={SubHeaderRightValues} />
+						</div>
+						<div className='col-auto'>
+							{' '}
+							<CommonAvatarTeam />
+						</div>
+					</div>
 				</SubHeaderRight>
 			</SubHeader>
 			<Page container='fluid'>
@@ -522,19 +537,24 @@ const CustomDashboard = () => {
 					</div>
 
 					<Card>
-						<div className='col-12 d-flex align-items-center'>
-							<div className='col-xl-4'>
-								<CardLabel icon='CustomMenuIcon' className='p-3 '>
-									<CardTitle tag='h4' className='h5 '>
-										Your MyMenu Current Plan
-									</CardTitle>
-									<CardSubTitle className='d-flex'>
-										FREE Trial | 10 Days Remaining{' '}
-									</CardSubTitle>
-								</CardLabel>
+						<div className='row  p-4'>
+							<div className='col-xl-4 d-flex align-items-center '>
+								<div className='d-flex col-11'>
+									<CardLabel icon='CustomMenuIcon' className='p-3 '>
+										<CardTitle tag='h4' className='h5 '>
+											Your MyMenu Current Plan
+										</CardTitle>
+										<CardSubTitle className='d-flex'>
+											FREE Trial | 10 Days Remaining{' '}
+										</CardSubTitle>
+									</CardLabel>
+								</div>
+								<div className='d-flex  justify-content-end'>
+									<SubheaderSeparator className='vert-seperator me-5' />
+								</div>
 							</div>
-							<SubheaderSeparator className='vert-seperator' />
-							<div className='col-xl-4 p-4'>
+
+							<div className='col-xl-4 d-flex align-items-center res-margin'>
 								<CardBody>
 									<div className='d-flex justify-content-between'>
 										<p>Complete Your Profile</p>
@@ -542,20 +562,28 @@ const CustomDashboard = () => {
 									</div>
 									<Progress value={90} />
 								</CardBody>
+								<SubheaderSeparator className='vert-seperator me-5' />
 							</div>
-							<SubheaderSeparator className='vert-seperator' />
-							<div className='col-xl-4'>
-								<CardLabel className='p-3 '>
-									<CardTitle tag='h4' className='h5 '>
-										<div className='d-flex'>
-											<Icon icon='CustomEnvelop' />
-											<div>Email Verification</div>
-										</div>
-									</CardTitle>
-									<CardSubTitle>
+
+							<div className='col-xl-4  d-flex flex-column justify-content-center res-margin'>
+								<div className='d-flex  align-items-center'>
+									<div className='d-flex col-7'>
+										<Icon icon='CustomEnvelop' />
+										<div className='h5'>Email Verification</div>
+									</div>
+									<div className='col-3 d-flex justify-content-end'>
+										<Icon icon='CustomExclamation' />
+										<span className='text-danger'>Pending</span>
+									</div>
+								</div>
+								<div className='d-flex  align-items-center'>
+									<div className='col-7'>
 										<Input type='text' />
-									</CardSubTitle>
-								</CardLabel>
+									</div>
+									<div className='col-3 d-flex justify-content-end'>
+										<Button color='primary'>Resend Email</Button>
+									</div>
+								</div>
 							</div>
 						</div>
 					</Card>
@@ -576,7 +604,7 @@ const CustomDashboard = () => {
 									</div>
 									<div style={{ marginTop: '40px' }}>
 										<div className='row'>
-											<div className='col-auto align-items-botte'>
+											<div className='col-auto align-items-bottem'>
 												<Button
 													color='info'
 													icon='Computer'
