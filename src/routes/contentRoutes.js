@@ -9,6 +9,7 @@ const LANDING = {
 	ORDERS: lazy(() => import('../pages/orders/Orders')),
 	ORDERS_REPORTS: lazy(() => import('../pages/orders/OrdersReports')),
 	SUMMARY: lazy(() => import('../pages/SummaryPage')),
+	TEST: lazy(() => import('../pages/test/Test')),
 };
 const SINGLE = {
 	BOXED: lazy(() => import('../pages/presentation/single-pages/SingleBoxedPage')),
@@ -214,6 +215,11 @@ const presentation = [
 	{
 		path: dashboardMenu.summary.path,
 		element: <LANDING.SUMMARY />,
+		exact: true,
+	},
+	{
+		path: 'test',
+		element: <LANDING.TEST />,
 		exact: true,
 	},
 
