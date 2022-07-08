@@ -25,9 +25,9 @@ const CustomGridView = ({ top, mid, bottem }) => {
 		return top.map((data) => {
 			// const image = require(`../../../assets/img/custom/food-plate.png`);
 			return (
-				<div key={data.id} className='col-4 p-2' style={{ width: '145px' }}>
+				<div key={data.id} className='col-4 mb-3' style={{ width: '149px' }}>
 					<div>
-						<img key={data.id} src={data.image} alt='' width={135} height={120} />
+						<img key={data.id} src={data.image} alt='' width={130} height={120} />
 					</div>
 					<div className='top-image-title'>{data.name}</div>
 					<div className='top-image-description'>{data.description}</div>
@@ -38,7 +38,7 @@ const CustomGridView = ({ top, mid, bottem }) => {
 
 	const renderMiddle = () => {
 		return (
-			<div className='p-2' style={{ width: '100%' }}>
+			<div  style={{ width: '100%' }}>
 				<img className='middle-image' src={mid} alt='' height={150} />
 			</div>
 		);
@@ -76,11 +76,11 @@ const CustomGridView = ({ top, mid, bottem }) => {
 				</ButtonGroup>
 			</div>
 			<div className='content-card p-4'>
-				<div>
+				<div className=' mb-3'>
 					<h4>Grid View</h4>
 				</div>
-				<div className='row mb-2'>{renderTop()}</div>
-				<div className='row mb-2'>{renderMiddle()}</div>
+				<div className='row mb-3'>{renderTop()}</div>
+				<div className='row mb-3'>{renderMiddle()}</div>
 				<div className='row'>{renderBottem()}</div>
 			</div>
 		</div>
