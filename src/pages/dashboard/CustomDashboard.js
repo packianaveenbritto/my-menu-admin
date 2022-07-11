@@ -813,42 +813,14 @@ const CustomDashboard = () => {
 						</div>
 					</div>
 
-					{/* <div className='col-xl-4'>
-						<div className='mb-2'>
-							<span className='h5 fw-bold'>Total Customers</span>
-						</div>
-						<div className='custom-card-chart'>
-							<div className='col-auto'>
-								<div className='bg-l25-primary card-with-number'>
-									<div style={{ 'text-align': 'end' }}>
-										<Button
-											icon='CustomMoreVert'
-											color='bg-l25-primary'
-											shadow='default'
-											hoverShadow='none'
-										/>
-									</div>
-									<div className='fw-bold fs-4'>000</div>
-								</div>
-							</div>
-							<div className='col-auto ms-5'>
-								<Chart
-									series={fee.series}
-									options={fee.options}
-									type='area'
-									height={70}
-								/>
-							</div>
-						</div>
-					</div> */}
 					<div className='col-xl-4'>
 						<div className='mb-2'>
 							<span className='h5 fw-bold'>Total Customers</span>
 						</div>
-						<Card>
-							<CardBody className='custom-card-chart'>
-								<div className='row align-items-center'>
-									<div className='col-auto'>
+						<Card className='custom-card-chart'>
+							<CardBody className='d-flex align-items-center'>
+								<div className='row align-items-end'>
+									<div className='col-sm-6'>
 										<div className='bg-l25-primary card-with-number'>
 											<div style={{ 'text-align': 'end' }}>
 												<Button
@@ -861,12 +833,14 @@ const CustomDashboard = () => {
 											<div className='fw-bold fs-4'>000</div>
 										</div>
 									</div>
-									<div className='col-auto res-margin'>
+									<div
+										className='col-sm-6 res-margin'
+										style={{ 'text-align': 'start' }}>
 										<Chart
 											series={fee.series}
 											options={fee.options}
 											type='area'
-											height={60}
+											height={80}
 										/>
 									</div>
 								</div>
