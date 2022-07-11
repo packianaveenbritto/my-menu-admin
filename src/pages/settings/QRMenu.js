@@ -20,7 +20,7 @@ import Icon from '../../components/icon/Icon';
 const QRMenu = () => {
 	return (
 		<div className='row'>
-			<div className='col-xl-6'>
+			<div className='col-lg-6'>
 				<h4 className='mb-4 fw-bold'>Welcome page</h4>
 				<FormGroup className='mb-3'>
 					<div className='d-flex align-items-center'>
@@ -473,10 +473,10 @@ const QRMenu = () => {
 				</div>
 			</div>
 
-			<div className='col-xl-6'>
-				<div className='d-flex justify-content-end'>
-					<div className='custom-qr-card '>
-						<div className='text-align-center'>
+			<div className='col-lg-6'>
+				<div className='custom-qr-card-container'>
+					<div className='custom-qr-card'>
+						{/* <div className='text-align-center'>
 							<div className='fs-4 fw-bold mb-3'>General QR</div>
 							<div className='mb-3'>
 								<img src={GeneralQr} alt='' />
@@ -487,9 +487,7 @@ const QRMenu = () => {
 							<div className='mb-3'>
 								<Button color='success'>Download</Button>
 							</div>
-							<div className='mb-3'>
-								Use general QR code to showcase your menu without ordering
-							</div>
+							
 
 							<div className='section-seperate mb-3' />
 
@@ -532,6 +530,44 @@ const QRMenu = () => {
 										</div>
 									</div>
 								</FormGroup>
+							</div>
+						</div> */}
+						<div className='fs-4 fw-bold custom-qr-card-items'>General QR</div>
+						<div>
+							<img src={GeneralQr} alt='' />
+						</div>
+						<div className='custom-qr-card-items' style={{ width: '90%' }}>
+							<p
+								className='fc-white'
+								style={{ textAlign: 'center', fontSize: '14px' }}>
+								https://qr.mydigimenu.com/ cc9eb4ac-a8a0- 4e4e-96f7-f5327a78359d
+							</p>
+						</div>
+						<div className='custom-qr-card-items'>
+							<Button color='success'>Download</Button>
+						</div>
+						<div className='custom-qr-card-items' style={{ width: '90%' }}>
+							<p style={{ textAlign: 'center', fontSize: '14px' }}>
+								Use general QR code to showcase your menu without ordering
+							</p>
+						</div>
+
+						<div className='section-seperate mb-3' style={{ width: '90%' }} />
+
+						<div className='custom-qr-card-items'>
+							<div className='fs-4 fw-bold mb-3'>QR code settings</div>
+						</div>
+						<div className='qr-code-settings-container'>
+							<div>
+								<div className='mb-3 mt-3'>
+									<Checks checked id='example' name='example' label='Show logo' />
+								</div>
+								<div className='mb-3'>
+									<Checks checked id='example' name='example' label='Show Venue name' />
+								</div>
+								<div className='mb-3'>
+									<Checks checked id='example' name='example' label='Show table name' />
+								</div>
 							</div>
 						</div>
 					</div>

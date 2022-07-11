@@ -17,24 +17,30 @@ const OnlineMenu = () => {
 	return (
 		<>
 			<SubHeader>
-				<div className='settings-online-menu-qr-card d-flex'>
-					<div>
+				<div className='settings-online-menu-qr-card'>
+					<div className='online-menu-qr-card-content'>
 						<img width={100} height={100} src={GeneralQr} alt='' />
 					</div>
-
-					<Label color='primary'>https://order.mydigimenu.com/panadura</Label>
-
-					<div>
-						<Button color='primary'>Copy</Button>
+					<div className='online-menu-qr-card-content'>
+						<Label className='color-primary'>
+							https://order.mydigimenu.com/panadura
+						</Label>
 					</div>
-					<div>
-						<Button color='primary'>Download</Button>
+					<div className='online-menu-qr-card-content'>
+						<div className='d-flex'>
+							<div>
+								<Button color='primary'>Copy</Button>
+							</div>
+							<div className='ms-3'>
+								<Button color='primary'>Download</Button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</SubHeader>
 			<Page container='fluid'>
 				<div className='row'>
-					<div className='col-xl-5'>
+					<div className='col-md-5'>
 						<FormGroup className='mb-3'>
 							<div className='d-flex justify-content-start'>
 								<Checks className='fs-5' id='example' name='example' />
@@ -535,7 +541,10 @@ const OnlineMenu = () => {
 							<Button color='primary'>Save</Button>
 						</div>
 					</div>
-					<div className='col-xl-5 ms-5'>
+
+					<div className='col-md-1' />
+
+					<div className='col-md-5 setting-online-menu-res-margin'>
 						<FormGroup className='mb-3'>
 							<div className='d-flex justify-content-start'>
 								<Checks className='fs-5' id='example' name='example' />

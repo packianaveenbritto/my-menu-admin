@@ -59,9 +59,15 @@ const SettingPage = () => {
 					</ButtonGroup>
 				</SubHeaderLeft>
 				<SubHeaderRight>
-					<CommonAvatarTeam>
-						<SubHeaderRightButtons buttons={SubHeaderRightValues} />
-					</CommonAvatarTeam>
+					<div className='row align-items-center'>
+						<div className='col-auto'>
+							<SubHeaderRightButtons buttons={SubHeaderRightValues} />
+						</div>
+						<div className='col-auto res-margin'>
+							{' '}
+							<CommonAvatarTeam />
+						</div>
+					</div>
 				</SubHeaderRight>
 			</SubHeader>
 			<Page container='fluid'>
