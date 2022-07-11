@@ -49,34 +49,42 @@ const MenuEditorSubHeader = () => {
 				</ButtonGroup>
 				<span className='h4 mb-0 fw-normal'>+</span>
 				<SubheaderSeparator />
-				<span className='h5 mb-0 fw-normal'>Preview</span>
-				<div className='col-auto'>
-					<Popovers trigger='hover' desc='QR Menu Preview' flip='bottom'>
-						<img src={icEcommerceQr} width='100%' alt='' />
-					</Popovers>
-				</div>
-				<div className='col-auto'>
-					<Popovers trigger='hover' desc='Preview in Device' flip='bottom'>
-						<img src={icDevicesIpad} width='100%' alt='' />
-					</Popovers>
-				</div>
-				<div className='col-auto'>
-					<Popovers trigger='hover' desc='Preview Online' flip='bottom'>
-						<img src={icActionsCode} width='100%' alt='' />
-					</Popovers>
-				</div>
+				<ButtonGroup className='d-flex'>
+					<div className='col-6 p-2'>
+						<span className='h5 mb-0 fw-bold'>Preview</span>
+					</div>
+					<div className='col-auto p-2'>
+						<Popovers trigger='hover' desc='QR Menu Preview' flip='bottom'>
+							<img src={icEcommerceQr} width='80%' alt='' />
+						</Popovers>
+					</div>
+					<div className='col-auto p-2'>
+						<Popovers trigger='hover' desc='QR Menu Preview' flip='bottom'>
+							<img src={icDevicesIpad} width='80%' alt='' />
+						</Popovers>
+					</div>
+					<div className='col-auto p-2'>
+						<Popovers trigger='hover' desc='QR Menu Preview' flip='bottom'>
+							<img src={icActionsCode} width='80%' alt='' />
+						</Popovers>
+					</div>
+				</ButtonGroup>
 				<SubheaderSeparator />
-				<span className='h5 mb-0 fw-normal'>Saved</span>
-				<div className='col-auto'>
-					<Popovers trigger='hover' desc='Undo' flip='bottom'>
-						<img src={Undo} width='100%' alt='' />
-					</Popovers>
-				</div>
-				<div className='col-auto'>
-					<Popovers trigger='hover' desc='Redo' flip='bottom'>
-						<img src={Redo} width='100%' alt='' />
-					</Popovers>
-				</div>
+				<ButtonGroup className='d-flex'>
+					<div className='col-6 p-2'>
+						<span className='h5 mb-0 fw-bold'>Saved</span>
+					</div>
+					<div className='col-auto p-2'>
+						<Popovers trigger='hover' desc='Undo' flip='bottom'>
+							<img src={Undo} width='100%' alt='' />
+						</Popovers>
+					</div>
+					<div className='col-auto p-2'>
+						<Popovers trigger='hover' desc='Redo' flip='bottom'>
+							<img src={Redo} width='100%' alt='' />
+						</Popovers>
+					</div>
+				</ButtonGroup>
 			</SubHeaderLeft>
 
 			<SubHeaderRight>
@@ -91,8 +99,8 @@ const MenuEditorSubHeader = () => {
 					<DropdownMenu breakpoint='xl' />
 				</Dropdown>
 				<Button icon='SpaceDashboard' color='primary' isLight />
-                <SubheaderSeparator />
-                <Button className='sub-header-right-button-clicked'>Published</Button>
+				<SubheaderSeparator />
+				<Button className='sub-header-right-button-clicked'>Published</Button>
 			</SubHeaderRight>
 		</SubHeader>
 	);

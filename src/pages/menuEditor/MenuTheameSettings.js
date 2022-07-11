@@ -1,4 +1,5 @@
 /* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable global-require */
 /* eslint-disable no-nested-ternary */
 import React, { useState } from 'react';
 import useDarkMode from '../../hooks/useDarkMode';
@@ -15,6 +16,7 @@ import Checks from '../../components/bootstrap/forms/Checks';
 import Icon from '../../components/icon/Icon';
 import Label from '../../components/bootstrap/forms/Label';
 import PlaceholderImage from '../../components/extras/PlaceholderImage';
+import CustomGridView from '../../components/custom/customGridView/CustomGridView';
 
 const MenuThemeSettings = () => {
 	const TABS = {
@@ -22,6 +24,61 @@ const MenuThemeSettings = () => {
 		MENU2: 'Online',
 		MENU3: 'App',
 	};
+	const topData = [
+		{
+			id: 1,
+			name: 'Hot Chocolate',
+			description: 'Hot chocolate with marshmallows and whipped cream',
+			image: require(`../../assets/img/custom/hot-chocolate.jpg`),
+		},
+		{
+			id: 2,
+			name: 'Hot Chocolate',
+			description: 'Hot chocolate with marshmallows and whipped cream',
+			image: require(`../../assets/img/custom/hot-chocolate.jpg`),
+		},
+		{
+			id: 3,
+			name: 'Hot Chocolate',
+			description: 'Hot chocolate with marshmallows and whipped cream',
+			image: require(`../../assets/img/custom/hot-chocolate.jpg`),
+		},
+		{
+			id: 4,
+			name: 'Hot Chocolate',
+			description: 'Hot chocolate with marshmallows and whipped cream',
+			image: require(`../../assets/img/custom/hot-chocolate.jpg`),
+		},
+		{
+			id: 5,
+			name: 'Hot Chocolate',
+			description: 'Hot chocolate with marshmallows and whipped cream',
+			image: require(`../../assets/img/custom/hot-chocolate.jpg`),
+		},
+		{
+			id: 6,
+			name: 'Hot Chocolate',
+			description: 'Hot chocolate with marshmallows and whipped cream',
+			image: require(`../../assets/img/custom/hot-chocolate.jpg`),
+		},
+	];
+
+	const midimage = require(`../../assets/img/custom/dessert.jpg`);
+
+	const bottemData = [
+		{
+			id: 1,
+			name: 'Desserts',
+			description: 'Hot chocolate with marshmallows and whipped cream',
+			image: require(`../../assets/img/custom/desserts-1.jpg`),
+		},
+		{
+			id: 1,
+			name: 'Desserts',
+			description: 'Hot chocolate with marshmallows and whipped cream',
+			image: require(`../../assets/img/custom/desserts-2.jpg`),
+		},
+	];
 	const [activeTab, setActiveTab] = useState(TABS.ALL);
 	const { themeStatus } = useDarkMode();
 	const [showImg, setShowImg] = useState(true);
@@ -32,7 +89,7 @@ const MenuThemeSettings = () => {
 			<MenuEditorSubHeader />
 			<Page container='fluid'>
 				<div className='row'>
-					<div className='col-xxl-9 col-xl-12'>
+					<div className='col-xxl-8 col-xl-12'>
 						<Card styles={{ borderRadius: '20px' }}>
 							<CardBody>
 								<div className='d-flex g-3 justify-content-between align-items-center'>
@@ -461,6 +518,9 @@ const MenuThemeSettings = () => {
 								</div>
 							</AccordionItem>
 						</Accordion>
+					</div>
+					<div className='col-xxl-4 col-xl-12'>
+						<CustomGridView top={topData} mid={midimage} bottem={bottemData} />
 					</div>
 				</div>
 			</Page>
