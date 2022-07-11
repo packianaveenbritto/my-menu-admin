@@ -95,7 +95,7 @@ const Menus = () => {
 	const [editPanel, setEditPanel] = useState(false);
 
 	const [currentPage, setCurrentPage] = useState(1);
-	const [perPage, setPerPage] = useState(PER_COUNT['10']);
+	const [perPage, setPerPage] = useState(PER_COUNT['4']);
 	function handleRemove(id) {
 		const newData = data.filter((item) => item.id !== id);
 		setData(newData);

@@ -57,6 +57,11 @@ const headers = [
 		exact: true,
 	},
 	{
+		path: 'menu_editor/theme_settings',
+		element: <DashboardHeader />,
+		exact: true,
+	},
+	{
 		path: demoPages.appointment.subMenu.calendar.path,
 		element: <DashboardBookingHeader />,
 		exact: true,

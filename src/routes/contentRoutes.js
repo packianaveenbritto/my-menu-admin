@@ -185,6 +185,7 @@ const EXTRA = {
 
 const MENU_EDITOR = {
 	MENU_EDITOR_MAIN: lazy(() => import('../pages/menuEditor/MenuEditor')),
+	MENU_THEME_SETTINGS: lazy(() => import('../pages/menuEditor/MenuTheameSettings')),
 };
 
 const presentation = [
@@ -233,6 +234,11 @@ const presentation = [
 	{
 		path: 'menu_editor/items',
 		element: <MENU_EDITOR.MENU_EDITOR_MAIN />,
+		exact: true,
+	},
+	{
+		path: 'menu_editor/theme_settings',
+		element: <MENU_EDITOR.MENU_THEME_SETTINGS />,
 		exact: true,
 	},
 	/**
