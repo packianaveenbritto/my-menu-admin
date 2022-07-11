@@ -112,22 +112,26 @@
 	background: transparent linear-gradient(180deg, #d6caa8 0%, #e6decb 100%) 0% 0% no-repeat
 		padding-box;
 	box-shadow: 0px 3px 6px #00000029;
-	opacity: 1;
-	text-align: center;
+	padding: 40px;
+	display: flex;
+	flex-direction: column;
 	justify-content: center;
-	padding-left: 80px;
-	padding-right: 80px;
-	padding-top: 40px;
-	padding-bottom: 40px;
+	align-items: center;
 }
-
-.debossed-effect-qr {
+.custom-qr-card-items {
+	margin: 10px;
+}
+.qr-code-settings-container{
+	width: 90%;
 	background: #ebe4d5 0% 0% no-repeat padding-box;
 	box-shadow: inset 0px 2px 3px #00000029;
-	padding-left: 80px;
-	padding-top: 20px;
-	padding-bottom: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
+
+
 
 .vert-seperator {
 	height: 63px;
@@ -170,20 +174,25 @@
 }
 
 .settings-online-menu-qr-card {
-	height: 170px;
+	min-height: 170px;
+	height: auto;
 	background: rgba(235, 228, 213, 0.2);
 	border-radius: 8px;
+
+	display: flex;
+	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	div {
-		padding-left: 10px;
-		padding-right: 10px;
-	}
-	label {
-		color: $primary;
-		padding-left: 10px;
-		padding-right: 10px;
-	}
+	flex-flow: wrap;
+}
+
+.color-primary {
+	color: $primary;
+}
+
+.online-menu-qr-card-content {
+	box-sizing: border-box;
+	margin: 10px;
 }
 
 .custom-check-box {
@@ -210,5 +219,31 @@
 	}
 	.support-details {
 		margin-top: 0.8rem;
+	}
+}
+
+@media only screen and (max-width: 770px) {
+	.setting-online-menu-res-margin {
+		margin-top: 2rem;
+	}
+}
+
+.custom-qr-card-container {
+	display: flex;
+	justify-content: end;
+}
+
+@media only screen and (max-width: 992px) {
+	.custom-qr-card-container {
+		justify-content: start;
+	}
+}
+
+@media only screen and (max-width: 576px) {
+	.custom-qr-card-container {
+		justify-content: center;
+	}
+	.custom-qr-card {
+		width: 340px;
 	}
 }
