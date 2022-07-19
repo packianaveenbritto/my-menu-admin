@@ -1,5 +1,5 @@
 import React from 'react';
-import { componentsMenu, dashboardMenu, demoPages, layoutMenu, marketing} from '../menu';
+import { componentsMenu, dashboardMenu, demoPages, layoutMenu, marketing } from '../menu';
 import DashboardHeader from '../pages/common/Headers/DashboardHeader';
 import DashboardBookingHeader from '../pages/common/Headers/DashboardBookingHeader';
 import ProfilePageHeader from '../pages/common/Headers/ProfilePageHeader';
@@ -52,12 +52,12 @@ const headers = [
 		exact: true,
 	},
 	{
-		path: 'menu_editor/items',
+		path: 'menu_editor/items/:id',
 		element: <DashboardHeader />,
 		exact: true,
 	},
 	{
-		path: 'menu_editor/theme_settings',
+		path: 'menu_editor/theme_settings/:id',
 		element: <DashboardHeader />,
 		exact: true,
 	},

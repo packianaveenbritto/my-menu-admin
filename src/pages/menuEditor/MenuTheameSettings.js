@@ -2,6 +2,7 @@
 /* eslint-disable global-require */
 /* eslint-disable no-nested-ternary */
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import useDarkMode from '../../hooks/useDarkMode';
 import Button, { ButtonGroup } from '../../components/bootstrap/Button';
 import Card, { CardBody } from '../../components/bootstrap/Card';
@@ -19,6 +20,7 @@ import PlaceholderImage from '../../components/extras/PlaceholderImage';
 import CustomGridView from '../../components/custom/customGridView/CustomGridView';
 
 const MenuThemeSettings = () => {
+	const { id } = useParams();
 	const TABS = {
 		MENU1: 'QR',
 		MENU2: 'Online',
@@ -124,7 +126,7 @@ const MenuThemeSettings = () => {
 										color='success'
 										className='mx-2'
 										tag='a'
-										to='../menu_editor/items'>
+										to={`../menu_editor/items/${id.toString()}`}>
 										<span>
 											<Icon icon='ArrowBackIosNew' />
 										</span>

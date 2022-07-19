@@ -238,12 +238,12 @@ const presentation = [
 	 * Menu Editor
 	 */
 	{
-		path: 'menu_editor/items',
+		path: 'menu_editor/items/:id',
 		element: <MENU_EDITOR.MENU_EDITOR_MAIN />,
 		exact: true,
 	},
 	{
-		path: 'menu_editor/theme_settings',
+		path: 'menu_editor/theme_settings/:id',
 		element: <MENU_EDITOR.MENU_THEME_SETTINGS />,
 		exact: true,
 	},

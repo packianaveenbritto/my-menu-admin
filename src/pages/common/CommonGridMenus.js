@@ -15,11 +15,8 @@ import Dropdown, {
 	DropdownMenu,
 	DropdownToggle,
 } from '../../components/bootstrap/Dropdown';
-// import Badge from '../../components/bootstrap/Badge';
-// import { priceFormat } from '../../helpers/helpers';
 import showNotification from '../../components/extras/showNotification';
 import Icon from '../../components/icon/Icon';
-import { demoPages } from '../../menu';
 import useDarkMode from '../../hooks/useDarkMode';
 import Checks from '../../components/bootstrap/forms/Checks';
 
@@ -42,6 +39,8 @@ const CommonGridMenus = ({
 	editAction,
 	// eslint-disable-next-line react/prop-types
 	deleteAction,
+	// eslint-disable-next-line react/prop-types
+	isDisabledViewButton,
 }) => {
 	// eslint-disable-next-line no-unused-vars
 	const { themeStatus, darkModeStatus } = useDarkMode();
@@ -149,16 +148,28 @@ const CommonGridMenus = ({
 				</div>
 			</CardBody>
 			<CardFooter className='shadow-3d-container'>
-				<Button
-					color='success'
-					className={`w-100 mb-4 shadow-3d-up-hover shadow-3d-${
-						darkModeStatus ? 'success' : 'dark'
-					}`}
-					size='lg'
-					tag='a'
-					to={`../${demoPages.sales.subMenu.productID.path}/${id}`}>
-					View Product
-				</Button>
+				{isDisabledViewButton ? (
+					<Button
+						color='success'
+						className={`w-100 mb-4 shadow-3d-up-hover shadow-3d-${
+							darkModeStatus ? 'success' : 'dark'
+						}`}
+						size='lg'
+						tag='a'>
+						View Menu
+					</Button>
+				) : (
+					<Button
+						color='success'
+						className={`w-100 mb-4 shadow-3d-up-hover shadow-3d-${
+							darkModeStatus ? 'success' : 'dark'
+						}`}
+						size='lg'
+						tag='a'
+						to={`../menu_editor/items/${id}`}>
+						View Menu
+					</Button>
+				)}
 			</CardFooter>
 		</Card>
 	);

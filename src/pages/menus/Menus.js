@@ -274,7 +274,7 @@ const Menus = () => {
 					<ModalHeader
 						setIsOpen={setUpcomingEventsEditOffcanvas}
 						style={{ backgroundColor: process.env.REACT_APP_SECONDARY2_COLOR }}>
-						<OffCanvasTitle id='upcomingEdit'>New Menu</OffCanvasTitle>
+						<OffCanvasTitle id='upcomingEdit'><h1>New Menu</h1></OffCanvasTitle>
 					</ModalHeader>
 					<ModalBody style={{ backgroundColor: process.env.REACT_APP_SECONDARY2_COLOR }}>
 						<div className='row g-4'>
