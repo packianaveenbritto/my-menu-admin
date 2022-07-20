@@ -21,7 +21,7 @@ import CommonGridMenus from '../common/CommonGridMenus';
 import PaginationButtons, { dataPagination, PER_COUNT } from '../../components/PaginationButtons';
 import tableData from '../../common/data/dummyProductData';
 import CustomGridView from '../../components/custom/customGridView/CustomGridView';
-import Modal, { ModalBody, ModalHeader } from '../../components/bootstrap/Modal';
+import Modal, { ModalBody, ModalFooter, ModalHeader } from '../../components/bootstrap/Modal';
 import Select from '../../components/bootstrap/forms/Select';
 import Checks from '../../components/bootstrap/forms/Checks';
 import PlaceholderImage from '../../components/extras/PlaceholderImage';
@@ -404,11 +404,11 @@ const MenuEditor = () => {
 									</div>
 									<div className='col-3 mb-3 text-center'>
 										<Checks
+											checked={availableType === 3}
 											id='periodic'
 											label='Periodic'
 											type='radio'
 											onChange={() => setAvailableType(3)}
-											checked={availableType === 3}
 										/>
 									</div>
 									{availableType === 3 && (
@@ -553,28 +553,31 @@ const MenuEditor = () => {
 								</div>
 								<strong>PDF Menu</strong>
 								<div className='logo-drag-drop mb-3'>img</div>
-
-								<FormGroup>
-									<Button className='mb-2' color='success'>
-										Browse
-									</Button>
-								</FormGroup>
-
-								<div className='row'>
-									<div className='col'>
-										<Button color='info' className='w-100'>
-											Cancel
-										</Button>
-									</div>
-									<div className='col'>
-										<Button color='info' className='w-100'>
-											Create
+								<div className='row justify-content-end'>
+									<div className='col-4'>
+										<Button className='mb-2' color='success'>
+											Browse
 										</Button>
 									</div>
 								</div>
 							</div>
 						</div>
 					</ModalBody>
+					<ModalFooter
+						style={{ backgroundColor: process.env.REACT_APP_SECONDARY2_COLOR }}>
+						<div className='row'>
+							<div className='col'>
+								<Button color='info' className='w-100'>
+									Cancel
+								</Button>
+							</div>
+							<div className='col'>
+								<Button color='info' className='w-100'>
+									Save
+								</Button>
+							</div>
+						</div>
+					</ModalFooter>
 				</Modal>
 				<Modal
 					setIsOpen={setItemModal}
@@ -595,28 +598,295 @@ const MenuEditor = () => {
 							<div className='col-7'>
 								<div className='row'>
 									<div className='col-12 my-2'>
-										<FormGroup id='title' label='Menu Title'>
-											<Input
-												placeholder='Menu Title'
-												// onChange={formik.handleChange}
-												// value={formik.values.service}
-											/>
+										<FormGroup>
+											<Label htmlFor='iName' className='text-secondary'>
+												Item Name
+											</Label>
+											<Input id='iName' placeholder='Type Here' />
 										</FormGroup>
 									</div>
 									<div className='col-12 mb-2'>
-										<FormGroup id='description' label='Description'>
-											<Input
-												placeholder='Description'
-												// onChange={formik.handleChange}
-												// value={formik.values.employee}
-											/>
+										<FormGroup>
+											<Label
+												htmlFor='iDescription'
+												className='text-secondary'>
+												Description
+											</Label>
+											<Input id='iDescription' placeholder='Type Here' />
 										</FormGroup>
 									</div>
 									<div className='col-12 mb-2'>
-										<FormGroup id='availability' label='Availability'>
-											<Select id='example' placeholder='--Select--' />
+										<FormGroup>
+											<Label
+												htmlFor='ingredientWarning'
+												className='text-secondary'>
+												Ingredient Warning
+											</Label>
+											<Select id='ingredientWarning' placeholder='Select' />
 										</FormGroup>
 									</div>
+									<div className='col-12 mb-2'>
+										<FormGroup>
+											<Label
+												htmlFor='recomendedItems'
+												className='text-secondary'>
+												Recomended Items
+											</Label>
+											<Select id='recomendedItems' placeholder='Select' />
+										</FormGroup>
+									</div>
+									<div className='col-4 mb-3'>
+										<FormGroup>
+											<Label
+												htmlFor='preparationTime'
+												className='text-secondary'>
+												Preparation Time
+											</Label>
+											<Input
+												id='preparationTime'
+												placeholder='Time'
+												type='time'
+											/>
+										</FormGroup>
+									</div>
+								</div>
+							</div>
+							<div className='col-5'>
+								<strong>Image</strong>
+								<div className='row'>
+									<div className='col-5'>
+										<Label>Display Image</Label>
+									</div>
+									<div className='col-7'>
+										<Checks
+											checked={showImg}
+											id='example'
+											name='example'
+											type='switch'
+											onChange={() => {
+												setShowImg(!showImg);
+											}}
+										/>
+									</div>
+								</div>
+								{showImg ? (
+									<div
+										className='row'
+										style={{
+											border: `2px dashed ${process.env.REACT_APP_PRIMARY_COLOR}`,
+										}}>
+										<div className='col align-self-center'>
+											<PlaceholderImage
+												width={128}
+												height={128}
+												className='mx-auto d-block img-fluid rounded'
+											/>
+										</div>
+										<div className='col-1 align-self-end'>
+											<Icon icon='Trash' />
+										</div>
+									</div>
+								) : (
+									''
+								)}
+								<div className='text-primary my-2'>
+									{' '}
+									Image Recomended Size:{' '}
+									<span className='text-dark'>1080 px X 1920px</span>
+								</div>
+								<strong>Image</strong>
+								<div className='logo-drag-drop mb-3'>img</div>
+								<div className='row justify-content-end'>
+									<div className='col-4'>
+										<Button className='mb-2' color='success'>
+											Browse
+										</Button>
+									</div>
+								</div>
+								<br />
+								<strong>Video</strong>
+								<div className='logo-drag-drop mb-3'>img</div>
+								<div className='row justify-content-end'>
+									<div className='col-4'>
+										<Button className='mb-2' color='success'>
+											Browse
+										</Button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div className='row justify-content-between'>
+							<div className='col-4 mb-3'>
+								<Label className='text-secondary'>Mark Items as New</Label>
+							</div>
+							<div className='col-2 mb-3'>
+								<Checks
+									className='float-end me-4'
+									checked
+									id='itemsNew'
+									type='switch'
+								/>
+							</div>
+							<div className='col-4 mb-3'>
+								<Label className='text-secondary'>Mark Section as Signature</Label>
+							</div>
+							<div className='col-2 mb-3'>
+								<Checks
+									className='float-end me-4'
+									checked
+									id='signature'
+									type='switch'
+								/>
+							</div>
+						</div>
+						<div className='row justify-content-between'>
+							<div className='col-4 mb-3'>
+								<Label className='text-secondary'>
+									Make Item as Chef's Special
+								</Label>
+							</div>
+							<div className='col-2 mb-3'>
+								<Checks
+									className='float-end me-4'
+									checked
+									id='chefsSpecial'
+									type='switch'
+								/>
+							</div>
+							<div className='col-4 mb-3'>
+								<Label className='text-secondary'>Mark Item as Best Seller</Label>
+							</div>
+							<div className='col-2 mb-3'>
+								<Checks
+									className='float-end me-4'
+									checked
+									id='bestSeller'
+									type='switch'
+								/>
+							</div>
+						</div>
+						<div className='row justify-content-between'>
+							<div className='col-4 mb-3'>
+								<Label className='text-secondary'>Mark Item as Our Favorite</Label>
+							</div>
+							<div className='col-2 mb-3'>
+								<Checks className='float-end me-4' checked id='fav' type='switch' />
+							</div>
+							<div className='col-4 mb-3'>
+								<Label className='text-secondary'>Mark Item as Must Try</Label>
+							</div>
+							<div className='col-2 mb-3'>
+								<Checks
+									className='float-end me-4'
+									checked
+									id='mustTry'
+									type='switch'
+								/>
+							</div>
+						</div>
+						<div className='row'>
+							<div className='col-4 mb-3'>
+								<Label className='text-secondary'>Mark Item as Healthy</Label>
+							</div>
+							<div className='col-2 mb-3'>
+								<Checks
+									className='float-end me-4'
+									checked
+									id='healthy'
+									type='switch'
+								/>
+							</div>
+						</div>
+						<div className='row'>
+							<Label className='text-secondary'>Color Code</Label>
+						</div>
+
+						<div className='row justify-content-between'>
+							<div className='col-2'>
+								<Checks id='green' label='Green' onChange={() => {}} type='radio' />
+							</div>
+							<div className='col-2'>
+								<Checks id='red' label='Red' onChange={() => {}} type='radio' />
+							</div>
+							<div className='col-2'>
+								<Checks
+									id='yellow'
+									label='Yellow'
+									onChange={() => {}}
+									type='radio'
+								/>
+							</div>
+							<div className='col-2'>
+								<Checks id='brown' label='Brown' onChange={() => {}} type='radio' />
+							</div>
+							<div className='col-2'>
+								<Checks
+									id='na'
+									label='Not Aplicable'
+									onChange={() => {}}
+									type='radio'
+								/>
+							</div>
+						</div>
+						<div className='row'>
+							<div className='col-4 my-3'>
+								<Label className='text-secondary'>Published</Label>
+							</div>
+							<div className='col-2 my-3'>
+								<Checks
+									className='float-end me-4'
+									checked
+									id='healthy'
+									type='switch'
+								/>
+							</div>
+						</div>
+						<div className='row'>
+							<div className='col-4 mb-3'>
+								<Label className='text-secondary'>Snooze</Label>
+							</div>
+							<div className='col-2 mb-3'>
+								<Checks
+									className='float-end me-4'
+									checked
+									id='healthy'
+									type='switch'
+								/>
+							</div>
+						</div>
+						<div className='row'>
+							<div className='col-12 mb-3'>
+								<Label className='text-secondary'>Availability</Label>
+							</div>
+							<div className='col-2 mb-3'>
+								<Checks
+									id='always'
+									label='Always'
+									type='radio'
+									onChange={() => setAvailableType(1)}
+									checked={availableType === 1}
+								/>
+							</div>
+							<div className='col-3 mb-3'>
+								<Checks
+									id='specific'
+									label='Specific Date & Time'
+									type='radio'
+									onChange={() => setAvailableType(2)}
+									checked={availableType === 2}
+								/>
+							</div>
+							<div className='col-3 mb-3'>
+								<Checks
+									checked={availableType === 3}
+									id='periodic'
+									label='Periodic'
+									type='radio'
+									onChange={() => setAvailableType(3)}
+								/>
+							</div>
+							{availableType === 3 && (
+								<>
 									<div className='col-4 mb-3'>
 										<Checks label='Sunday' />
 									</div>
@@ -708,75 +978,25 @@ const MenuEditor = () => {
 											<Input placeholder='Time' type='time' />
 										</FormGroup>
 									</div>
-								</div>
-							</div>
-							<div className='col-5'>
-								<strong>Image</strong>
-								<div className='row'>
-									<div className='col-5'>
-										<Label>Display Image</Label>
-									</div>
-									<div className='col-7'>
-										<Checks
-											checked={showImg}
-											id='example'
-											name='example'
-											type='switch'
-											onChange={() => {
-												setShowImg(!showImg);
-											}}
-										/>
-									</div>
-								</div>
-								{showImg ? (
-									<div
-										className='row'
-										style={{
-											border: `2px dashed ${process.env.REACT_APP_PRIMARY_COLOR}`,
-										}}>
-										<div className='col align-self-center'>
-											<PlaceholderImage
-												width={128}
-												height={128}
-												className='mx-auto d-block img-fluid rounded'
-											/>
-										</div>
-										<div className='col-1 align-self-end'>
-											<Icon icon='Trash' />
-										</div>
-									</div>
-								) : (
-									''
-								)}
-								<div className='text-primary my-2'>
-									{' '}
-									Image Recomended Size:{' '}
-									<span className='text-dark'>1080 px X 1920px</span>
-								</div>
-								<strong>PDF Menu</strong>
-								<div className='logo-drag-drop mb-3'>img</div>
-
-								<FormGroup>
-									<Button className='mb-2' color='success'>
-										Browse
-									</Button>
-								</FormGroup>
-
-								<div className='row'>
-									<div className='col'>
-										<Button color='info' className='w-100'>
-											Cancel
-										</Button>
-									</div>
-									<div className='col'>
-										<Button color='info' className='w-100'>
-											Create
-										</Button>
-									</div>
-								</div>
-							</div>
+								</>
+							)}
 						</div>
 					</ModalBody>
+					<ModalFooter
+						style={{ backgroundColor: process.env.REACT_APP_SECONDARY2_COLOR }}>
+						<div className='row'>
+							<div className='col'>
+								<Button color='info' className='w-100'>
+									Cancel
+								</Button>
+							</div>
+							<div className='col'>
+								<Button color='info' className='w-100'>
+									Save
+								</Button>
+							</div>
+						</div>
+					</ModalFooter>
 				</Modal>
 			</Page>
 		</PageWrapper>
