@@ -35,6 +35,10 @@ const PRICING = {
 	PRICING_TABLE: lazy(() => import('../pages/presentation/pricing/PricingTablePage')),
 };
 
+const ONBOARDING_STEPS = {
+	ONBOARDING_STEPS_PAGE: lazy(() => import('../pages/onboardingSteps/OnboardingSteps')),
+};
+
 const AUTH = {
 	PAGE_404: lazy(() => import('../pages/presentation/auth/Page404')),
 	SETTINGS: lazy(() => import('../pages/settings/SettingPage')),
@@ -220,6 +224,11 @@ const presentation = [
 	{
 		path: 'test',
 		element: <LANDING.TEST />,
+		exact: true,
+	},
+	{
+		path: 'onboarding-steps',
+		element: <ONBOARDING_STEPS.ONBOARDING_STEPS_PAGE />,
 		exact: true,
 	},
 

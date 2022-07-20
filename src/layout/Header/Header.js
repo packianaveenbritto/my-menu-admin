@@ -38,7 +38,7 @@ HeaderRight.defaultProps = {
 	className: null,
 };
 
-const Header = ({ children, hasLeftMobileMenu, hasRightMobileMenu }) => {
+const Header = ({ children, hasLeftMobileMenu, hasRightMobileMenu, className }) => {
 	const { themeStatus } = useDarkMode();
 
 	const windowsWidth = useWindowSize().width;
@@ -71,7 +71,7 @@ const Header = ({ children, hasLeftMobileMenu, hasRightMobileMenu }) => {
 
 	return (
 		<>
-			<header ref={refMobileHeader} className='mobile-header'>
+			<header ref={refMobileHeader} className={`mobile-header ${className}`}>
 				<div className='container-fluid'>
 					<div className='row'>
 						<div className='col'>
@@ -126,7 +126,7 @@ const Header = ({ children, hasLeftMobileMenu, hasRightMobileMenu }) => {
 			</header>
 			<header
 				ref={refHeader}
-				className={classNames('header', {
+				className={classNames('header', className, {
 					'header-left-open': leftMenuStatus,
 					'header-right-open': rightMenuStatus,
 				})}>
@@ -159,10 +159,12 @@ Header.propTypes = {
 	children: PropTypes.node.isRequired,
 	hasLeftMobileMenu: PropTypes.bool,
 	hasRightMobileMenu: PropTypes.bool,
+	className: PropTypes.string,
 };
 Header.defaultProps = {
 	hasLeftMobileMenu: true,
 	hasRightMobileMenu: true,
+	className: null,
 };
 
 export default Header;
