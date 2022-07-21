@@ -87,6 +87,7 @@ const AddVenueOne = () => {
 	// eslint-disable-next-line no-unused-vars
 	const { themeStatus, darkModeStatus } = useDarkMode();
 	const [selectedCard, setSelectedCard] = React.useState();
+	const [selected, setSelected] = React.useState(false);
 	return (
 		<>
 			<div className='mt-3' style={{ textAlign: 'center' }}>
@@ -101,8 +102,14 @@ const AddVenueOne = () => {
 						return (
 							<div className='col-auto d-flex justify-content-center'>
 								<Card
+									onClick={() => {
+										setSelectedCard(data.name);
+										setSelected(selectedCard !== data.name ? true : !selected);
+									}}
 									className={`onboarding-menu-card ${
-										selectedCard === data.name && 'onboarding-menu-card-select'
+										selected &&
+										selectedCard === data.name &&
+										'onboarding-menu-card-select'
 									}`}>
 									<CardBody>
 										<div className='d-flex align-items-center justify-content-center'>
@@ -111,7 +118,7 @@ const AddVenueOne = () => {
 												alt=''
 												className='mx-auto d-block img-fluid mt-5'
 											/>
-											{selectedCard === data.name && (
+											{selected && selectedCard === data.name && (
 												<img
 													src={ico}
 													alt=''
@@ -122,14 +129,17 @@ const AddVenueOne = () => {
 										</div>
 									</CardBody>
 									<CardFooter
+										id='venueCardFooter'
 										className={`shadow-3d-container ${
+											selected &&
 											selectedCard === data.name &&
 											'onboarding-menu-card-select'
 										}`}>
 										<Button
+											id='cardButton'
 											key={data.id}
 											style={
-												selectedCard === data.name
+												selected && selectedCard === data.name
 													? { background: '#D1C49F', border: 'none' }
 													: { background: '#232323', border: 'none' }
 											}
@@ -138,7 +148,10 @@ const AddVenueOne = () => {
 												darkModeStatus ? 'success' : 'dark'
 											}`}
 											size='lg'
-											onClick={() => setSelectedCard(data.name)}>
+											onClick={() => {
+												setSelectedCard(data.name);
+												setSelected(!selected);
+											}}>
 											{data.name}
 										</Button>
 									</CardFooter>

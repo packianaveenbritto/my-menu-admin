@@ -270,3 +270,28 @@
 .onboarding-menu-card-select {
 	background: #ebe4d5 0% 0% no-repeat padding-box;
 }
+
+.onboarding-menu-card:hover {
+	background: #ebe4d5 0% 0% no-repeat padding-box;
+	#cardButton {
+		background: #d1c49f !important;
+		top: 0.25rem;
+
+		// stylelint-disable declaration-no-important
+		&::before {
+			top: 0.5rem !important;
+			right: 0.5rem !important;
+			left: 0.5rem !important;
+		}
+
+		&::after {
+			top: 0.875rem !important;
+			right: 1rem !important;
+			left: 1rem !important;
+		}
+	}
+
+	#venueCardFooter {
+		background: #ebe4d5 0% 0% no-repeat padding-box;
+	}
+}
