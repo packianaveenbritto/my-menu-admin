@@ -19,7 +19,7 @@ import HeaderWithOnlyLogo from '../pages/common/Headers/HeaderWithOnlyLogo';
 
 const headers = [
 	{
-		path: 'add-venue-one',
+		path: 'onboarding-steps',
 		element: <HeaderWithOnlyLogo />,
 		exact: true,
 	},

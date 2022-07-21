@@ -30,7 +30,7 @@ CustomWizardItem.defaultProps = {
 	title: null,
 };
 
-const CustomWizard = ({ children, color }) => {
+const CustomWizard = ({ children, color, onClick }) => {
 	const { themeStatus } = useDarkMode();
 	const [activeItemIndex, setActiveItemIndex] = useState(0);
 
@@ -79,7 +79,10 @@ const CustomWizard = ({ children, color }) => {
 								width: '38px',
 								height: '38px',
 							}}
-							onClick={() => setActiveItemIndex(index)}>
+							onClick={() => {
+								setActiveItemIndex(index);
+								onClick(index + 1);
+							}}>
 							{index + 1}
 						</button>
 					</Popovers>
@@ -102,9 +105,11 @@ CustomWizard.propTypes = {
 		'brand-two',
 		'storybook',
 	]),
+	onClick: PropTypes.func,
 };
 CustomWizard.defaultProps = {
 	color: 'primary',
+	onClick: null,
 };
 
 export default CustomWizard;

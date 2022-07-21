@@ -1,24 +1,21 @@
-// import React from 'react';
-
-// const OnboardingSteps = () => {
-// 	return <div>OnboardingSteps</div>;
-// };
-
-// export default OnboardingSteps;
-import React from 'react';
+import React, { useState } from 'react';
 import CustomWizard, { CustomWizardItem } from '../../components/custom/CustomWizard';
 import Page from '../../layout/Page/Page';
 import useDarkMode from '../../hooks/useDarkMode';
 import AddVenueOne from './AddVenueOne';
+import EnterVenueDetails from './EnterVenueDetails';
 
 const OnboardingSteps = () => {
-	// eslint-disable-next-line no-unused-vars
-	const { themeStatus, darkModeStatus } = useDarkMode();
 	const STEPS = {
 		step1: 'Select venue type',
 		step2: 'Enter venue details',
 		step3: 'Choose dashboard or menu creation',
 	};
+
+	const [activeTab, setActiveTab] = useState(1);
+	// eslint-disable-next-line no-unused-vars
+	const { themeStatus, darkModeStatus } = useDarkMode();
+
 	return (
 		<Page container='fluid'>
 			<div className='row'>
@@ -30,15 +27,16 @@ const OnboardingSteps = () => {
 							isHeader // true || false || 'withButton'
 							color='primary' // 'primary' || 'secondary' || 'success' || 'info' || 'warning' || 'danger' || 'light' || 'dark'
 							stretch // false || true || 'semi'
-							onSubmit={() => {
-								console.log('test');
+							onClick={(index) => {
+								setActiveTab(index);
 							}}>
 							{Object.keys(STEPS).map((key) => (
 								<CustomWizardItem key={key} id={key} title={STEPS[key]} />
 							))}
 						</CustomWizard>
 					</div>
-					<AddVenueOne />
+					{activeTab === 1 && <AddVenueOne />}
+					{activeTab === 2 && <EnterVenueDetails />}
 				</div>
 
 				<div className='col-1'>o</div>

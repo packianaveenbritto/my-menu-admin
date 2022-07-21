@@ -295,3 +295,22 @@
 		background: #ebe4d5 0% 0% no-repeat padding-box;
 	}
 }
+
+.custom-alert {
+	width: 400px;
+	padding: 1rem;
+	background: #ffffff 0% 0% no-repeat padding-box;
+	box-shadow: 0px 3px 6px #0000004d;
+	border-radius: 15px;
+	opacity: 1;
+	border: none;
+	top: 78px;
+	position: absolute;
+}
+
+@media only screen and (max-width: 576px) {
+	.custom-alert {
+		width: 360px;
+		justify-self: center;
+	}
+}
