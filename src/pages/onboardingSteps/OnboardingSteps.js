@@ -4,6 +4,8 @@ import Page from '../../layout/Page/Page';
 import useDarkMode from '../../hooks/useDarkMode';
 import AddVenueOne from './AddVenueOne';
 import EnterVenueDetails from './EnterVenueDetails';
+import HowSetupMenu from './HowSetupMenu';
+import Button from '../../components/bootstrap/Button';
 
 const OnboardingSteps = () => {
 	const STEPS = {
@@ -19,7 +21,9 @@ const OnboardingSteps = () => {
 	return (
 		<Page container='fluid'>
 			<div className='row'>
-				<div className='col-1'>o</div>
+				<div className='col-md-1'>
+					<Button>o</Button>
+				</div>
 
 				<div className='col-10 d-flex flex-column align-items-center'>
 					<div className='mt-3' style={{ width: '60%' }}>
@@ -37,6 +41,7 @@ const OnboardingSteps = () => {
 					</div>
 					{activeTab === 1 && <AddVenueOne />}
 					{activeTab === 2 && <EnterVenueDetails />}
+					{activeTab === 3 && <HowSetupMenu />}
 				</div>
 
 				<div className='col-1'>o</div>

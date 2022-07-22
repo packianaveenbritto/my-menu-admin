@@ -47,7 +47,7 @@ const EnterVenueDetails = () => {
 			)}
 
 			<div className='mt-4' style={{ textAlign: 'center' }}>
-				<p className='fs-1 fw-bold'>ENTER VENUE DETAILS</p>
+				<p className='fs-2 fw-bold'>ENTER VENUE DETAILS</p>
 			</div>
 			<div className='mt-5'>
 				<FormGroup className='mb-3'>

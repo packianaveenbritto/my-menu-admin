@@ -9,81 +9,18 @@ import useDarkMode from '../../hooks/useDarkMode';
 const cardData = [
 	{
 		id: 1,
-		name: 'Hotel',
+		name: 'Start from scratch',
 		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
+		description: 'Start from scratch. Start with an empty menu you can create own themeu',
 	},
 	{
 		id: 2,
-		name: 'Villa',
+		name: 'Start from template',
 		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
-	},
-	{
-		id: 3,
-		name: 'Café',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
-	},
-	{
-		id: 4,
-		name: 'Casual Dining',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
-	},
-	{
-		id: 5,
-		name: 'Coffee Shop',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
-	},
-	{
-		id: 6,
-		name: 'Drive-Thru',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
-	},
-	{
-		id: 7,
-		name: 'Fast Casual',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
-	},
-	{
-		id: 8,
-		name: 'HoFast Foodtel',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
-	},
-	{
-		id: 9,
-		name: 'Bistro',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
-	},
-	{
-		id: 10,
-		name: 'Buffet',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
-	},
-	{
-		id: 11,
-		name: 'Lounge',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
-	},
-	{
-		id: 12,
-		name: 'Pub',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
-	},
-	{
-		id: 13,
-		name: 'Sports Bar',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
-	},
-	{
-		id: 14,
-		name: 'Fine Dining',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
-	},
-	{
-		id: 15,
-		name: 'Food Truck',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
+		description: 'SStart from template. Start with pre-defined template',
 	},
 ];
-const AddVenueOne = () => {
+const HowSetupMenu = () => {
 	// eslint-disable-next-line no-unused-vars
 	const { themeStatus, darkModeStatus } = useDarkMode();
 	const [selectedCard, setSelectedCard] = React.useState();
@@ -91,16 +28,16 @@ const AddVenueOne = () => {
 	return (
 		<>
 			<div className='mt-3' style={{ textAlign: 'center' }}>
-				<p className='fs-2 fw-bold'>ADD VENUE</p>
+				<p className='fs-2 fw-bold'>HOW WOULD YOU LIKE TO SETUP YOUR MENU</p>
 				<p className='fs-6'>
-					Add as many types of venues you have within the main property or the company
+				let's setup your beautiful menu. remember you can manage it anytime.
 				</p>
 			</div>
 			<div className='col-12'>
 				<div className='row mt-3 d-flex justify-content-center'>
 					{cardData.map((data) => {
 						return (
-							<div className='col-auto d-flex justify-content-center'>
+							<div className='col-md-4 d-flex flex-column align-items-center'>
 								<Card
 									onClick={() => {
 										setSelectedCard(data.name);
@@ -156,6 +93,11 @@ const AddVenueOne = () => {
 										</Button>
 									</CardFooter>
 								</Card>
+								<div
+									style={{ width: '265px' }}
+									className='mt-4 text-align-center p-3'>
+									<p className='text-center'>{data.description}</p>
+								</div>
 							</div>
 						);
 					})}
@@ -165,4 +107,4 @@ const AddVenueOne = () => {
 	);
 };
 
-export default AddVenueOne;
+export default HowSetupMenu;
