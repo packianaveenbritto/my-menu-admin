@@ -27,6 +27,9 @@ import Checks from '../../components/bootstrap/forms/Checks';
 import PlaceholderImage from '../../components/extras/PlaceholderImage';
 import Label from '../../components/bootstrap/forms/Label';
 import { OffCanvasTitle } from '../../components/bootstrap/OffCanvas';
+import ItemPrice from './itemPrice/ItemPrice';
+import OptionSet from './optionSet/OptionSet';
+import AddCombos from './addCombos/AddCombos';
 
 const MenuEditor = () => {
 	const { id } = useParams();
@@ -104,6 +107,32 @@ const MenuEditor = () => {
 	// const { themeStatus } = useDarkMode();
 	// eslint-disable-next-line no-unused-vars
 	const [editItem, setEditItem] = useState(null);
+	const [priceItem, setPriceItem] = useState([
+		{
+			id: 1,
+			price: 0,
+			description: '',
+			total: 0,
+		},
+	]);
+	const [optionSets, setOptionSets] = useState([
+		{
+			id: 1,
+			opVal: 0,
+			min: '',
+			max: '',
+			noVal: 0,
+		},
+	]);
+	const [comboSets, setComboSets] = useState([
+		{
+			id: 1,
+			opVal: 0,
+			min: '',
+			max: '',
+			noVal: 0,
+		},
+	]);
 	const [itemModal, setItemModal] = useState(false);
 	const [section, setSection] = useState(false);
 	const [showImg, setShowImg] = useState(true);
@@ -384,35 +413,41 @@ const MenuEditor = () => {
 									<div className='col-12 mb-3'>
 										<Label className='text-secondary'>Availability</Label>
 									</div>
-									<div className='col-2 mb-3 text-center'>
+									<div className='col-3 mb-3'>
 										<Checks
-											id='always'
-											label='Always'
 											type='radio'
+											name='Always'
+											id='Always'
+											label='Yellow'
+											value={1}
 											onChange={() => setAvailableType(1)}
-											checked={availableType === 1}
+											checked={availableType}
 										/>
 									</div>
-									<div className='col-5 mb-3 text-center'>
+									<div className='col-6 mb-3'>
 										<Checks
+											type='radio'
+											name='specific'
 											id='specific'
 											label='Specific Date & Time'
-											type='radio'
+											value={2}
 											onChange={() => setAvailableType(2)}
-											checked={availableType === 2}
+											checked={availableType}
 										/>
 									</div>
-									<div className='col-3 mb-3 text-center'>
+									<div className='col-3 mb-3'>
 										<Checks
-											checked={availableType === 3}
+											type='radio'
+											name='periodic'
 											id='periodic'
 											label='Periodic'
-											type='radio'
+											value={3}
 											onChange={() => setAvailableType(3)}
+											checked={availableType}
 										/>
 									</div>
 									{availableType === 3 && (
-										<>
+										<div className='row'>
 											<div className='col-4 mb-3'>
 												<Checks label='Sunday' />
 											</div>
@@ -504,7 +539,7 @@ const MenuEditor = () => {
 													<Input placeholder='Time' type='time' />
 												</FormGroup>
 											</div>
-										</>
+										</div>
 									)}
 								</div>
 							</div>
@@ -616,6 +651,69 @@ const MenuEditor = () => {
 										</FormGroup>
 									</div>
 									<div className='col-12 mb-2'>
+										{priceItem.map((priceList, i) => (
+											<ItemPrice
+												itemPriceList={priceList}
+												key={priceList.id}
+												removeVal={() => {
+													setPriceItem((priceItm) =>
+														priceItm.splice(i, 1),
+													);
+												}}
+											/>
+										))}
+									</div>
+									<div className='row justify-content-end pe-0'>
+										<div className='col-3 mb-2 text-end pe-0'>
+											<Button
+												color='primary'
+												onClick={() => {
+													setPriceItem((arr) => [
+														...arr,
+														{
+															id: priceItem.length + 1,
+															price: 0,
+															description: '',
+															total: 0,
+														},
+													]);
+												}}>
+												Add Price
+											</Button>
+										</div>
+									</div>
+									<div className='col-12 mb-2'>
+										{optionSets.map((option, i) => (
+											<OptionSet
+												optionList={option}
+												key={option.id}
+												removeVal={() => {
+													setOptionSets((op) => op.splice(i, 1));
+												}}
+											/>
+										))}
+									</div>
+									<div className='row justify-content-end pe-0'>
+										<div className='col-4 mb-2 text-end pe-0'>
+											<Button
+												color='primary'
+												onClick={() => {
+													setOptionSets((arr) => [
+														...arr,
+														{
+															id: optionSets.length + 1,
+															opVal: 0,
+															min: '',
+															max: '',
+															noVal: 0,
+														},
+													]);
+												}}>
+												Add Option Set
+											</Button>
+										</div>
+									</div>
+									<div className='col-12 mb-2'>
 										<FormGroup>
 											<Label
 												htmlFor='ingredientWarning'
@@ -634,6 +732,37 @@ const MenuEditor = () => {
 											</Label>
 											<Select id='recomendedItems' placeholder='Select' />
 										</FormGroup>
+									</div>
+									<div className='col-12 mb-2'>
+										{comboSets.map((combo, i) => (
+											<AddCombos
+												comboList={combo}
+												key={combo.id}
+												removeVal={() => {
+													setComboSets((comb) => comb.splice(i, 1));
+												}}
+											/>
+										))}
+									</div>
+									<div className='row justify-content-end pe-0'>
+										<div className='col-4 mb-2 text-end pe-0'>
+											<Button
+												color='primary'
+												onClick={() => {
+													setComboSets((arr) => [
+														...arr,
+														{
+															id: comboSets.length + 1,
+															opVal: 0,
+															min: '',
+															max: '',
+															noVal: 0,
+														},
+													]);
+												}}>
+												Add Combo
+											</Button>
+										</div>
 									</div>
 									<div className='col-4 mb-3'>
 										<FormGroup>
@@ -860,33 +989,39 @@ const MenuEditor = () => {
 							</div>
 							<div className='col-2 mb-3'>
 								<Checks
-									id='always'
-									label='Always'
 									type='radio'
+									name='Always'
+									id='Always'
+									label='Yellow'
+									value={1}
 									onChange={() => setAvailableType(1)}
-									checked={availableType === 1}
+									checked={availableType}
 								/>
 							</div>
 							<div className='col-3 mb-3'>
 								<Checks
+									type='radio'
+									name='specific'
 									id='specific'
 									label='Specific Date & Time'
-									type='radio'
+									value={2}
 									onChange={() => setAvailableType(2)}
-									checked={availableType === 2}
+									checked={availableType}
 								/>
 							</div>
 							<div className='col-3 mb-3'>
 								<Checks
-									checked={availableType === 3}
+									type='radio'
+									name='periodic'
 									id='periodic'
 									label='Periodic'
-									type='radio'
+									value={3}
 									onChange={() => setAvailableType(3)}
+									checked={availableType}
 								/>
 							</div>
 							{availableType === 3 && (
-								<>
+								<div className='row'>
 									<div className='col-4 mb-3'>
 										<Checks label='Sunday' />
 									</div>
@@ -978,7 +1113,7 @@ const MenuEditor = () => {
 											<Input placeholder='Time' type='time' />
 										</FormGroup>
 									</div>
-								</>
+								</div>
 							)}
 						</div>
 					</ModalBody>
