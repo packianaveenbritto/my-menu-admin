@@ -30,14 +30,16 @@ const HowSetupMenu = () => {
 			<div className='mt-3' style={{ textAlign: 'center' }}>
 				<p className='fs-2 fw-bold'>HOW WOULD YOU LIKE TO SETUP YOUR MENU</p>
 				<p className='fs-6'>
-				let's setup your beautiful menu. remember you can manage it anytime.
+					let's setup your beautiful menu. remember you can manage it anytime.
 				</p>
 			</div>
 			<div className='col-12'>
 				<div className='row mt-3 d-flex justify-content-center'>
 					{cardData.map((data) => {
 						return (
-							<div className='col-md-4 d-flex flex-column align-items-center'>
+							<div
+								style={{ width: '300px' }}
+								className='col-md-6 d-flex flex-column align-items-center'>
 								<Card
 									onClick={() => {
 										setSelectedCard(data.name);

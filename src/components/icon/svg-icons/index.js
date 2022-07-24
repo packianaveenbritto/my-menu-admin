@@ -27,3 +27,5 @@ export { default as CustomExclamation } from './CustomExclamation';
 export { default as Undo } from './Undo';
 export { default as Redo } from './Redo';
 export { default as Ecllips } from './Ecllips';
+export { default as SvgCustomBack } from './SvgCustomBack';
+export { default as SvgCustomNext } from './SvgCustomNext';

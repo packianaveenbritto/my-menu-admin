@@ -18,16 +18,42 @@ const OnboardingSteps = () => {
 	// eslint-disable-next-line no-unused-vars
 	const { themeStatus, darkModeStatus } = useDarkMode();
 
+	const isNextButton = () => {
+		if (activeTab === 1 || activeTab === 2) {
+			return true;
+		}
+		return false;
+	};
+
 	return (
 		<Page container='fluid'>
-			<div className='row'>
-				<div className='col-md-1'>
-					<Button>o</Button>
+			<div className='d-flex justify-content-center'>
+				<div style={{ width: '10%' }} className='d-flex justify-content-center'>
+					<Button
+						style={{
+							width: '47px',
+							height: '47px',
+							borderRadius: '50%',
+							background: '#AE9C67',
+							border: 'none',
+							position: 'relative',
+							top: '10%',
+						}}
+						icon='SvgCustomBack'
+						onClick={() => {
+							if (activeTab > 1) {
+								setActiveTab(activeTab - 1);
+							}
+						}}
+					/>
 				</div>
 
-				<div className='col-10 d-flex flex-column align-items-center'>
+				<div
+					style={{ width: '80%' }}
+					className='d-flex flex-column align-items-center onboarding-content'>
 					<div className='mt-3' style={{ width: '60%' }}>
 						<CustomWizard
+							activeStep={activeTab - 1}
 							isHeader // true || false || 'withButton'
 							color='primary' // 'primary' || 'secondary' || 'success' || 'info' || 'warning' || 'danger' || 'light' || 'dark'
 							stretch // false || true || 'semi'
@@ -44,7 +70,42 @@ const OnboardingSteps = () => {
 					{activeTab === 3 && <HowSetupMenu />}
 				</div>
 
-				<div className='col-1'>o</div>
+				<div style={{ width: '5%' }} className='d-flex justify-content-center'>
+					{isNextButton() && (
+						<Button
+							style={{
+								width: '47px',
+								height: '47px',
+								borderRadius: '50%',
+								background: '#AE9C67',
+								border: 'none',
+								position: 'relative',
+								top: '60%',
+							}}
+							icon='SvgCustomNext'
+							onClick={() => {
+								setActiveTab(activeTab + 1);
+							}}
+						/>
+					)}
+				</div>
+				<div style={{ width: '5%' }} className='d-flex justify-content-center'>
+					<Button
+						style={{
+							width: '47px',
+							height: '47px',
+							borderRadius: '50%',
+							background: '#AE9C67',
+							border: 'none',
+							position: 'relative',
+							top: '85%',
+						}}
+						icon='SvgCustomNext'
+						onClick={() => {
+							console.log('vh');
+						}}
+					/>
+				</div>
 			</div>
 		</Page>
 	);

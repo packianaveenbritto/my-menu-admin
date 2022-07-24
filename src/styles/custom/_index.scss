@@ -314,3 +314,12 @@
 		justify-self: center;
 	}
 }
+
+.onboarding-content {
+	height: 85vh;
+	overflow: auto;
+}
+
+.onboarding-content::-webkit-scrollbar {
+	display: none; /* Safari and Chrome */
+}
