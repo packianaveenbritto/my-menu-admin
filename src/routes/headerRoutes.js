@@ -15,8 +15,14 @@ import UtilitiesHeader from '../pages/common/Headers/UtilitiesHeader';
 import IconHeader from '../pages/common/Headers/IconHeader';
 import ExtrasHeader from '../pages/common/Headers/ExtrasHeader';
 import DefaultHeader from '../pages/common/Headers/DefaultHeader';
+import HeaderWithOnlyLogo from '../pages/common/Headers/HeaderWithOnlyLogo';
 
 const headers = [
+	{
+		path: 'onboarding-steps',
+		element: <HeaderWithOnlyLogo />,
+		exact: true,
+	},
 	{ path: layoutMenu.pageLayout.subMenu.onlySubheader.path, element: null, exact: true },
 	{ path: layoutMenu.pageLayout.subMenu.onlyContent.path, element: null, exact: true },
 	{ path: layoutMenu.blank.path, element: null, exact: true },
