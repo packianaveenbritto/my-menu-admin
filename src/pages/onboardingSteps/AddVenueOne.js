@@ -15,72 +15,72 @@ const cardData = [
 	{
 		id: 2,
 		name: 'Villa',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
+		image: require(`../../assets/iconsAndImages/cradIcons/Villa.png`),
 	},
 	{
 		id: 3,
 		name: 'Café',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
+		image: require(`../../assets/iconsAndImages/cradIcons/Café.png`),
 	},
 	{
 		id: 4,
 		name: 'Casual Dining',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
+		image: require(`../../assets/iconsAndImages/cradIcons/CasualDining.png`),
 	},
 	{
 		id: 5,
 		name: 'Coffee Shop',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
+		image: require(`../../assets/iconsAndImages/cradIcons/CoffeeShop.png`),
 	},
 	{
 		id: 6,
 		name: 'Drive-Thru',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
+		image: require(`../../assets/iconsAndImages/cradIcons/Drive-Thru.png`),
 	},
 	{
 		id: 7,
 		name: 'Fast Casual',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
+		image: require(`../../assets/iconsAndImages/cradIcons/FastCasual.png`),
 	},
 	{
 		id: 8,
-		name: 'HoFast Foodtel',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
+		name: 'Fast Food',
+		image: require(`../../assets/iconsAndImages/cradIcons/FastFood.png`),
 	},
 	{
 		id: 9,
 		name: 'Bistro',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
+		image: require(`../../assets/iconsAndImages/cradIcons/Bistro.png`),
 	},
 	{
 		id: 10,
 		name: 'Buffet',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
+		image: require(`../../assets/iconsAndImages/cradIcons/Buffet.png`),
 	},
 	{
 		id: 11,
 		name: 'Lounge',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
+		image: require(`../../assets/iconsAndImages/cradIcons/Lounge.png`),
 	},
 	{
 		id: 12,
 		name: 'Pub',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
+		image: require(`../../assets/iconsAndImages/cradIcons/Pub.png`),
 	},
 	{
 		id: 13,
 		name: 'Sports Bar',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
+		image: require(`../../assets/iconsAndImages/cradIcons/SportsBar.png`),
 	},
 	{
 		id: 14,
 		name: 'Fine Dining',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
+		image: require(`../../assets/iconsAndImages/cradIcons/FineDining.png`),
 	},
 	{
 		id: 15,
 		name: 'Food Truck',
-		image: require(`../../assets/iconsAndImages/cradIcons/hotel.png`),
+		image: require(`../../assets/iconsAndImages/cradIcons/FoodTruck.png`),
 	},
 ];
 const AddVenueOne = () => {

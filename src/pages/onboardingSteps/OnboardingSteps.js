@@ -6,6 +6,7 @@ import AddVenueOne from './AddVenueOne';
 import EnterVenueDetails from './EnterVenueDetails';
 import HowSetupMenu from './HowSetupMenu';
 import Button from '../../components/bootstrap/Button';
+import chatIcon from '../../assets/iconsAndImages/icons/chatIcon.svg';
 
 const OnboardingSteps = () => {
 	const STEPS = {
@@ -70,7 +71,7 @@ const OnboardingSteps = () => {
 					{activeTab === 3 && <HowSetupMenu />}
 				</div>
 
-				<div style={{ width: '5%' }} className='d-flex justify-content-center'>
+				<div style={{ width: '10%' }} className='d-flex flex-column align-items-center'>
 					{isNextButton() && (
 						<Button
 							style={{
@@ -88,22 +89,16 @@ const OnboardingSteps = () => {
 							}}
 						/>
 					)}
-				</div>
-				<div style={{ width: '5%' }} className='d-flex justify-content-center'>
-					<Button
+
+					<img
 						style={{
-							width: '47px',
-							height: '47px',
-							borderRadius: '50%',
-							background: '#AE9C67',
-							border: 'none',
 							position: 'relative',
 							top: '85%',
 						}}
-						icon='SvgCustomNext'
-						onClick={() => {
-							console.log('vh');
-						}}
+						width={87}
+						height={87}
+						src={chatIcon}
+						alt=''
 					/>
 				</div>
 			</div>
