@@ -13,4 +13,5 @@ const generateDataHeatMap = (count, yrange) => {
 	}
 	return series;
 };
+
 export default generateDataHeatMap;
